@@ -12,14 +12,29 @@ package autonoma.hospitalapp.models;
  * @version 1.0.0
  */
 public class EmpleadoOperativo extends Empleado{
+    
+    private String area;
 
-    public EmpleadoOperativo(String nombre, String documento, int edad, double salarioBase) {
+    public EmpleadoOperativo(String area, String nombre, String documento, int edad, double salarioBase) {
         super(nombre, documento, edad, salarioBase);
+        this.area = area;
     }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+   
+    
 
     @Override
-    double calcularSalario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double calcularSalario() {
+         return getSalarioBase() * 1.2;
     }
+
+    
     
 }
