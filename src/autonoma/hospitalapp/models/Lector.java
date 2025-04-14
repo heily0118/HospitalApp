@@ -4,10 +4,23 @@
  */
 package autonoma.hospitalapp.models;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
- * @author Maria Paz Puerta
+ * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.simuladorautomovil.models.Lector
+ * @version 1.0.0
  */
-public class Lector {
-    
+public interface Lector {
+    /**
+     * Lee el archivo
+     * @param localizacionArchivo
+     * @return Retorna un ArrayList de String que contiene cada línea del archivo como un elemento de la lista.
+     * @throws IOException Si el archivo no existe
+     */
+    public abstract ArrayList<String> leer(String localizacionArchivo)
+                                                    throws IOException;
 }
