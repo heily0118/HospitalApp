@@ -6,7 +6,7 @@ package hospitalapp;
 
 /**
  *
- * @author USUARIO
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  */
 public class HospitalApp {
 
