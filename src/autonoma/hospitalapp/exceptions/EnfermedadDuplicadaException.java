@@ -11,6 +11,11 @@ package autonoma.hospitalapp.exceptions;
  * @see autonoma.simuladorautomovil.models.Vehiculo
  * @version 1.0.0
  */
-public class EnfermedadDuplicadaException {
+public class EnfermedadDuplicadaException extends RuntimeException{
+
+    public EnfermedadDuplicadaException() {
+        super("La enfermedad ya se encuentra en la lista");
+    }
+    
     
 }

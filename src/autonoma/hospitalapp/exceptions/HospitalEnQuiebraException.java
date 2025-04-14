@@ -13,8 +13,8 @@ package autonoma.hospitalapp.exceptions;
  */
 public class HospitalEnQuiebraException  extends Exception{
 
-    public HospitalEnQuiebraException(String message) {
-        super(message);
+    public HospitalEnQuiebraException() {
+        super("El hospital se encunetra en quiebra");
     }
     
     

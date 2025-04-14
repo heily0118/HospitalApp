@@ -11,6 +11,11 @@ package autonoma.hospitalapp.exceptions;
  * @see autonoma.simuladorautomovil.models.Vehiculo
  * @version 1.0.0
  */
-public class CamposObligatoriosException {
+public class CamposObligatoriosException extends RuntimeException{
+
+    public CamposObligatoriosException() {
+        super("Todos los campos deben estar llenos");
+    }
+    
     
 }

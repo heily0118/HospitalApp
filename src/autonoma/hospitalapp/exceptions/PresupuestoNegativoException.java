@@ -12,5 +12,10 @@ package autonoma.hospitalapp.exceptions;
  * @version 1.0.0
  */
 public class PresupuestoNegativoException extends Exception{
+
+    public PresupuestoNegativoException() {
+        super("El presupuesto no puede ser negativo! hospital en quiebra");
+    }
+    
     
 }
