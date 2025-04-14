@@ -174,6 +174,7 @@ public class Hospital {
     }
     
     public void registrarPatrocinio(double monto){
+
         if (monto > 0) {
             presupuesto += monto;  
             System.out.println("Patrocinio registrado exitosamente. Monto recibido: " + monto);
@@ -188,5 +189,9 @@ public class Hospital {
         } else {
             System.out.println("No hay suficiente presupuesto.");
         }
+
+        
     }
+    
+
 }
