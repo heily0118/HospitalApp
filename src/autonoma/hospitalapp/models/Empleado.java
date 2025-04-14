@@ -56,6 +56,6 @@ public abstract  class Empleado {
         this.salarioBase = salarioBase;
     }
     
-    abstract double calcularSalario();
+    public abstract double calcularSalario();
     
 }
