@@ -166,11 +166,11 @@ public class Hospital {
         
     }
     
-    void registrarPatrocinio(double monto){
+    public void registrarPatrocinio(double monto){
         
     }
     
-    void descontarDelPresupuesto(double valor){
+    public void descontarDelPresupuesto(double valor){
         
     }
 }
