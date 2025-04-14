@@ -4,16 +4,19 @@
  */
 package autonoma.hospitalapp.main;
 
+import autonoma.hospitalapp.views.VentanaPrincipal;
+
 /**
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  */
 public class HospitalApp {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        HospitalApp hospitalapp = new HospitalApp();
+        
+        VentanaPrincipal ventana = new VentanaPrincipal(hospitalapp);
+        ventana.setVisible(true);
     }
     
 }
