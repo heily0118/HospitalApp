@@ -6,8 +6,15 @@ package autonoma.hospitalapp.exceptions;
 
 /**
  *
- * @author Maria Paz Puerta
+ * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.simuladorautomovil.exceptions.MedicamentoDuplicadoException
+ * @version 1.0.0
  */
 public class MedicamentoDuplicadoException extends RuntimeException {
+
+    public MedicamentoDuplicadoException() {
+        super("El medicamento ya se encuentra en la lista");
+    }
     
 }
