@@ -14,7 +14,7 @@ package autonoma.hospitalapp.exceptions;
 public class EnfermedadNoEncontradaException extends RuntimeException{
 
     public EnfermedadNoEncontradaException(String message) {
-        super(message);
+        super("La enfermedad no se encuentra");
     }
     
 }
