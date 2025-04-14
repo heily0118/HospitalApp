@@ -162,5 +162,15 @@ public class Hospital {
     }
     
     
+    public void generarNomina(){
+        
+    }
     
+    void registrarPatrocinio(double monto){
+        
+    }
+    
+    void descontarDelPresupuesto(double valor){
+        
+    }
 }

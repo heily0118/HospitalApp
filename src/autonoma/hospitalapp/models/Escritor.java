@@ -4,10 +4,18 @@
  */
 package autonoma.hospitalapp.models;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
- * @author 
+*  @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @version 1.0.0
  */
-public class Escritor {
+public interface Escritor {
+    
+    public abstract void escribir(ArrayList<String> archivo) throws IOException ;
     
 }
