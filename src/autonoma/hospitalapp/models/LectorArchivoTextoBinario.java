@@ -8,6 +8,6 @@ package autonoma.hospitalapp.models;
  *
  * @author Maria Paz Puerta
  */
-public class LectorTextoBinario {
+public class LectorArchivoTextoBinario {
     
 }
