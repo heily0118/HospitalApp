@@ -11,7 +11,7 @@ package autonoma.hospitalapp.models;
  * @see autonoma.simuladorautomovil.models.Vehiculo
  * @version 1.0.0
  */
-public abstract  class Empleado {
+public abstract class Empleado {
     private String nombre;
     private String documento;
     private int edad;
