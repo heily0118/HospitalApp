@@ -93,17 +93,17 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="gestionarFarmacia" max="32767" attributes="0"/>
-                              <Component id="gestionarEmpleados" max="32767" attributes="0"/>
+                              <Component id="btnGestionarFarmacia" max="32767" attributes="0"/>
+                              <Component id="btnGestionarEmpleados" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="gestionarPacientes" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnGestionarPacientes" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="gestionarReportes" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnGestionarReportes" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -119,13 +119,13 @@
                   <Component id="informacionHospital" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="gestionarEmpleados" min="-2" max="-2" attributes="0"/>
-                      <Component id="gestionarPacientes" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGestionarEmpleados" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGestionarPacientes" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="gestionarFarmacia" min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="gestionarReportes" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGestionarFarmacia" min="-2" pref="134" max="-2" attributes="0"/>
+                      <Component id="btnGestionarReportes" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="151" max="32767" attributes="0"/>
               </Group>
@@ -170,7 +170,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="gestionarEmpleados">
+        <Container class="javax.swing.JPanel" name="btnGestionarEmpleados">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -181,6 +181,11 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarEmpleadosMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarEmpleadosMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarEmpleadosMouseExited"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -227,7 +232,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="gestionarPacientes">
+        <Container class="javax.swing.JPanel" name="btnGestionarPacientes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -238,6 +243,11 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarPacientesMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarPacientesMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarPacientesMouseExited"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -281,7 +291,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="gestionarFarmacia">
+        <Container class="javax.swing.JPanel" name="btnGestionarFarmacia">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -292,6 +302,11 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarFarmaciaMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarFarmaciaMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarFarmaciaMouseExited"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -335,7 +350,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="gestionarReportes">
+        <Container class="javax.swing.JPanel" name="btnGestionarReportes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -346,6 +361,11 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarReportesMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarReportesMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarReportesMouseExited"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
