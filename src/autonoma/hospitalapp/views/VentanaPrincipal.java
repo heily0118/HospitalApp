@@ -333,11 +333,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGestionarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarEmpleadosMouseClicked
-        // TODO add your handling code here:
+       GestionarEmpleados ventanaEmpleados = new GestionarEmpleados(this, true);
+       ventanaEmpleados.setVisible(true);
     }//GEN-LAST:event_btnGestionarEmpleadosMouseClicked
 
     private void btnGestionarEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarEmpleadosMouseEntered
-        // TODO add your handling code here:
+        this.mouseEntered(btnGestionarEmpleados);
     }//GEN-LAST:event_btnGestionarEmpleadosMouseEntered
 
     private void btnGestionarEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarEmpleadosMouseExited
@@ -345,11 +346,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarEmpleadosMouseExited
 
     private void btnGestionarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarPacientesMouseClicked
-        // TODO add your handling code here:
+       GestionarPacientes ventanaPacientes = new GestionarPacientes(this, true);
+       ventanaPacientes.setVisible(true);
     }//GEN-LAST:event_btnGestionarPacientesMouseClicked
 
     private void btnGestionarPacientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarPacientesMouseEntered
-        // TODO add your handling code here:
+      this.mouseEntered(btnGestionarPacientes);
     }//GEN-LAST:event_btnGestionarPacientesMouseEntered
 
     private void btnGestionarPacientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarPacientesMouseExited
@@ -357,11 +359,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarPacientesMouseExited
 
     private void btnGestionarFarmaciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarFarmaciaMouseClicked
-        // TODO add your handling code here:
+       GestionarFarmacia ventanaFarmacia = new GestionarFarmacia(this, true);
+       ventanaFarmacia.setVisible(true);
     }//GEN-LAST:event_btnGestionarFarmaciaMouseClicked
 
     private void btnGestionarFarmaciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarFarmaciaMouseEntered
-        // TODO add your handling code here:
+       this.mouseEntered(btnGestionarFarmacia);
     }//GEN-LAST:event_btnGestionarFarmaciaMouseEntered
 
     private void btnGestionarFarmaciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarFarmaciaMouseExited
@@ -369,11 +372,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarFarmaciaMouseExited
 
     private void btnGestionarReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarReportesMouseClicked
-        // TODO add your handling code here:
+       GestionarReportes ventanaReportes = new GestionarReportes(this, true);
+       ventanaReportes.setVisible(true);
     }//GEN-LAST:event_btnGestionarReportesMouseClicked
 
     private void btnGestionarReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarReportesMouseEntered
-        // TODO add your handling code here:
+       this.mouseEntered(btnGestionarReportes);
     }//GEN-LAST:event_btnGestionarReportesMouseEntered
 
     private void btnGestionarReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarReportesMouseExited
