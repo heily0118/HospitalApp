@@ -49,13 +49,34 @@ public class Inventario {
     }
     
     
-    public void agregarMedicamento(Medicamento medicamento) {
-        this.medicamentos.add(medicamento);
+    public void agregarMedicamento(Medicamento medicamento, int cantidad) {
+        
+        boolean encontrado = false;
+        for (Medicamento medica : medicamentos) {
+            if (medica.getNombre().equals(medicamento.getNombre())) {
+              
+                medica.setCantidad(medica.getCantidad() + cantidad);
+                encontrado = true;
+                break;
+            }
+        }
+        
+      
+        if (!encontrado) {
+            medicamento.setCantidad(cantidad);
+            medicamentos.add(medicamento);
+        }
     }
 
    
     public void eliminarMedicamento(String nombre) {
-        this.medicamentos.removeIf(m -> m.getNombre().equals(nombre));
+        for (int i = 0; i < medicamentos.size(); i++) {
+        Medicamento medicamento = medicamentos.get(i);
+        if (medicamento.getNombre().equals(nombre)) {
+            medicamentos.remove(i); 
+            break;  
+        }
+    }
     }
 
     

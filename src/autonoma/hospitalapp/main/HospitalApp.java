@@ -5,6 +5,7 @@
 package autonoma.hospitalapp.main;
 
 import autonoma.hospitalapp.models.Empleado;
+import autonoma.hospitalapp.models.Farmacia;
 import autonoma.hospitalapp.models.Gerente;
 import autonoma.hospitalapp.models.Hospital;
 import autonoma.hospitalapp.models.Inventario;
@@ -26,6 +27,8 @@ public class HospitalApp {
 
         Gerente gerente = new Gerente("Laura Pérez", "123456789", 40, "Administración Hospitalaria");
         Inventario inventario = new Inventario("INV-001", 2024);
+        
+        Farmacia farmacia = new Farmacia(inventario);
 
         ArrayList<Empleado> empleados = new ArrayList<>();
         ArrayList<Paciente> pacientes = new ArrayList<>();
@@ -44,7 +47,7 @@ public class HospitalApp {
                 gerente,
                 empleados,
                 pacientes,
-                inventario,
+                farmacia,
                 nominas
         );
 
