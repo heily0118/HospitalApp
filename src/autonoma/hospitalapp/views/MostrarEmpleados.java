@@ -5,6 +5,7 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
+import java.awt.Dialog;
 import javax.swing.ImageIcon;
 
 /**
@@ -21,8 +22,8 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     /**
      * Creates new form MostrarEmpleados
      */
-    public MostrarEmpleados(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public MostrarEmpleados(javax.swing.JDialog parent, boolean modal) {
+        super((Dialog) parent, modal);
         initComponents();
         setSize(500, 700);
         setResizable(false);

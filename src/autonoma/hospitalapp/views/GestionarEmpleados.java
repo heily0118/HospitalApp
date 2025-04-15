@@ -5,13 +5,15 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @see autonoma.simuladorautomovil.models.Hospital
  * @version 1.0.0
  */
 public class GestionarEmpleados extends javax.swing.JDialog {
@@ -62,6 +64,17 @@ public class GestionarEmpleados extends javax.swing.JDialog {
 
         btnAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregarEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadoMouseExited(evt);
+            }
+        });
 
         jLabel2.setText("Agregar empleado");
 
@@ -92,6 +105,17 @@ public class GestionarEmpleados extends javax.swing.JDialog {
 
         btnMostrarEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         btnMostrarEmpleados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnMostrarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrarEmpleadosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMostrarEmpleadosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMostrarEmpleadosMouseExited(evt);
+            }
+        });
 
         jLabel3.setText("Mostrar empleados");
 
@@ -183,6 +207,38 @@ public class GestionarEmpleados extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
+       AgregarEmpleado ventanaAgregarEmpleado= new AgregarEmpleado(this, true);
+       ventanaAgregarEmpleado.setVisible(true);
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
+
+    private void btnAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseEntered
+       this.mouseEntered(btnAgregarEmpleado);
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseEntered
+
+    private void btnAgregarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseExited
+        this.mouseExited(btnAgregarEmpleado);
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseExited
+
+    private void btnMostrarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadosMouseClicked
+       MostrarEmpleados ventanaMostrarEmpleados= new MostrarEmpleados(this, true);
+       ventanaMostrarEmpleados.setVisible(true);
+    }//GEN-LAST:event_btnMostrarEmpleadosMouseClicked
+
+    private void btnMostrarEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadosMouseEntered
+       this.mouseEntered(btnMostrarEmpleados);
+    }//GEN-LAST:event_btnMostrarEmpleadosMouseEntered
+
+    private void btnMostrarEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadosMouseExited
+        this.mouseExited(btnMostrarEmpleados);
+    }//GEN-LAST:event_btnMostrarEmpleadosMouseExited
+  private void mouseEntered(JPanel panel){
+        panel.setBackground(new Color(200,255,255));
+        
+    }
+    private void mouseExited(JPanel panel){
+        panel.setBackground(new Color(255,255,255));
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnAgregarEmpleado;
