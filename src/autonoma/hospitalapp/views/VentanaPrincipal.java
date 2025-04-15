@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author USUARIO
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @version 1.0.0
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Hospital hospital;
