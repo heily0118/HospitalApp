@@ -6,8 +6,34 @@ package autonoma.hospitalapp.models;
 
 /**
  *
- * @author Maria Paz Puerta
+ * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.simuladorautomovil.models.MedicamentoGenerico
+ * @version 1.0.0
  */
 public class MedicamentoGenerico extends Medicamento{
+
+    /**
+     * Constructor heredado de la clase Medicamento.
+     * @param nombre Es el nombre del medicamento.
+     * @param descripcion Es la descripción del medicamento.
+     * @param costo Es el costo del medicamento.
+     * @param precioVenta Es el precio de venta del medicamento.
+     * @param enfermedadQueAlivia Es la enfermedad que el medicamento está diseñado para aliviar.
+     */
+    public MedicamentoGenerico(String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia) {
+        super(nombre, descripcion, costo, precioVenta, enfermedadQueAlivia);
+        
+    }
+
+    /**
+     * Método que calcula el precio de venta de un medicamento genérico.
+     * El precio de venta se calcula sumando un 10% al costo del medicamento.
+     * Este método actualiza el valor del precio de venta del medicamento.
+     */
+    @Override
+    public void calcularPrecioVenta() {
+        setPrecioVenta(getCosto() + (getCosto() * 0.10));
+    }
     
 }
