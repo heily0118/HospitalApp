@@ -88,6 +88,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         informacionHospital.setBackground(new java.awt.Color(255, 255, 255));
+        informacionHospital.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                informacionHospitalMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                informacionHospitalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                informacionHospitalMouseExited(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/Informacion.png"))); // NOI18N
 
@@ -383,6 +394,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnGestionarReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarReportesMouseExited
        this.mouseExited(btnGestionarReportes);
     }//GEN-LAST:event_btnGestionarReportesMouseExited
+
+    private void informacionHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionHospitalMouseClicked
+       InformacionHospital ventanaHospital= new InformacionHospital(this, true);
+       ventanaHospital.setVisible(true);
+    }//GEN-LAST:event_informacionHospitalMouseClicked
+
+    private void informacionHospitalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionHospitalMouseEntered
+        this.mouseEntered(informacionHospital);
+    }//GEN-LAST:event_informacionHospitalMouseEntered
+
+    private void informacionHospitalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionHospitalMouseExited
+       this.mouseExited(informacionHospital);
+    }//GEN-LAST:event_informacionHospitalMouseExited
 
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(200,255,255));
