@@ -95,23 +95,27 @@ public class Reporte {
      * Si no hay empleados, muestra un mensaje indicando que no hay registros.
      */
     public void generarReporteEmpleados() throws IOException{
-        String rutaArchivo = "reporteEmpleados.txt";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+        ArrayList<String> archivo3 = new ArrayList<>();
+    
+        archivo3.add("===== REPORTE DE EMPLEADOS =====");
 
-        writer.write("===== REPORTE DE EMPLEADOS =====\n");
         if (empleados == null || empleados.isEmpty()) {
-            writer.write("No hay empleados registrados.\n");
+            archivo3.add("No hay empleados registrados.");
         } else {
             for (Empleado e : empleados) {
-                writer.write("Nombre: " + e.getNombre() + "\n");
-                writer.write("Documento: " + e.getDocumento() + "\n");
-                writer.write("Edad: " + e.getEdad() + "\n");
-                writer.write("Salario Base: $" + e.getSalarioBase() + "\n");
-                writer.write("------------------------------------\n");
+                archivo3.add("Nombre: " + e.getNombre());
+                archivo3.add("Documento: " + e.getDocumento());
+                archivo3.add("Edad: " + e.getEdad());
+                archivo3.add("Salario Base: $" + e.getSalarioBase());
+                archivo3.add("------------------------------------");
             }
         }
 
-        writer.close();
+        Escritor escritor = new EscritorArchivoTextoPlano("reporteEmpleados.txt");
+        escritor.escribir(archivo3);
+        
+        LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
+        ArrayList<String> lineas = lector.leer("reporteEmpleados.txt");
     }
 
     /**
@@ -120,44 +124,48 @@ public class Reporte {
      * Si no hay pacientes, muestra un mensaje indicando que no hay registros.
      */
     public void generarReportePacientes() throws IOException{
-        String rutaArchivo = "reportePacientes.txt";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+        ArrayList<String> archivo = new ArrayList<>();
+    
+        archivo.add("===== REPORTE DE PACIENTES =====");
 
-        writer.write("===== REPORTE DE PACIENTES =====\n");
         if (pacientes == null || pacientes.isEmpty()) {
-            writer.write("No hay pacientes registrados.\n");
+            archivo.add("No hay pacientes registrados.");
         } else {
             for (Paciente p : pacientes) {
-                writer.write("Nombre: " + p.getNombre() + "\n");
-                writer.write("Documento: " + p.getDocumento() + "\n");
-                writer.write("Edad: " + p.getEdad() + "\n");
-                writer.write("Correo: " + p.getCorreo() + "\n");
-                writer.write("Teléfono: " + p.getTelefono() + "\n");
-                writer.write("Estado: " + (p.isEstadoPaciente() ? "Activo" : "Inactivo") + "\n");
-
-                writer.write("Enfermedades:\n");
+                archivo.add("Nombre: " + p.getNombre());
+                archivo.add("Documento: " + p.getDocumento());
+                archivo.add("Edad: " + p.getEdad());
+                archivo.add("Correo: " + p.getCorreo());
+                archivo.add("Teléfono: " + p.getTelefono());
+                archivo.add("Estado: " + (p.isEstadoPaciente() ? "Activo" : "Inactivo"));
+            
+                archivo.add("Enfermedades:");
                 if (p.getEnfermedades().isEmpty()) {
-                    writer.write("  - No registra enfermedades.\n");
+                    archivo.add("  - No registra enfermedades.");
                 } else {
                     for (Enfermedad e : p.getEnfermedades()) {
-                        writer.write("  - " + e.getNombre() + "\n");
+                        archivo.add("  - " + e.getNombre());
                     }
                 }
-
-                writer.write("Medicamentos:\n");
+            
+                archivo.add("Medicamentos:");
                 if (p.getMedicinas().isEmpty()) {
-                    writer.write("  - No tiene medicamentos asignados.\n");
+                    archivo.add("  - No tiene medicamentos asignados.");
                 } else {
                     for (Medicamento m : p.getMedicinas()) {
-                        writer.write("  - " + m.getNombre() + "\n");
+                        archivo.add("  - " + m.getNombre());
                     }
                 }
-
-                writer.write("------------------------------------\n");
+            
+                archivo.add("------------------------------------");
             }
         }
 
-        writer.close();
+        Escritor escritor = new EscritorArchivoTextoPlano("reportePacientes.txt");
+        escritor.escribir(archivo);
+        
+        LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
+        ArrayList<String> lineas = lector.leer("reportePacientes.txt");
     }
 
     /**
@@ -166,40 +174,39 @@ public class Reporte {
      * Si no hay información de la farmacia, muestra un mensaje indicando que no hay registros.
      */
     public void generarReporteFarmacia() throws IOException{
-        String rutaArchivo = "reporteFarmacia.txt";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
-
-        writer.write("===== REPORTE DE FARMACIA =====\n");
+        ArrayList<String> archivo2 = new ArrayList<>();
+    
+        archivo2.add("===== REPORTE DE FARMACIA =====");
 
         if (farmacia == null) {
-            writer.write("No hay información de farmacia registrada.\n");
-            writer.close();
-            return;
-        }
-
-        Hospital h = farmacia.getHospital();
-        if (h == null) {
-            writer.write("No se pudo obtener la información del hospital.\n");
-            writer.close();
-            return;
-        }
-
-        writer.write(String.format("Hospital Asociado: %s\n", h.getNombre()));
-        writer.write(String.format("Dirección del Hospital: %s\n", h.getDireccion()));
-
-        writer.write("Inventario de Medicamentos:\n");
-
-        ArrayList<Medicamento> medicamentos = farmacia.getInventario().getMedicamentos();
-        if (medicamentos == null || medicamentos.isEmpty()) {
-            writer.write("No hay medicamentos en el inventario.\n");
+            archivo2.add("No hay información de farmacia registrada.");
         } else {
-            for (Medicamento m : medicamentos) {
-                writer.write(String.format("  - %s\n", m.getNombre()));
+            Hospital h = farmacia.getHospital();
+            if (h == null) {
+                archivo2.add("No se pudo obtener la información del hospital.");
+            } else {
+                archivo2.add(String.format("Hospital Asociado: %s", h.getNombre()));
+                archivo2.add(String.format("Dirección del Hospital: %s", h.getDireccion()));
+
+                archivo2.add("Inventario de Medicamentos:");
+
+                ArrayList<Medicamento> medicamentos = farmacia.getInventario().getMedicamentos();
+                if (medicamentos == null || medicamentos.isEmpty()) {
+                    archivo2.add("No hay medicamentos en el inventario.");
+                } else {
+                    for (Medicamento m : medicamentos) {
+                        archivo2.add(String.format("  - %s", m.getNombre()));
+                    }
+                }
+
+                archivo2.add("------------------------------------");
             }
         }
 
-        writer.write("------------------------------------\n");
-
-        writer.close();
+        Escritor escritor = new EscritorArchivoTextoPlano("reporteFarmacia.txt");
+        escritor.escribir(archivo2);
+        
+        LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
+        ArrayList<String> lineas = lector.leer("reporteFarmacia.txt");
     }
 }
