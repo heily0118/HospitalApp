@@ -193,5 +193,13 @@ public class Hospital {
         
     }
     
+    public String visualizarEstado(){
+         return estadoActivo ? "El hospital está activo." : "El hospital está inactivo.";
+    }
+    
+    public void comprarMedicamento(){
+        
+    }
+    
 
 }

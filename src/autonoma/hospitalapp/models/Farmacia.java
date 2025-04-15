@@ -4,6 +4,8 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+
 /**
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
@@ -36,7 +38,31 @@ public class Farmacia {
         this.hospital = hospital;
     }
     
-    
+        public void agregarMedicamento(Medicamento medicamento) throws HospitalEnQuiebraException {
+        if (hospital.estaEnQuiebra()) {
+            throw new HospitalEnQuiebraException();
+        }
+        medicamento.calcularPrecioVenta();
+        hospital.descontarDelPresupuesto(medicamento.getCosto()); 
+        inventario.agregarMedicamento(medicamento);
+    }
+
+    public void eliminarMedicamento(String nombre) {
+        inventario.eliminarMedicamento(nombre);
+    }
+
+    public Medicamento buscarMedicamento(String nombre) {
+        return inventario.buscarPorNombre(nombre);
+    }
+
+    public String mostrarMedicamentos() {
+        return inventario.mostrarMedicamentos();
+    }
+
+    public void mostrarReporteInventario() {
+        GeneradorReportePdf.generarReporteFarmacia();
+    }
+
     
     
 }
