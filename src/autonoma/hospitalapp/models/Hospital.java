@@ -163,14 +163,35 @@ public class Hospital {
     
     
     public void generarNomina(){
+        for (Empleado empleado : empleados) {
+            double sueldo = empleado.calcularSalario();
+            String nombreEmpleado = empleado.getNombre();  
+            LocalDate fechaNomina = LocalDate.now();  
+            Nomina nomina = new Nomina(nombreEmpleado, fechaNomina, sueldo); 
+            nominas.add(nomina);
+     }
         
     }
     
     public void registrarPatrocinio(double monto){
+
+        if (monto > 0) {
+            presupuesto += monto;  
+            System.out.println("Patrocinio registrado exitosamente. Monto recibido: " + monto);
+        } else {
+            System.out.println("El monto del patrocinio debe ser mayor que 0.");
+        }
+    }
+    
+    public void descontarDelPresupuesto(double valor) {
+        if (presupuesto >= valor) {
+            presupuesto -= valor;
+        } else {
+            System.out.println("No hay suficiente presupuesto.");
+        }
+
         
     }
     
-    public void descontarDelPresupuesto(double valor){
-        
-    }
+
 }
