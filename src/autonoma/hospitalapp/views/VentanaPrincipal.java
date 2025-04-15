@@ -4,38 +4,21 @@
  */
 package autonoma.hospitalapp.views;
 
-import autonoma.hospitalapp.main.HospitalApp;
-import javax.swing.ImageIcon;
+import autonoma.hospitalapp.models.Hospital;
 
 /**
  *
- * @author Maria Paz Puerta
- * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
- * @since 20250414
- * @see autonoma.simuladorautomovil.models.Vehiculo
- * @version 1.0.0
+ * @author USUARIO
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    private HospitalApp hospital;
+    private Hospital hospital;
+
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal(HospitalApp hospital) {
+    public VentanaPrincipal(Hospital hospital) {
         initComponents();
-        setSize(650, 500);
-        setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.hospital = hospital;
-        
-        
-        
-        try{ 
-        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/Hospital.png")).getImage());
-        
-        }catch(NullPointerException e){
-            System.out.println("Imagen no encontrada");
-            
-        }
+        hospital = this.hospital;
     }
 
     /**
@@ -63,7 +46,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
