@@ -146,8 +146,7 @@ public abstract class Medicamento {
     /**
      * Método abstracto para calcular el precio de venta del medicamento.
      * Este método debe ser implementado en las subclases para calcular el precio de acuerdo
-     * a las características específicas del tipo de medicamento (por ejemplo, medicamentos de marca
-     * o genéricos).
+     * a las características específicas del tipo de medicamento.
      */
     public abstract void calcularPrecioVenta();
 }
