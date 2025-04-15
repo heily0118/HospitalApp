@@ -200,6 +200,10 @@ public class Hospital {
     public void comprarMedicamento(){
         
     }
+
+    boolean estaEnQuiebra() {
+       return false; 
+    }
     
 
 }

@@ -5,6 +5,7 @@
 package autonoma.hospitalapp.models;
 
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+import java.io.IOException;
 
 /**
  *
@@ -38,7 +39,7 @@ public class Farmacia {
         this.hospital = hospital;
     }
     
-        public void agregarMedicamento(Medicamento medicamento) throws HospitalEnQuiebraException {
+    public void agregarMedicamento(Medicamento medicamento) throws HospitalEnQuiebraException {
         if (hospital.estaEnQuiebra()) {
             throw new HospitalEnQuiebraException();
         }
@@ -59,8 +60,9 @@ public class Farmacia {
         return inventario.mostrarMedicamentos();
     }
 
-    public void mostrarReporteInventario() {
-        GeneradorReportePdf.generarReporteFarmacia();
+    public void mostrarReporteInventario() throws IOException {
+        GeneradorReportePdf generador = new GeneradorReportePdf();
+        generador.generarReporteFarmacia();
     }
 
     

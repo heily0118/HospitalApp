@@ -4,6 +4,9 @@
  */
 package autonoma.hospitalapp.models;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -29,15 +32,11 @@ public class GeneradorReportePdf {
     private Farmacia farmacia; 
 
     /**
-     * Constructor de la clase GeneradorReportePdf.
-     * @param empleados Es la lista de empleados que se utilizará en el reporte.
-     * @param pacientes Es la lista de pacientes que se utilizará en el reporte.
-     * @param farmacia Es el objeto de tipo Farmacia que se utilizará en el reporte.
+     * Constructor vacío de la clase GeneradorReportePdf.
+     * 
      */
-    public GeneradorReportePdf(ArrayList<Empleado> empleados, ArrayList<Paciente> pacientes, Farmacia farmacia) {
-        this.empleados = empleados;
-        this.pacientes = pacientes;
-        this.farmacia = farmacia;
+    public GeneradorReportePdf() {
+        
     }
 
     /**
@@ -93,19 +92,24 @@ public class GeneradorReportePdf {
      * Muestra el nombre, documento, edad y salario base de cada empleado.
      * Si no hay empleados, muestra un mensaje indicando que no hay registros.
      */
-    public void generarReporteEmpleados(){
-        System.out.println("===== REPORTE DE EMPLEADOS =====");
-        if (empleados.isEmpty()) {
-            System.out.println("No hay empleados registrados.");
+    public void generarReporteEmpleados() throws IOException{
+        String rutaArchivo = "reporteEmpleados.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+
+        writer.write("===== REPORTE DE EMPLEADOS =====\n");
+        if (empleados == null || empleados.isEmpty()) {
+            writer.write("No hay empleados registrados.\n");
         } else {
             for (Empleado e : empleados) {
-                System.out.println("Nombre: " + e.getNombre());
-                System.out.println("Documento: " + e.getDocumento());
-                System.out.println("Edad: " + e.getEdad());
-                System.out.println("Salario Base: $" + e.getSalarioBase());
-                System.out.println("------------------------------------");
+                writer.write("Nombre: " + e.getNombre() + "\n");
+                writer.write("Documento: " + e.getDocumento() + "\n");
+                writer.write("Edad: " + e.getEdad() + "\n");
+                writer.write("Salario Base: $" + e.getSalarioBase() + "\n");
+                writer.write("------------------------------------\n");
             }
         }
+
+        writer.close();
     }
 
     /**
@@ -113,40 +117,45 @@ public class GeneradorReportePdf {
      * Muestra el nombre, documento, edad, correo, teléfono, estado y lista de enfermedades y medicamentos de cada paciente.
      * Si no hay pacientes, muestra un mensaje indicando que no hay registros.
      */
-    public void generarReportePacientes(){
-        System.out.println("===== REPORTE DE PACIENTES =====");
-        if (pacientes.isEmpty()) {
-            System.out.println("No hay pacientes registrados.");
+    public void generarReportePacientes() throws IOException{
+        String rutaArchivo = "reportePacientes.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+
+        writer.write("===== REPORTE DE PACIENTES =====\n");
+        if (pacientes == null || pacientes.isEmpty()) {
+            writer.write("No hay pacientes registrados.\n");
         } else {
             for (Paciente p : pacientes) {
-                System.out.println("Nombre: " + p.getNombre());
-                System.out.println("Documento: " + p.getDocumento());
-                System.out.println("Edad: " + p.getEdad());
-                System.out.println("Correo: " + p.getCorreo());
-                System.out.println("Teléfono: " + p.getTelefono());
-                System.out.println("Estado: " + (p.isEstadoPaciente() ? "Activo" : "Inactivo"));
+                writer.write("Nombre: " + p.getNombre() + "\n");
+                writer.write("Documento: " + p.getDocumento() + "\n");
+                writer.write("Edad: " + p.getEdad() + "\n");
+                writer.write("Correo: " + p.getCorreo() + "\n");
+                writer.write("Teléfono: " + p.getTelefono() + "\n");
+                writer.write("Estado: " + (p.isEstadoPaciente() ? "Activo" : "Inactivo") + "\n");
 
-                System.out.println("Enfermedades:");
+                writer.write("Enfermedades:\n");
                 if (p.getEnfermedades().isEmpty()) {
-                    System.out.println("  - No registra enfermedades.");
+                    writer.write("  - No registra enfermedades.\n");
                 } else {
                     for (Enfermedad e : p.getEnfermedades()) {
-                        System.out.println("  - " + e.getNombre()); 
+                        writer.write("  - " + e.getNombre() + "\n");
                     }
                 }
 
-                System.out.println("Medicamentos:");
+                writer.write("Medicamentos:\n");
                 if (p.getMedicinas().isEmpty()) {
-                    System.out.println("  - No tiene medicamentos asignados.");
+                    writer.write("  - No tiene medicamentos asignados.\n");
                 } else {
                     for (Medicamento m : p.getMedicinas()) {
-                        System.out.println("  - " + m.getNombre());
+                        writer.write("  - " + m.getNombre() + "\n");
                     }
                 }
 
-                System.out.println("------------------------------------");
+                writer.write("------------------------------------\n");
             }
         }
+
+        writer.close();
     }
 
     /**
@@ -154,29 +163,41 @@ public class GeneradorReportePdf {
      * Muestra el nombre y dirección del hospital asociado, así como el inventario de medicamentos de la farmacia.
      * Si no hay información de la farmacia, muestra un mensaje indicando que no hay registros.
      */
-    public void generarReporteFarmacia(){
-        System.out.println("===== REPORTE DE FARMACIA =====");
+    public void generarReporteFarmacia() throws IOException{
+        String rutaArchivo = "reporteFarmacia.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+
+        writer.write("===== REPORTE DE FARMACIA =====\n");
 
         if (farmacia == null) {
-            System.out.println("No hay información de farmacia registrada.");
+            writer.write("No hay información de farmacia registrada.\n");
+            writer.close();
             return;
         }
 
         Hospital h = farmacia.getHospital();
-        System.out.println("Hospital Asociado: " + h.getNombre());
-        System.out.println("Dirección del Hospital: " + h.getDireccion());
+        if (h == null) {
+            writer.write("No se pudo obtener la información del hospital.\n");
+            writer.close();
+            return;
+        }
 
-        System.out.println("Inventario de Medicamentos:");
+        writer.write(String.format("Hospital Asociado: %s\n", h.getNombre()));
+        writer.write(String.format("Dirección del Hospital: %s\n", h.getDireccion()));
+
+        writer.write("Inventario de Medicamentos:\n");
 
         ArrayList<Medicamento> medicamentos = farmacia.getInventario().getMedicamentos();
-        if (medicamentos.isEmpty()) {
-            System.out.println("  - No hay medicamentos en el inventario.");
+        if (medicamentos == null || medicamentos.isEmpty()) {
+            writer.write("No hay medicamentos en el inventario.\n");
         } else {
             for (Medicamento m : medicamentos) {
-                System.out.println("  - " + m.getNombre());
+                writer.write(String.format("  - %s\n", m.getNombre()));
             }
         }
 
-        System.out.println("------------------------------------");
+        writer.write("------------------------------------\n");
+
+        writer.close();
     }
 }
