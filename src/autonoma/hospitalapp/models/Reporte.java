@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @see autonoma.simuladorautomovil.models.GeneradorReportePdf
  * @version 1.0.0
  */
-public class GeneradorReportePdf {
+public class Reporte {
     /**
      * Lista de empleados
      */
@@ -34,7 +34,7 @@ public class GeneradorReportePdf {
      * @param pacientes Es la lista de pacientes que se utilizará en el reporte.
      * @param farmacia Es el objeto de tipo Farmacia que se utilizará en el reporte.
      */
-    public GeneradorReportePdf(ArrayList<Empleado> empleados, ArrayList<Paciente> pacientes, Farmacia farmacia) {
+    public Reporte(ArrayList<Empleado> empleados, ArrayList<Paciente> pacientes, Farmacia farmacia) {
         this.empleados = empleados;
         this.pacientes = pacientes;
         this.farmacia = farmacia;

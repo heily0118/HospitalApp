@@ -5,7 +5,6 @@
 package autonoma.hospitalapp.models;
 
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
-import autonoma.hospitalapp.models.Medicamento;
 
 /**
  *
@@ -22,7 +21,6 @@ public class Farmacia {
      * Constructor de la clase Farmacia.
      * 
      * @param inventario El inventario de medicamentos.
-     * @param hospital El hospital al que pertenece la farmacia.
      */
     public Farmacia(Inventario inventario) {
         this.inventario = inventario;

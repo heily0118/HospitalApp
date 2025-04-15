@@ -164,56 +164,126 @@ public class Hospital {
     }
     
     
-    public void generarNomina(){
+    public void agregarEmpleado(Empleado empleado) {
+        empleados.add(empleado);
+        System.out.println("Empleado agregado: " + empleado.getNombre());
+    }
+
+    public void eliminarEmpleado(String nombre) {
+        for (int i = 0; i < empleados.size(); i++) {
+            if (empleados.get(i).getNombre().equals(nombre)) {
+                empleados.remove(i);
+                System.out.println("Empleado eliminado: " + nombre);
+                return;
+            }
+        }
+        System.out.println("Empleado no encontrado.");
+    }
+
+    public void actualizarEmpleado(String nombre, Empleado empleadoActualizado) {
+        for (int i = 0; i < empleados.size(); i++) {
+            if (empleados.get(i).getNombre().equals(nombre)) {
+                empleados.set(i, empleadoActualizado);
+                System.out.println("Empleado actualizado: " + nombre);
+                return;
+            }
+        }
+        System.out.println("Empleado no encontrado.");
+    }
+
+    public Empleado buscarEmpleado(String nombre) {
+        for (Empleado empleado : empleados) {
+            if (empleado.getNombre().equals(nombre)) {
+                return empleado;
+            }
+        }
+        System.out.println("Empleado no encontrado.");
+        return null;
+    }
+
+
+    public void agregarPaciente(Paciente paciente) {
+        pacientes.add(paciente);
+        System.out.println("Paciente agregado: " + paciente.getNombre());
+    }
+
+    public void eliminarPaciente(String nombre) {
+        for (int i = 0; i < pacientes.size(); i++) {
+            if (pacientes.get(i).getNombre().equals(nombre)) {
+                pacientes.remove(i);
+                System.out.println("Paciente eliminado: " + nombre);
+                return;
+            }
+        }
+        System.out.println("Paciente no encontrado.");
+    }
+
+    public void actualizarPaciente(String nombre, Paciente pacienteActualizado) {
+        for (int i = 0; i < pacientes.size(); i++) {
+            if (pacientes.get(i).getNombre().equals(nombre)) {
+                pacientes.set(i, pacienteActualizado);
+                System.out.println("Paciente actualizado: " + nombre);
+                return;
+            }
+        }
+        System.out.println("Paciente no encontrado.");
+    }
+
+    public Paciente buscarPaciente(String nombre) {
+        for (Paciente paciente : pacientes) {
+            if (paciente.getNombre().equals(nombre)) {
+                return paciente;
+            }
+        }
+        System.out.println("Paciente no encontrado.");
+        return null;
+    }
+
+    
+    public void generarNomina() {
         for (Empleado empleado : empleados) {
             double sueldo = empleado.calcularSalario();
-            String nombreEmpleado = empleado.getNombre();  
-            LocalDate fechaNomina = LocalDate.now();  
-            Nomina nomina = new Nomina(nombreEmpleado, fechaNomina, sueldo); 
+            String nombreEmpleado = empleado.getNombre();
+            LocalDate fechaNomina = LocalDate.now();
+            Nomina nomina = new Nomina(nombreEmpleado, fechaNomina, sueldo);
             nominas.add(nomina);
-     }
-        
+        }
     }
-    
-    public void registrarPatrocinio(double monto){
 
+    public void registrarPatrocinio(double monto) {
         if (monto > 0) {
-            presupuesto += monto;  
+            presupuesto += monto;
             System.out.println("Patrocinio registrado exitosamente. Monto recibido: " + monto);
         } else {
             System.out.println("El monto del patrocinio debe ser mayor que 0.");
         }
     }
-    
+
     public void descontarDelPresupuesto(double valor) {
         if (presupuesto >= valor) {
             presupuesto -= valor;
         } else {
             System.out.println("No hay suficiente presupuesto.");
         }
+    }
 
-        
+    public String visualizarEstado() {
+        return estadoHospital ? "El hospital está activo." : "El hospital esta en quiebra.";
     }
-    
-    public String visualizarEstado(){
-         return estadoHospital? "El hospital está activo." : "El hospital esta en quiebra.";
-    }
-    
-    public void comprarMedicamento(Medicamento medicamento, int cantidad){
+
+    public void comprarMedicamento(Medicamento medicamento, int cantidad) {
         if (visualizarEstado().equals("El hospital está en quiebra.")) {
-               System.out.println("No se puede agregar medicamentos, el hospital está en quiebra.");
-               return;
-           }
+            System.out.println("No se puede agregar medicamentos, el hospital está en quiebra.");
+            return;
+        }
 
-           double costoTotal = medicamento.getCosto() * cantidad;  
-           if (presupuesto >= costoTotal) {
-               farmacia.getInventario().agregarMedicamento(medicamento, cantidad); 
-               presupuesto -= costoTotal;  
-               System.out.println("Medicamento comprado exitosamente: " + medicamento.getNombre() + ", Cantidad: " + cantidad);
-           } else {
-               System.out.println("No hay suficiente presupuesto para comprar el medicamento.");
-           }
-       }
-    
-
+        double costoTotal = medicamento.getCosto() * cantidad;
+        if (presupuesto >= costoTotal) {
+            farmacia.getInventario().agregarMedicamento(medicamento, cantidad);
+            presupuesto -= costoTotal;
+            System.out.println("Medicamento comprado exitosamente: " + medicamento.getNombre() + ", Cantidad: " + cantidad);
+        } else {
+            System.out.println("No hay suficiente presupuesto para comprar el medicamento.");
+        }
+    }
 }
