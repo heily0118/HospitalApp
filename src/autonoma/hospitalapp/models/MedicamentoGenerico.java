@@ -21,9 +21,8 @@ public class MedicamentoGenerico extends Medicamento{
      * @param precioVenta Es el precio de venta del medicamento.
      * @param enfermedadQueAlivia Es la enfermedad que el medicamento está diseñado para aliviar.
      */
-    public MedicamentoGenerico(String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia) {
-        super(nombre, descripcion, costo, precioVenta, enfermedadQueAlivia);
-        
+    public MedicamentoGenerico(String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia, int cantidad) {   
+        super(nombre, descripcion, costo, precioVenta, enfermedadQueAlivia, cantidad);
     }
 
     /**

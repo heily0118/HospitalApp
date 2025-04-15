@@ -28,11 +28,11 @@ public class MedicamentoMarca extends Medicamento{
      * @param enfermedadQueAlivia Es la enfermedad que el medicamento está diseñado para aliviar.
      * @param fabricante Es el fabricante del medicamento
      */
-    public MedicamentoMarca(String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia, String fabricante) {
-        super(nombre, descripcion, costo, precioVenta, enfermedadQueAlivia);
+    public MedicamentoMarca(String fabricante, String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia, int cantidad) {
+        super(nombre, descripcion, costo, precioVenta, enfermedadQueAlivia, cantidad);
         this.fabricante = fabricante;
     }
-    
+
     /**
      * Obtiene el fabricante del medicamento de marca.
      * 

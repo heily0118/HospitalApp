@@ -36,6 +36,9 @@ public abstract class Medicamento {
      * Enfermedad que alivia el medicamento.
      */
     private String enfermedadQueAlivia;
+    
+    
+     private int cantidad;
 
     /**
      * Constructor de la clase Medicamento.
@@ -45,12 +48,13 @@ public abstract class Medicamento {
      * @param precioVenta Es el precio de venta del medicamento.
      * @param enfermedadQueAlivia Es la enfermedad que el medicamento está diseñado para aliviar.
      */
-    public Medicamento(String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia) {
+    public Medicamento(String nombre, String descripcion, double costo, double precioVenta, String enfermedadQueAlivia, int cantidad) {    
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.costo = costo;
         this.precioVenta = precioVenta;
         this.enfermedadQueAlivia = enfermedadQueAlivia;
+        this.cantidad = cantidad;
     }
 
     /**
@@ -142,6 +146,16 @@ public abstract class Medicamento {
     public void setEnfermedadQueAlivia(String enfermedadQueAlivia) {
         this.enfermedadQueAlivia = enfermedadQueAlivia;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    
 
     /**
      * Método abstracto para calcular el precio de venta del medicamento.

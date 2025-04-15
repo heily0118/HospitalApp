@@ -24,15 +24,15 @@ public class Hospital {
     private double presupuesto;
     private double metaVentasAnual;
     private LocalDate fechaFundacion;
-    private boolean estadoActivo;
+    private boolean estadoHospital;
     private Localizacion localizacion;
     private Gerente gerente;
     private ArrayList<Empleado>empleados;
     private ArrayList<Paciente> pacientes;
-    private Inventario inventario;
+    private Farmacia farmacia;
     private ArrayList<Nomina>nominas;
 
-    public Hospital(String nombre, String direccion, String telefono, String logo, double presupuesto, double metaVentasAnual, LocalDate fechaFundacion, boolean estadoActivo, Localizacion localizacion, Gerente gerente, ArrayList<Empleado> empleados, ArrayList<Paciente> pacientes, Inventario inventario, ArrayList<Nomina> nominas) {
+    public Hospital(String nombre, String direccion, String telefono, String logo, double presupuesto, double metaVentasAnual, LocalDate fechaFundacion, boolean estadoHospital, Localizacion localizacion, Gerente gerente, ArrayList<Empleado> empleados, ArrayList<Paciente> pacientes,Farmacia Farmacia , ArrayList<Nomina> nominas) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -40,12 +40,12 @@ public class Hospital {
         this.presupuesto = presupuesto;
         this.metaVentasAnual = metaVentasAnual;
         this.fechaFundacion = fechaFundacion;
-        this.estadoActivo = estadoActivo;
+        this.estadoHospital = estadoHospital;
         this.localizacion = localizacion;
         this.gerente = gerente;
         this.empleados = empleados;
         this.pacientes = pacientes;
-        this.inventario = inventario;
+        this.farmacia =  farmacia;
         this.nominas = nominas;
     }
 
@@ -105,12 +105,12 @@ public class Hospital {
         this.fechaFundacion = fechaFundacion;
     }
 
-    public boolean isEstadoActivo() {
-        return estadoActivo;
+    public boolean isEstadoHospital() {
+        return estadoHospital;
     }
 
-    public void setEstadoActivo(boolean estadoActivo) {
-        this.estadoActivo = estadoActivo;
+    public void setEstadoHospital(boolean estadoHospital) {
+        this.estadoHospital = estadoHospital;
     }
 
     public Localizacion getLocalizacion() {
@@ -145,13 +145,15 @@ public class Hospital {
         this.pacientes = pacientes;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public Farmacia getFarmacia() {
+        return farmacia;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setFarmacia(Farmacia farmacia) {
+        this.farmacia = farmacia;
     }
+
+   
 
     public ArrayList<Nomina> getNominas() {
         return nominas;
@@ -194,12 +196,24 @@ public class Hospital {
     }
     
     public String visualizarEstado(){
-         return estadoActivo ? "El hospital está activo." : "El hospital está inactivo.";
+         return estadoHospital? "El hospital está activo." : "El hospital esta en quiebra.";
     }
     
-    public void comprarMedicamento(){
-        
-    }
+    public void comprarMedicamento(Medicamento medicamento, int cantidad){
+        if (visualizarEstado().equals("El hospital está en quiebra.")) {
+               System.out.println("No se puede agregar medicamentos, el hospital está en quiebra.");
+               return;
+           }
+
+           double costoTotal = medicamento.getCosto() * cantidad;  
+           if (presupuesto >= costoTotal) {
+               farmacia.getInventario().agregarMedicamento(medicamento, cantidad); 
+               presupuesto -= costoTotal;  
+               System.out.println("Medicamento comprado exitosamente: " + medicamento.getNombre() + ", Cantidad: " + cantidad);
+           } else {
+               System.out.println("No hay suficiente presupuesto para comprar el medicamento.");
+           }
+       }
     
 
 }
