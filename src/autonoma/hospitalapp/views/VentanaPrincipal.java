@@ -71,7 +71,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         titulo.setBackground(new java.awt.Color(153, 153, 255));
 
-        nombreHospital.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
+        nombreHospital.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         nombreHospital.setForeground(new java.awt.Color(255, 255, 255));
         nombreHospital.setText("SISTEMA DE CONTROL");
 
