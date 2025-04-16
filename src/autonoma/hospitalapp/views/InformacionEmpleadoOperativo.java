@@ -4,9 +4,12 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.EmpleadoOperativo;
+import autonoma.hospitalapp.models.EmpleadoSalud;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Dialog;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -129,6 +132,11 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
         Aceptar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
 
         Atras.setBackground(new java.awt.Color(204, 0, 51));
         Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -239,6 +247,39 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         this.dispose();
     }//GEN-LAST:event_AtrasActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+       try {
+        String nombre = nombreEmpleado.getText();
+        String documento = numDocumento.getText();
+        int edadEmpleado = Integer.parseInt(edad.getText());
+        double salario = Double.parseDouble(salarioBase.getText());
+        String areaEmpleado = areaTrabajo.getText();
+        
+
+        EmpleadoOperativo nuevoEmpleado = new EmpleadoOperativo(areaEmpleado,  nombre, documento, edadEmpleado, salario);
+        sistema.agregarEmpleados(nuevoEmpleado);
+
+        JOptionPane.showMessageDialog(this, "Empleado de Operativo creado exitosamente.");
+
+       this.dispose();
+
+        
+        if (this.getOwner() instanceof javax.swing.JDialog) {
+            javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
+            ventanaAgregar.dispose();
+        }
+         
+        
+        
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad, salario y horas.", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_AceptarActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

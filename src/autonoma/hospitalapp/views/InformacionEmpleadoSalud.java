@@ -285,27 +285,7 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
             ventanaAgregar.dispose();
         }
          
-        if (ventana != null) {
-            ventana.setVisible(true);
-        } else {
-            System.out.println("Ventana principal es null. No se puede mostrar.");
-        }
         
-        if (this.getOwner() instanceof AgregarEmpleado) {
-            System.out.println("Cerrando ventana agregar empleado");
-            AgregarEmpleado ventanaAgregar = (AgregarEmpleado) this.getOwner();
-            ventanaAgregar.dispose();
-        } else {
-            System.out.println("El dueño no es una ventana GestionarEmpleados: " + this.getOwner().getClass().getName());
-        }
-        
-        if (this.getOwner() instanceof GestionarEmpleados) {
-            System.out.println("Cerrando ventana gestionar empleado");
-            GestionarEmpleados ventanaGestionar = (GestionarEmpleados) this.getOwner();
-            ventanaGestionar.dispose();
-        } else {
-            System.out.println("El dueño no es una ventana GestionarEmpleados: " + this.getOwner().getClass().getName());
-        }
         
         
     } catch (NumberFormatException e) {
