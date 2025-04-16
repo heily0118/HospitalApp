@@ -4,6 +4,7 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.EmpleadoSalud;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Dialog;
@@ -19,19 +20,20 @@ import javax.swing.JOptionPane;
  */
 public class InformacionEmpleadoSalud extends javax.swing.JDialog {
      private SistemaCentral sistema;
-     private VentanaPrincipal ventana;
+     private Empleado empleado;
+    
 
     /**
      * Creates new form InformacionEmpleadoSalud
      */
-    public InformacionEmpleadoSalud(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema, VentanaPrincipal ventana) {
+    public InformacionEmpleadoSalud(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
         super((Dialog) parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
-        this.ventana = ventana;
+      
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -264,40 +266,68 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        try {
-        String nombre = nombreEmpleado.getText();
-        String documento = numDocumento.getText();
-        int edadEmpleado = Integer.parseInt(edad.getText());
-        double salario = Double.parseDouble(salarioBase.getText());
-        String especialidadEmpleado = especialidad.getText();
-        int horas = Integer.parseInt(horasTrabajo.getText());
+            try {
+            String nombre = nombreEmpleado.getText();
+            String documento = numDocumento.getText();
+            int edadEmpleado = Integer.parseInt(edad.getText());
+            double salario = Double.parseDouble(salarioBase.getText());
+            String especialidadEmpleado = especialidad.getText();
+            int horas = Integer.parseInt(horasTrabajo.getText());
 
-        EmpleadoSalud nuevoEmpleado = new EmpleadoSalud(especialidadEmpleado, horas, nombre, documento, edadEmpleado, salario);
-        sistema.agregarEmpleados(nuevoEmpleado);
+            if (empleado != null) {
+               
+                if (empleado instanceof EmpleadoSalud) {
+                    EmpleadoSalud empleadoSalud = (EmpleadoSalud) empleado;
+                    empleadoSalud.setNombre(nombre);
+                    empleadoSalud.setDocumento(documento);
+                    empleadoSalud.setEdad(edadEmpleado);
+                    empleadoSalud.setSalarioBase(salario);
+                    empleadoSalud.setEspecialidad(especialidadEmpleado);
+                    empleadoSalud.setHorasTrabajadas(horas);
+                    sistema.actualizarEmpleado(empleadoSalud);
+                    JOptionPane.showMessageDialog(this, "Empleado de Salud editado exitosamente.");
+                } else {
+                   
+                    JOptionPane.showMessageDialog(this, "El empleado no es del tipo adecuado para edición.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+               
+                EmpleadoSalud nuevoEmpleado = new EmpleadoSalud(especialidadEmpleado, horas, nombre, documento, edadEmpleado, salario);
+                sistema.agregarEmpleados(nuevoEmpleado);
+                JOptionPane.showMessageDialog(this, "Empleado de Salud creado exitosamente.");
+            }
 
-        JOptionPane.showMessageDialog(this, "Empleado de Salud creado exitosamente.");
+            this.dispose();
 
-       this.dispose();
-
-        
-        if (this.getOwner() instanceof javax.swing.JDialog) {
-            javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
-            ventanaAgregar.dispose();
+            if (this.getOwner() instanceof javax.swing.JDialog) {
+                javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
+                ventanaAgregar.dispose();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad, salario y horas.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
-         
-        
-        
-        
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad, salario y horas.", "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    }
     }//GEN-LAST:event_AceptarActionPerformed
 
     
-
+   public void setEmpleado(Empleado empleado) {
+       this.empleado = empleado;
+    
+        if (empleado != null) {
+            if (empleado instanceof EmpleadoSalud) {
+                EmpleadoSalud empleadoSalud = (EmpleadoSalud) empleado;
+                nombreEmpleado.setText(empleadoSalud.getNombre());
+                numDocumento.setText(empleadoSalud.getDocumento());
+                edad.setText(String.valueOf(empleadoSalud.getEdad()));
+                salarioBase.setText(String.valueOf(empleadoSalud.getSalarioBase())); 
+                especialidad.setText(empleadoSalud.getEspecialidad());
+                horasTrabajo.setText(String.valueOf(empleadoSalud.getHorasTrabajadas()));
+            }
+        }
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton Atras;

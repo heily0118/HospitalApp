@@ -27,7 +27,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     public GestionarEmpleados(java.awt.Frame parent, boolean modal,SistemaCentral sistema,VentanaPrincipal ventana) {
         super(parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;

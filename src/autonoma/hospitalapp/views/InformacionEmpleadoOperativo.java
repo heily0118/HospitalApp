@@ -4,6 +4,7 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.EmpleadoOperativo;
 import autonoma.hospitalapp.models.EmpleadoSalud;
 import autonoma.hospitalapp.models.SistemaCentral;
@@ -17,13 +18,14 @@ import javax.swing.JOptionPane;
  */
 public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
      private SistemaCentral sistema;
+     private Empleado empleado;
     /**
      * Creates new form InformacionEmpleadoOperativo
      */
     public InformacionEmpleadoOperativo(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
         super((Dialog) parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
@@ -249,38 +251,59 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-       try {
-        String nombre = nombreEmpleado.getText();
-        String documento = numDocumento.getText();
-        int edadEmpleado = Integer.parseInt(edad.getText());
-        double salario = Double.parseDouble(salarioBase.getText());
-        String areaEmpleado = areaTrabajo.getText();
-        
+            try {
+           String nombre = nombreEmpleado.getText();
+           String documento = numDocumento.getText();
+           int edadEmpleado = Integer.parseInt(edad.getText());
+           double salario = Double.parseDouble(salarioBase.getText());
+           String areaEmpleado = areaTrabajo.getText();
 
-        EmpleadoOperativo nuevoEmpleado = new EmpleadoOperativo(areaEmpleado,  nombre, documento, edadEmpleado, salario);
-        sistema.agregarEmpleados(nuevoEmpleado);
+           if (this.empleado == null) {
+               EmpleadoOperativo nuevoEmpleado = new EmpleadoOperativo(areaEmpleado, nombre, documento, edadEmpleado, salario);
+               sistema.agregarEmpleados(nuevoEmpleado);
+               JOptionPane.showMessageDialog(this, "Empleado operativo creado exitosamente.");
+           } else {
+               empleado.setNombre(nombre);
+               empleado.setDocumento(documento);
+               empleado.setEdad(edadEmpleado);
+               empleado.setSalarioBase(salario);
 
-        JOptionPane.showMessageDialog(this, "Empleado de Operativo creado exitosamente.");
+               
+               if (empleado instanceof EmpleadoOperativo) {
+                   ((EmpleadoOperativo) empleado).setArea(areaEmpleado);
+               }
+               JOptionPane.showMessageDialog(this, "Empleado operativo actualizado exitosamente.");
+           }
 
-       this.dispose();
+           this.dispose();
+           
+           if (this.getOwner() instanceof javax.swing.JDialog) {
+                javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
+                ventanaAgregar.dispose();
+            }
 
-        
-        if (this.getOwner() instanceof javax.swing.JDialog) {
-            javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
-            ventanaAgregar.dispose();
-        }
-         
-        
-        
-        
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad, salario y horas.", "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    }
+       } catch (NumberFormatException e) {
+           JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad y salario.", "Error", JOptionPane.ERROR_MESSAGE);
+       } catch (Exception e) {
+           JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+           e.printStackTrace();
+       }
     }//GEN-LAST:event_AceptarActionPerformed
+   public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
 
+        nombreEmpleado.setText(empleado.getNombre());
+        numDocumento.setText(empleado.getDocumento());
+        edad.setText(String.valueOf(empleado.getEdad()));
+        salarioBase.setText(String.valueOf(empleado.getSalarioBase())); 
+      
+
+
+      if (empleado instanceof EmpleadoOperativo) {
+          areaTrabajo.setText(((EmpleadoOperativo) empleado).getArea());
+      }
+       
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;

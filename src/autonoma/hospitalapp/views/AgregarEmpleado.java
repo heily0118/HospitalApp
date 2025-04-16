@@ -27,7 +27,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
     public AgregarEmpleado(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema, VentanaPrincipal ventana) {
         super((Dialog) parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
@@ -178,7 +178,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         } else if (tipo.equals("salud")) {
             InformacionEmpleadoSalud ventanaEmpleadoSalud = 
-                new InformacionEmpleadoSalud(this, true, sistema,this.ventana);
+                new InformacionEmpleadoSalud(this, true, sistema);
             ventanaEmpleadoSalud.setVisible(true);
 
         } else {

@@ -45,7 +45,7 @@ public class Hospital {
         this.gerente = gerente;
         this.empleados = empleados;
         this.pacientes = pacientes;
-        this.farmacia =  farmacia;
+        this.farmacia =  Farmacia;
         this.nominas = nominas;
     }
 
@@ -169,15 +169,17 @@ public class Hospital {
         System.out.println("Empleado agregado: " + empleado.getNombre());
     }
 
-    public void eliminarEmpleado(String nombre) {
-        for (int i = 0; i < empleados.size(); i++) {
-            if (empleados.get(i).getNombre().equals(nombre)) {
-                empleados.remove(i);
-                System.out.println("Empleado eliminado: " + nombre);
-                return;
-            }
+    public boolean eliminarEmpleado(String nombre) {
+        Empleado empleadoAEliminar = buscarEmpleado(nombre);
+
+        if (empleadoAEliminar != null) {
+            empleados.remove(empleadoAEliminar); 
+            System.out.println("Empleado eliminado: " + nombre);
+            return true;  
+        } else {
+            
+            return false;  
         }
-        System.out.println("Empleado no encontrado.");
     }
 
     public void actualizarEmpleado(String nombre, Empleado empleadoActualizado) {
@@ -192,12 +194,11 @@ public class Hospital {
     }
 
     public Empleado buscarEmpleado(String nombre) {
-        for (Empleado empleado : empleados) {
+         for (Empleado empleado : empleados) {
             if (empleado.getNombre().equals(nombre)) {
                 return empleado;
             }
         }
-        System.out.println("Empleado no encontrado.");
         return null;
     }
 
@@ -218,18 +219,8 @@ public class Hospital {
         System.out.println("Paciente no encontrado.");
     }
     
-    public void mostrarEmpleado(String nombre){
-        
-    Empleado empleado = buscarEmpleado(nombre);
 
-    if (empleado != null) {
-        System.out.println("=== Información del Empleado ===");
-        System.out.println(empleado.toString());
-    } else {
-        System.out.println("Empleado no encontrado.");
-    }
-        
-    }
+
 
     public void actualizarPaciente(String nombre, Paciente pacienteActualizado) {
         for (int i = 0; i < pacientes.size(); i++) {
@@ -281,7 +272,7 @@ public class Hospital {
     }
 
     public String visualizarEstado() {
-        return estadoHospital ? "El hospital está activo." : "El hospital esta en quiebra.";
+        return estadoHospital ? "Activo" : "Quiebra";
     }
 
     public void comprarMedicamento(Medicamento medicamento, int cantidad) {

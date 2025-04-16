@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class SistemaCentral {
     
     private Hospital hospital;
+    
 
     public SistemaCentral(Hospital hospital) {
         this.hospital = hospital;
@@ -42,10 +43,10 @@ public class SistemaCentral {
         hospital.agregarEmpleado(empleado);
     }
 
-    public void eliminarEmpleado(String nombre) {
-        hospital.eliminarEmpleado(nombre);
+   public boolean eliminarEmpleado(String nombre) {
+        boolean eliminado = hospital.eliminarEmpleado(nombre);  
+        return eliminado;  
     }
-
     public Empleado buscarEmpleado(String nombre) {
         return hospital.buscarEmpleado(nombre);
     }
@@ -53,8 +54,10 @@ public class SistemaCentral {
     public void actualizarEmpleado(Empleado empleado) {
         hospital.actualizarEmpleado(empleado.getNombre(),empleado);
     }
-    public void mostrarEmpleados(String nombre){
-        hospital.mostrarEmpleado(nombre);
+  
+    
+    public ArrayList<Empleado> obtenerEmpleados() {
+         return hospital.getEmpleados();
     }
     
     public void agregarPacientes(Paciente paciente) throws DatoInvalidoException, CamposObligatoriosException, PacienteDuplicadoException, CorreoInvalidoException, 
@@ -81,4 +84,29 @@ public class SistemaCentral {
         hospital.getFarmacia().agregarMedicamento(medicamento, cantidad);
     }
     
+    /**
+     * Genera la nómina de todos los empleados del hospital.
+     * Si el presupuesto no es suficiente o si el hospital está en quiebra, lanza una excepción.
+     */
+    public void generarNomina() throws HospitalEnQuiebraException {
+       
+        if (!hospital.isEstadoHospital()) {
+            throw new HospitalEnQuiebraException();
+        }
+
+       
+        double totalNomina = 0;
+        for (Empleado empleado : hospital.getEmpleados()) {
+            totalNomina += empleado.calcularSalario(); 
+        }
+
+        if (hospital.getPresupuesto() >= totalNomina) {
+           
+            hospital.generarNomina(); 
+            hospital.descontarDelPresupuesto(totalNomina); 
+            System.out.println("Nómina generada exitosamente.");
+        } else {
+            throw new HospitalEnQuiebraException();
+        }
+    }
 }
