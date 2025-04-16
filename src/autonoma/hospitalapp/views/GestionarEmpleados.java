@@ -19,17 +19,19 @@ import javax.swing.JPanel;
  */
 public class GestionarEmpleados extends javax.swing.JDialog {
      private SistemaCentral sistema;
+     private VentanaPrincipal ventana;
 
     /**
      * Creates new form GestionarEmpleados
      */
-    public GestionarEmpleados(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
+    public GestionarEmpleados(java.awt.Frame parent, boolean modal,SistemaCentral sistema,VentanaPrincipal ventana) {
         super(parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
+        this.ventana= ventana;
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -209,8 +211,9 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
-       AgregarEmpleado ventanaAgregarEmpleado= new AgregarEmpleado(this, true,sistema);
-       ventanaAgregarEmpleado.setVisible(true);
+    VentanaPrincipal ventanaPrincipal = this.ventana; 
+    AgregarEmpleado ventanaAgregarEmpleado = new AgregarEmpleado(this, true, sistema, ventanaPrincipal);
+    ventanaAgregarEmpleado.setVisible(true);
     }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
     private void btnAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseEntered

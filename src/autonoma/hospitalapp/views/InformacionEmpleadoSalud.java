@@ -4,9 +4,11 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.EmpleadoSalud;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Dialog;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,17 +19,19 @@ import javax.swing.ImageIcon;
  */
 public class InformacionEmpleadoSalud extends javax.swing.JDialog {
      private SistemaCentral sistema;
+     private VentanaPrincipal ventana;
 
     /**
      * Creates new form InformacionEmpleadoSalud
      */
-    public InformacionEmpleadoSalud(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
+    public InformacionEmpleadoSalud(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema, VentanaPrincipal ventana) {
         super((Dialog) parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
+        this.ventana = ventana;
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -132,6 +136,11 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
         Aceptar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Aceptar.setForeground(new java.awt.Color(255, 255, 255));
         Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
 
         Atras.setBackground(new java.awt.Color(204, 0, 51));
         Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -253,6 +262,59 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         this.dispose();
     }//GEN-LAST:event_AtrasActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+        try {
+        String nombre = nombreEmpleado.getText();
+        String documento = numDocumento.getText();
+        int edadEmpleado = Integer.parseInt(edad.getText());
+        double salario = Double.parseDouble(salarioBase.getText());
+        String especialidadEmpleado = especialidad.getText();
+        int horas = Integer.parseInt(horasTrabajo.getText());
+
+        EmpleadoSalud nuevoEmpleado = new EmpleadoSalud(especialidadEmpleado, horas, nombre, documento, edadEmpleado, salario);
+        sistema.agregarEmpleados(nuevoEmpleado);
+
+        JOptionPane.showMessageDialog(this, "Empleado de Salud creado exitosamente.");
+
+       this.dispose();
+
+        
+        if (this.getOwner() instanceof javax.swing.JDialog) {
+            javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
+            ventanaAgregar.dispose();
+        }
+         
+        if (ventana != null) {
+            ventana.setVisible(true);
+        } else {
+            System.out.println("Ventana principal es null. No se puede mostrar.");
+        }
+        
+        if (this.getOwner() instanceof AgregarEmpleado) {
+            System.out.println("Cerrando ventana agregar empleado");
+            AgregarEmpleado ventanaAgregar = (AgregarEmpleado) this.getOwner();
+            ventanaAgregar.dispose();
+        } else {
+            System.out.println("El dueño no es una ventana GestionarEmpleados: " + this.getOwner().getClass().getName());
+        }
+        
+        if (this.getOwner() instanceof GestionarEmpleados) {
+            System.out.println("Cerrando ventana gestionar empleado");
+            GestionarEmpleados ventanaGestionar = (GestionarEmpleados) this.getOwner();
+            ventanaGestionar.dispose();
+        } else {
+            System.out.println("El dueño no es una ventana GestionarEmpleados: " + this.getOwner().getClass().getName());
+        }
+        
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad, salario y horas.", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_AceptarActionPerformed
 
     
 
