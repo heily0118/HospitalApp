@@ -353,7 +353,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGestionarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarEmpleadosMouseClicked
-       GestionarEmpleados ventanaEmpleados = new GestionarEmpleados(this, true,sistema);
+       GestionarEmpleados ventanaEmpleados = new GestionarEmpleados(this, true,sistema,this);
        ventanaEmpleados.setVisible(true);
     }//GEN-LAST:event_btnGestionarEmpleadosMouseClicked
 

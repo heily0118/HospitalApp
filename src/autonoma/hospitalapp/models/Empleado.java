@@ -58,5 +58,13 @@ public abstract class Empleado {
     
     public abstract double calcularSalario();
      public abstract String getTipoEmpleado();
+     
+     @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n" +
+               "Documento: " + documento + "\n" +
+               "Edad: " + edad + "\n" +
+               "Salario: " + salarioBase;
+    }
     
 }

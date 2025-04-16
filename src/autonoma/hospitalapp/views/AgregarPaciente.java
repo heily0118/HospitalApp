@@ -227,95 +227,108 @@ public class AgregarPaciente extends javax.swing.JDialog {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String nombre = txtNombre.getText().trim();
-    String documento = txtDocumento.getText().trim();
-    String edadStr = txtEdad.getText().trim();
-    String correo = txtCorreo.getText().trim();
-    String telefono = txtTelefono.getText().trim();
+        String documento = txtDocumento.getText().trim();
+        String edadStr = txtEdad.getText().trim();
+        String correo = txtCorreo.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        cmbEstado = new JComboBox<>();
+        cmbEstado.addItem("Saludable");
+        cmbEstado.addItem("Enfermo");
+        String estadoTexto = String.valueOf(cmbEstado.getSelectedItem()); 
 
-    // NO crear el JComboBox aquí, se usa el que ya está en el formulario
-    String estadoTexto = String.valueOf(cmbEstado.getSelectedItem());
 
-    try {
-        if (nombre.isEmpty() || documento.isEmpty() || edadStr.isEmpty() || 
-            correo.isEmpty() || telefono.isEmpty() || estadoTexto == null || estadoTexto.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        int edad = Integer.parseInt(edadStr);
-
-        if (edad < 0) {
-            JOptionPane.showMessageDialog(this, "La edad no puede ser negativa", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        for (Paciente p : pacientes) {
-            if (p.getDocumento().equalsIgnoreCase(documento)) {
-                JOptionPane.showMessageDialog(this, "El paciente ya se encuentra en la lista", "Error", JOptionPane.ERROR_MESSAGE);
+        try {
+            if (nombre.isEmpty() || documento.isEmpty() || edadStr.isEmpty() || correo.isEmpty() || telefono.isEmpty() || estadoTexto.equals("null")) {
+                JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-        }
-
-        if (!correo.contains("@")) {
-            JOptionPane.showMessageDialog(this, "El correo electrónico debe contener '@'.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Validar caracteres especiales
-        String caracteresEspeciales = "@.?¡¿,#$&*!";
-
-        for (char c : nombre.toCharArray()) {
-            if (caracteresEspeciales.indexOf(c) != -1) {
-                JOptionPane.showMessageDialog(this, "El nombre contiene caracteres especiales no permitidos", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            int edad = Integer.parseInt(edadStr);
+            
+            if (edad < 0){
+                JOptionPane.showMessageDialog(this, "Los datos no pueden ser negativos" , "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-        }
-
-        String caracteresCorreo = "?¡¿,#$&*!";
-        for (char c : correo.toCharArray()) {
-            if (caracteresCorreo.indexOf(c) != -1) {
-                JOptionPane.showMessageDialog(this, "El correo contiene caracteres especiales no permitidos", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            for (Paciente p : pacientes) {
+                if (p.getDocumento().equalsIgnoreCase(documento)) {
+                    JOptionPane.showMessageDialog(this, "El paciente ya se encuentra en la lista" , "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            
+            if (correo.contains("@")) {
+                JOptionPane.showMessageDialog(this, "El correo electrónico debe contener '@'." , "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-        }
+            
+            boolean contieneEspeciales = false;
+            String caracteresEspeciales = "@.?¡¿,#$&*!";
 
-        for (char c : documento.toCharArray()) {
-            if (caracteresEspeciales.indexOf(c) != -1) {
-                JOptionPane.showMessageDialog(this, "El documento contiene caracteres especiales no permitidos", "Error", JOptionPane.ERROR_MESSAGE);
+            for (int i = 0; i < nombre.length(); i++) {
+                char c = nombre.charAt(i);
+                if (caracteresEspeciales.indexOf(c) != -1) {
+                    contieneEspeciales = true;
+                    JOptionPane.showMessageDialog(this, "No se puede registrar caracteres especiales" , "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            
+            
+            String caracteresEspeciales2 = "?¡¿,#$&*!";
+            for (int i = 0; i < correo.length(); i++) {
+                char c = correo.charAt(i);
+                if (caracteresEspeciales2.indexOf(c) != -1) {
+                    contieneEspeciales = true;
+                    JOptionPane.showMessageDialog(this, "No se puede registrar caracteres especiales" , "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            
+            String caracteresEspeciales3 = "@.?¡¿,#$&*!";
+            for (int i = 0; i < documento.length(); i++) {
+                char c = documento.charAt(i);
+                if (caracteresEspeciales3.indexOf(c) != -1) {
+                    contieneEspeciales = true;
+                    JOptionPane.showMessageDialog(this, "No se puede registrar caracteres especiales" , "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            
+            String caracteresEspeciales4 = "@.?¡¿,#$&*!";
+            for (int i = 0; i < telefono.length(); i++) {
+                char c = telefono.charAt(i);
+                if (caracteresEspeciales4.indexOf(c) != -1) {
+                    contieneEspeciales = true;
+                    JOptionPane.showMessageDialog(this, "No se puede registrar caracteres especiales" , "Error", JOptionPane.ERROR_MESSAGE);
+                    return; 
+                }
+            }
+            
+            if (!estadoTexto.equalsIgnoreCase("Saludable") && !estadoTexto.equalsIgnoreCase("Critico")) {
+                JOptionPane.showMessageDialog(this, "El estado del paciente es inválido" , "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            
+            boolean estadoPaciente = estadoTexto.equalsIgnoreCase("Saludable");
+            
+
+            ArrayList<Enfermedad> enfermedades = new ArrayList<>();
+            ArrayList<Medicamento> medicinas = new ArrayList<>();
+
+            Paciente nuevoPaciente = new Paciente(nombre, documento,edad, correo, telefono, estadoPaciente, enfermedades, medicinas);
+
+            sistema.agregarPacientes(nuevoPaciente);
+
+            JOptionPane.showMessageDialog(this, "Paciente agregado exitosamente.");
+            this.dispose(); 
+
+        } catch (DatoInvalidoException | CamposObligatoriosException | PacienteDuplicadoException | CorreoInvalidoException 
+                | CaracteresEspecialesException | EstadoDePacienteInvalidoException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al agregar paciente");
         }
-
-        for (char c : telefono.toCharArray()) {
-            if (caracteresEspeciales.indexOf(c) != -1) {
-                JOptionPane.showMessageDialog(this, "El teléfono contiene caracteres especiales no permitidos", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        }
-
-        if (!estadoTexto.equalsIgnoreCase("Saludable") && !estadoTexto.equalsIgnoreCase("Critico")) {
-            JOptionPane.showMessageDialog(this, "El estado del paciente es inválido", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        boolean estadoPaciente = estadoTexto.equalsIgnoreCase("Saludable");
-
-        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
-        ArrayList<Medicamento> medicinas = new ArrayList<>();
-
-        Paciente nuevoPaciente = new Paciente(nombre, documento, edad, correo, telefono, estadoPaciente, enfermedades, medicinas);
-
-        sistema.agregarPacientes(nuevoPaciente);
-
-        JOptionPane.showMessageDialog(this, "Paciente agregado exitosamente.");
-        this.dispose();
-
-    } catch (DatoInvalidoException | CamposObligatoriosException | PacienteDuplicadoException |
-             CorreoInvalidoException | CaracteresEspecialesException | EstadoDePacienteInvalidoException e) {
-        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al agregar paciente", "Error", JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 

@@ -19,17 +19,19 @@ import javax.swing.JOptionPane;
  */
 public class AgregarEmpleado extends javax.swing.JDialog {
    private SistemaCentral sistema;
+   private VentanaPrincipal ventana;
 
     /**
      * Creates new form AgregarEmpleado
      */
-    public AgregarEmpleado(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
+    public AgregarEmpleado(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema, VentanaPrincipal ventana) {
         super((Dialog) parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
-         this.sistema = sistema;
+        this.sistema = sistema;
+        this.ventana= ventana;
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -176,7 +178,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         } else if (tipo.equals("salud")) {
             InformacionEmpleadoSalud ventanaEmpleadoSalud = 
-                new InformacionEmpleadoSalud(this, true, sistema);
+                new InformacionEmpleadoSalud(this, true, sistema,this.ventana);
             ventanaEmpleadoSalud.setVisible(true);
 
         } else {

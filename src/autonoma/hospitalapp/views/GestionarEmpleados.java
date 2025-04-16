@@ -19,17 +19,19 @@ import javax.swing.JPanel;
  */
 public class GestionarEmpleados extends javax.swing.JDialog {
      private SistemaCentral sistema;
+     private VentanaPrincipal ventana;
 
     /**
      * Creates new form GestionarEmpleados
      */
-    public GestionarEmpleados(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
+    public GestionarEmpleados(java.awt.Frame parent, boolean modal,SistemaCentral sistema,VentanaPrincipal ventana) {
         super(parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
+        this.ventana= ventana;
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -56,6 +58,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
         btnMostrarEmpleados = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        Atras3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -146,15 +149,30 @@ public class GestionarEmpleados extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        Atras3.setBackground(new java.awt.Color(204, 0, 51));
+        Atras3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras3.setForeground(new java.awt.Color(255, 255, 255));
+        Atras3.setText("Atras");
+        Atras3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Atras3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnMostrarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnMostrarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(Atras3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,7 +182,9 @@ public class GestionarEmpleados extends javax.swing.JDialog {
                 .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(btnMostrarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(Atras3)
+                .addGap(33, 33, 33))
         );
 
         jPanel2.setBackground(new java.awt.Color(181, 181, 243));
@@ -209,8 +229,9 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
-       AgregarEmpleado ventanaAgregarEmpleado= new AgregarEmpleado(this, true,sistema);
-       ventanaAgregarEmpleado.setVisible(true);
+    VentanaPrincipal ventanaPrincipal = this.ventana; 
+    AgregarEmpleado ventanaAgregarEmpleado = new AgregarEmpleado(this, true, sistema, ventanaPrincipal);
+    ventanaAgregarEmpleado.setVisible(true);
     }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
     private void btnAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseEntered
@@ -233,6 +254,10 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     private void btnMostrarEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadosMouseExited
         this.mouseExited(btnMostrarEmpleados);
     }//GEN-LAST:event_btnMostrarEmpleadosMouseExited
+
+    private void Atras3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Atras3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_Atras3ActionPerformed
   private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(200,255,255));
         
@@ -242,6 +267,10 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
+    private javax.swing.JButton Atras1;
+    private javax.swing.JButton Atras2;
+    private javax.swing.JButton Atras3;
     private javax.swing.JPanel btnAgregarEmpleado;
     private javax.swing.JPanel btnMostrarEmpleados;
     private javax.swing.JLabel jLabel1;

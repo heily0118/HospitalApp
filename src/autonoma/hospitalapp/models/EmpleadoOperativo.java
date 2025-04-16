@@ -39,5 +39,10 @@ public class EmpleadoOperativo extends Empleado{
     public String getTipoEmpleado() {
         return "Operativo";
     }
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+               "Area de trabajo: " + area;
+    }
     
 }
