@@ -19,8 +19,8 @@ import javax.swing.JPanel;
  * @version 1.0.0
  */
 public class GestionarPacientes extends javax.swing.JDialog {
-     private SistemaCentral sistema;
-     private ArrayList<Paciente> pacientes;
+    private SistemaCentral sistema;
+    private ArrayList<Paciente> pacientes;
     private VentanaPrincipal ventanaPrincipal;
 
     /**

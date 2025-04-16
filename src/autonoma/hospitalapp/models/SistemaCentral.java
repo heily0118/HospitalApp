@@ -11,6 +11,7 @@ import autonoma.hospitalapp.exceptions.DatoInvalidoException;
 import autonoma.hospitalapp.exceptions.EstadoDePacienteInvalidoException;
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
 import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
+import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
 import java.util.ArrayList;
 
 /**
@@ -67,8 +68,9 @@ public class SistemaCentral {
         hospital.agregarPaciente(paciente);
     }
 
-    public void eliminarPaciente(String nombre) {
-        hospital.eliminarPaciente(nombre);
+    public boolean eliminarPaciente(String nombre) throws PacienteNoEncontradoException {
+        boolean eliminadoPaciente = hospital.eliminarPaciente(nombre);
+        return eliminadoPaciente;
     }
 
     public Paciente buscarPaciente(String nombre) {

@@ -4,12 +4,15 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
+import autonoma.hospitalapp.models.Hospital;
 import autonoma.hospitalapp.models.Paciente;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +44,8 @@ public class MostrarPacientes extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
+        this.sistema = sistema;
+        this.sistema.getHospital().getPacientes();
         PacienteBuscar.setText("Ingresa el nombre del paciente a buscar");
         PacienteBuscar.setForeground(Color.GRAY);
         
@@ -241,7 +246,38 @@ public class MostrarPacientes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        int filaSeleccionada = tablaPacientes.getSelectedRow();
+    
+        if (filaSeleccionada == -1) {  
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un amigo de la tabla.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) tablaPacientes.getModel();
+    
+        String nombre = (String) modelo.getValueAt(filaSeleccionada, 0);    
+
+        int confirmacion = JOptionPane.showConfirmDialog(
+        this, 
+        "¿Seguro que deseas eliminar a " + nombre + "?", 
+        "Confirmar eliminación", 
+        JOptionPane.YES_NO_OPTION
+         );
+
+        if (confirmacion == JOptionPane.YES_OPTION) {  
+            try {
+                if (sistema.eliminarPaciente(nombre)) {
+                    JOptionPane.showMessageDialog(this, "Empleado eliminado exitosamente.");
+                     
+                    actualizarTablaPacientes(); 
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el empleado.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (PacienteNoEncontradoException e) {
+                JOptionPane.showMessageDialog(this, "No se encontró el amigo en el directorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void PacienteBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PacienteBuscarMouseClicked
@@ -270,6 +306,21 @@ public class MostrarPacientes extends javax.swing.JDialog {
             dataModel.setValueAt(paciente.getCorreo(), i, 3);
             dataModel.setValueAt(paciente.getTelefono(), i, 4);
             dataModel.setValueAt(paciente.getEstadoPaciente(), i, 5);
+        }
+    }
+    
+    private void actualizarTablaPacientes() {
+        DefaultTableModel modelo = (DefaultTableModel) tablaPacientes.getModel();
+        modelo.setRowCount(0);  
+
+        for (Paciente emp : sistema.getHospital().getPacientes()) {
+            Object[] fila = {
+               
+                emp.getNombre(),
+                emp.getDocumento(),
+                emp.getEdad()
+            };
+            modelo.addRow(fila);  
         }
     }
 

@@ -4,6 +4,7 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -208,15 +209,15 @@ public class Hospital {
         System.out.println("Paciente agregado: " + paciente.getNombre());
     }
 
-    public void eliminarPaciente(String nombre) {
+    public boolean eliminarPaciente(String nombre) throws PacienteNoEncontradoException {
         for (int i = 0; i < pacientes.size(); i++) {
             if (pacientes.get(i).getNombre().equals(nombre)) {
                 pacientes.remove(i);
                 System.out.println("Paciente eliminado: " + nombre);
-                return;
+                return true; 
             }
         }
-        System.out.println("Paciente no encontrado.");
+        throw new PacienteNoEncontradoException();
     }
     
 
