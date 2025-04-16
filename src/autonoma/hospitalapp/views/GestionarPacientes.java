@@ -111,7 +111,7 @@ public class GestionarPacientes extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(182, 182, 249));
 
-        jLabel2.setFont(new java.awt.Font("Sunny Spells", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Módulo de Pacientes");
 
@@ -119,17 +119,17 @@ public class GestionarPacientes extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(67, 67, 67))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         btnMostrarPacientes.setBackground(new java.awt.Color(255, 255, 255));
