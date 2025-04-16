@@ -16,7 +16,7 @@ public class AgregarPaciente extends javax.swing.JDialog {
     public AgregarPaciente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(500, 700);
+        setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
     }
