@@ -45,7 +45,7 @@ public class Hospital {
         this.gerente = gerente;
         this.empleados = empleados;
         this.pacientes = pacientes;
-        this.farmacia =  farmacia;
+        this.farmacia =  Farmacia;
         this.nominas = nominas;
     }
 
@@ -194,12 +194,11 @@ public class Hospital {
     }
 
     public Empleado buscarEmpleado(String nombre) {
-        for (Empleado empleado : empleados) {
+         for (Empleado empleado : empleados) {
             if (empleado.getNombre().equals(nombre)) {
                 return empleado;
             }
         }
-        System.out.println("Empleado no encontrado.");
         return null;
     }
 
@@ -273,7 +272,7 @@ public class Hospital {
     }
 
     public String visualizarEstado() {
-        return estadoHospital ? "El hospital está activo." : "El hospital esta en quiebra.";
+        return estadoHospital ? "Activo" : "Quiebra";
     }
 
     public void comprarMedicamento(Medicamento medicamento, int cantidad) {

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class SistemaCentral {
     
     private Hospital hospital;
+    
 
     public SistemaCentral(Hospital hospital) {
         this.hospital = hospital;
@@ -83,4 +84,29 @@ public class SistemaCentral {
         hospital.getFarmacia().agregarMedicamento(medicamento, cantidad);
     }
     
+    /**
+     * Genera la nómina de todos los empleados del hospital.
+     * Si el presupuesto no es suficiente o si el hospital está en quiebra, lanza una excepción.
+     */
+    public void generarNomina() throws HospitalEnQuiebraException {
+       
+        if (!hospital.isEstadoHospital()) {
+            throw new HospitalEnQuiebraException();
+        }
+
+       
+        double totalNomina = 0;
+        for (Empleado empleado : hospital.getEmpleados()) {
+            totalNomina += empleado.calcularSalario(); 
+        }
+
+        if (hospital.getPresupuesto() >= totalNomina) {
+           
+            hospital.generarNomina(); 
+            hospital.descontarDelPresupuesto(totalNomina); 
+            System.out.println("Nómina generada exitosamente.");
+        } else {
+            throw new HospitalEnQuiebraException();
+        }
+    }
 }
