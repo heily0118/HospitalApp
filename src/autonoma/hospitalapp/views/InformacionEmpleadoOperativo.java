@@ -23,7 +23,7 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
     public InformacionEmpleadoOperativo(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
         super((Dialog) parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;

@@ -27,7 +27,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
     public AgregarEmpleado(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema, VentanaPrincipal ventana) {
         super((Dialog) parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;

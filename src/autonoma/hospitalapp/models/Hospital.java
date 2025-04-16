@@ -218,18 +218,8 @@ public class Hospital {
         System.out.println("Paciente no encontrado.");
     }
     
-    public void mostrarEmpleado(String nombre){
-        
-    Empleado empleado = buscarEmpleado(nombre);
 
-    if (empleado != null) {
-        System.out.println("=== Información del Empleado ===");
-        System.out.println(empleado.toString());
-    } else {
-        System.out.println("Empleado no encontrado.");
-    }
-        
-    }
+
 
     public void actualizarPaciente(String nombre, Paciente pacienteActualizado) {
         for (int i = 0; i < pacientes.size(); i++) {

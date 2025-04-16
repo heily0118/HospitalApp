@@ -53,8 +53,10 @@ public class SistemaCentral {
     public void actualizarEmpleado(Empleado empleado) {
         hospital.actualizarEmpleado(empleado.getNombre(),empleado);
     }
-    public void mostrarEmpleados(String nombre){
-        hospital.mostrarEmpleado(nombre);
+  
+    
+    public ArrayList<Empleado> obtenerEmpleados() {
+         return hospital.getEmpleados();
     }
     
     public void agregarPacientes(Paciente paciente) throws DatoInvalidoException, CamposObligatoriosException, PacienteDuplicadoException, CorreoInvalidoException, 

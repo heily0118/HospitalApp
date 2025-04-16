@@ -9,6 +9,7 @@ import autonoma.hospitalapp.models.Hospital;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
 import java.awt.Dialog;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -62,10 +63,10 @@ public class MostrarEmpleados extends javax.swing.JDialog {
         ListEmpleados = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaEmpleados = new javax.swing.JTable();
-        Actualizar = new javax.swing.JButton();
-        Eliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
-        MostrarEmpleados = new javax.swing.JButton();
+        btnMostrarEmpleados = new javax.swing.JButton();
         btnInformacionEmpleado = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -108,15 +109,20 @@ public class MostrarEmpleados extends javax.swing.JDialog {
 
         ListEmpleados.setViewportView(jScrollPane2);
 
-        Actualizar.setBackground(new java.awt.Color(0, 51, 153));
-        Actualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        Actualizar.setText("Actualizar");
+        btnActualizar.setBackground(new java.awt.Color(0, 51, 153));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
-        Eliminar.setBackground(new java.awt.Color(255, 153, 0));
-        Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Eliminar.setText("Eliminar");
+        btnEliminar.setBackground(new java.awt.Color(255, 153, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
 
         Atras.setBackground(new java.awt.Color(204, 0, 51));
         Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -128,10 +134,15 @@ public class MostrarEmpleados extends javax.swing.JDialog {
             }
         });
 
-        MostrarEmpleados.setBackground(new java.awt.Color(0, 153, 51));
-        MostrarEmpleados.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        MostrarEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        MostrarEmpleados.setText("Mostrar Empleados");
+        btnMostrarEmpleados.setBackground(new java.awt.Color(0, 153, 51));
+        btnMostrarEmpleados.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnMostrarEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        btnMostrarEmpleados.setText("Mostrar Empleados");
+        btnMostrarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarEmpleadosActionPerformed(evt);
+            }
+        });
 
         btnInformacionEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         btnInformacionEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -176,12 +187,12 @@ public class MostrarEmpleados extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(MostrarEmpleados)
+                                    .addComponent(btnMostrarEmpleados)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Eliminar)
-                                            .addComponent(Actualizar)))))
+                                            .addComponent(btnEliminar)
+                                            .addComponent(btnActualizar)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(56, 56, 56)
                                 .addComponent(btnInformacionEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -196,11 +207,11 @@ public class MostrarEmpleados extends javax.swing.JDialog {
                         .addGap(14, 14, 14)
                         .addComponent(btnInformacionEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(MostrarEmpleados)
+                        .addComponent(btnMostrarEmpleados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Actualizar)
+                        .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(Eliminar))
+                        .addComponent(btnEliminar))
                     .addComponent(ListEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(85, 85, 85)
                 .addComponent(Atras)
@@ -341,19 +352,43 @@ public class MostrarEmpleados extends javax.swing.JDialog {
         MostrarInformacionEmpleados mostrarInfo = new MostrarInformacionEmpleados (this,true,sistema,empleado);
         mostrarInfo.setVisible(true);
     }//GEN-LAST:event_btnInformacionEmpleadoMouseClicked
+
+    private void btnMostrarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadosActionPerformed
+      
+       DefaultTableModel modelo = (DefaultTableModel) ListaEmpleados.getModel();
+       modelo.setRowCount(0);
+
+     
+       ArrayList<Empleado> empleados = sistema.obtenerEmpleados();
+
+      
+       for (Empleado emp : empleados) {
+           Object[] fila = {
+               emp.getNombre(),
+               emp.getDocumento(),
+               emp.getEdad(),
+              
+           };
+           modelo.addRow(fila);
+       }
+    }//GEN-LAST:event_btnMostrarEmpleadosActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
   
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizar;
     private javax.swing.JButton Atras;
-    private javax.swing.JButton Eliminar;
     private javax.swing.JTextField EmpleadoBuscar;
     private javax.swing.JScrollPane ListEmpleados;
     private javax.swing.JTable ListaEmpleados;
-    private javax.swing.JButton MostrarEmpleados;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JPanel btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnInformacionEmpleado;
+    private javax.swing.JButton btnMostrarEmpleados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
