@@ -276,6 +276,11 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
            }
 
            this.dispose();
+           
+           if (this.getOwner() instanceof javax.swing.JDialog) {
+                javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
+                ventanaAgregar.dispose();
+            }
 
        } catch (NumberFormatException e) {
            JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad y salario.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -290,7 +295,7 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
         nombreEmpleado.setText(empleado.getNombre());
         numDocumento.setText(empleado.getDocumento());
         edad.setText(String.valueOf(empleado.getEdad()));
-      
+        salarioBase.setText(String.valueOf(empleado.getSalarioBase())); 
       
 
 

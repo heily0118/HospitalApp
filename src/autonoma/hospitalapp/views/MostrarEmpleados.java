@@ -40,7 +40,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
          this.sistema = sistema;
          this.hospital = sistema.getHospital();
          
-           actualizarTablaEmpleados();
+       
            
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -126,6 +126,11 @@ public class MostrarEmpleados extends javax.swing.JDialog {
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         Atras.setBackground(new java.awt.Color(204, 0, 51));
         Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -429,6 +434,35 @@ public class MostrarEmpleados extends javax.swing.JDialog {
                                           "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int filaSeleccionada = ListaEmpleados.getSelectedRow();  
+    
+        
+        if (filaSeleccionada != -1) {
+        
+            String nombreEmpleado = (String) ListaEmpleados.getValueAt(filaSeleccionada, 0);  // Ajusta el índice si el nombre no está en la primera columna
+
+          
+            int confirmacion = JOptionPane.showConfirmDialog(this, 
+                "¿Está seguro de que desea eliminar al empleado " + nombreEmpleado + "?", 
+                "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+               
+                if (sistema.eliminarEmpleado(nombreEmpleado)) {
+                    JOptionPane.showMessageDialog(this, "Empleado eliminado exitosamente.");
+                     
+                    actualizarTablaEmpleados(); 
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el empleado.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un empleado para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
   
    
     private void actualizarTablaEmpleados() {

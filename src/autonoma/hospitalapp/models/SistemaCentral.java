@@ -42,10 +42,10 @@ public class SistemaCentral {
         hospital.agregarEmpleado(empleado);
     }
 
-    public void eliminarEmpleado(String nombre) {
-        hospital.eliminarEmpleado(nombre);
+   public boolean eliminarEmpleado(String nombre) {
+        boolean eliminado = hospital.eliminarEmpleado(nombre);  
+        return eliminado;  
     }
-
     public Empleado buscarEmpleado(String nombre) {
         return hospital.buscarEmpleado(nombre);
     }

@@ -169,15 +169,17 @@ public class Hospital {
         System.out.println("Empleado agregado: " + empleado.getNombre());
     }
 
-    public void eliminarEmpleado(String nombre) {
-        for (int i = 0; i < empleados.size(); i++) {
-            if (empleados.get(i).getNombre().equals(nombre)) {
-                empleados.remove(i);
-                System.out.println("Empleado eliminado: " + nombre);
-                return;
-            }
+    public boolean eliminarEmpleado(String nombre) {
+        Empleado empleadoAEliminar = buscarEmpleado(nombre);
+
+        if (empleadoAEliminar != null) {
+            empleados.remove(empleadoAEliminar); 
+            System.out.println("Empleado eliminado: " + nombre);
+            return true;  
+        } else {
+            
+            return false;  
         }
-        System.out.println("Empleado no encontrado.");
     }
 
     public void actualizarEmpleado(String nombre, Empleado empleadoActualizado) {
