@@ -4,9 +4,13 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.Hospital;
+import java.awt.Color;
 import java.awt.Dialog;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +29,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     public MostrarEmpleados(javax.swing.JDialog parent, boolean modal) {
         super((Dialog) parent, modal);
         initComponents();
-        setSize(500, 700);
+        setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.hospital = hospital;
@@ -37,6 +41,8 @@ public class MostrarEmpleados extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
+        EmpleadoBuscar.setText("Ingresa el nombre del empleado a buscar");
+        EmpleadoBuscar.setForeground(Color.GRAY);
     }
 
     /**
@@ -48,24 +54,172 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        ListEmpleados = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListaEmpleados = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        EmpleadoBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        ListaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(ListaEmpleados);
+
+        ListEmpleados.setViewportView(jScrollPane2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ListEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(229, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(ListEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(166, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        EmpleadoBuscar.setText("Ingresa el nombre del empleado");
+        EmpleadoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmpleadoBuscarMouseClicked(evt);
+            }
+        });
+
+        btnBuscar.setBackground(new java.awt.Color(204, 204, 255));
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/buscar.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnBuscarLayout = new javax.swing.GroupLayout(btnBuscar);
+        btnBuscar.setLayout(btnBuscarLayout);
+        btnBuscarLayout.setHorizontalGroup(
+            btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btnBuscarLayout.setVerticalGroup(
+            btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(EmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+    DefaultTableModel modelo = (DefaultTableModel) ListaEmpleados.getModel();
+    modelo.setRowCount(0); 
+
+    String textoNombre = EmpleadoBuscar.getText().trim();
+    if (textoNombre.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingresa un nombre válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    Empleado empleado = hospital.buscarEmpleado(textoNombre);
+    if (empleado == null) {
+        JOptionPane.showMessageDialog(this, "El empleado con nombre \"" + textoNombre + "\" no se encuentra en el hospital.", "Error", JOptionPane.ERROR_MESSAGE);
+        EmpleadoBuscar.setText(""); 
+        return;
+    }
+
+    modelo.addRow(new Object[]{
+        empleado.getNombre(),
+        empleado.getDocumento(),
+        empleado.getEdad()
+    });
+
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void EmpleadoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpleadoBuscarMouseClicked
+      if (EmpleadoBuscar.getText().equals("Ingresa el nombre del empleado a buscar")) {
+        EmpleadoBuscar.setText("");
+        EmpleadoBuscar.setForeground(Color.BLACK);
+      }
+       
+    }//GEN-LAST:event_EmpleadoBuscarMouseClicked
+  
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField EmpleadoBuscar;
+    private javax.swing.JScrollPane ListEmpleados;
+    private javax.swing.JTable ListaEmpleados;
+    private javax.swing.JPanel btnBuscar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

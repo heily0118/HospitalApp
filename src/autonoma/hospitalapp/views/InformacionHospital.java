@@ -5,6 +5,7 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.SistemaCentral;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,19 +13,19 @@ import javax.swing.ImageIcon;
  * @author USUARIO
  */
 public class InformacionHospital extends javax.swing.JDialog {
-    private Hospital hospital;
+    private SistemaCentral sistema;
 
 
     /**
      * Creates new form InformacionHospital
      */
-    public InformacionHospital(java.awt.Frame parent, boolean modal) {
+    public InformacionHospital(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
         super(parent, modal);
         initComponents();
         setSize(500, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
-         this.hospital = hospital;
+         this.sistema = sistema;
          
          try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
