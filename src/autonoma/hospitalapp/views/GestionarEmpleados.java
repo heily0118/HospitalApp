@@ -222,7 +222,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarEmpleadoMouseExited
 
     private void btnMostrarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadosMouseClicked
-       MostrarEmpleados ventanaMostrarEmpleados= new MostrarEmpleados(this, true);
+       MostrarEmpleados ventanaMostrarEmpleados= new MostrarEmpleados(this, true,sistema);
        ventanaMostrarEmpleados.setVisible(true);
     }//GEN-LAST:event_btnMostrarEmpleadosMouseClicked
 

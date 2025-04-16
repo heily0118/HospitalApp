@@ -6,6 +6,7 @@ package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
 import java.awt.Dialog;
 import javax.swing.ImageIcon;
@@ -22,17 +23,20 @@ import javax.swing.table.DefaultTableModel;
 
 public class MostrarEmpleados extends javax.swing.JDialog {
     private Hospital hospital;
+    private SistemaCentral sistema;
 
     /**
      * Creates new form MostrarEmpleados
      */
-    public MostrarEmpleados(javax.swing.JDialog parent, boolean modal) {
+    public MostrarEmpleados(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
         super((Dialog) parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
-        this.hospital = hospital;
+        
+         this.sistema = sistema;
+         this.hospital = sistema.getHospital();
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
