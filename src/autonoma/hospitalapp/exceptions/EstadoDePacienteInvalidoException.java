@@ -12,6 +12,6 @@ package autonoma.hospitalapp.exceptions;
  */
 public class EstadoDePacienteInvalidoException extends Exception{
     public EstadoDePacienteInvalidoException() {
-        super("El estado del paciente es inválido");
+        super("El estado del paciente debe ser 'Saludable' o 'Crítico'.");
     }
 }

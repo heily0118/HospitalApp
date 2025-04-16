@@ -163,7 +163,7 @@ public class Paciente {
      * Obtiene el estado del paciente (activo o inactivo).
      * @return Retorna el estado del paciente.
      */
-    public boolean isEstadoPaciente() {
+    public boolean getEstadoPaciente() {
         return estadoPaciente;
     }
 

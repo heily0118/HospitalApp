@@ -4,22 +4,33 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.Paciente;
+import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Maria Paz Puerta
  */
 public class MostrarPacientes extends javax.swing.JDialog {
-
+    private ArrayList<Paciente> pacientes;
+    private SistemaCentral sistema;
+    private DefaultTableModel modeloTabla;
+    private VentanaPrincipal ventanaPrincipal;
     /**
      * Creates new form MostrarPacientes
      */
-    public MostrarPacientes(java.awt.Frame parent, boolean modal) {
+    public MostrarPacientes(java.awt.Frame parent, boolean modal, SistemaCentral sistema, VentanaPrincipal ventanaPrincipa) {
         super(parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(800, 600);
         setResizable(false);
         this.setLocationRelativeTo(null);
         
@@ -32,6 +43,20 @@ public class MostrarPacientes extends javax.swing.JDialog {
         }
         PacienteBuscar.setText("Ingresa el nombre del paciente a buscar");
         PacienteBuscar.setForeground(Color.GRAY);
+        
+        this.sistema = sistema;
+        this.pacientes = sistema.getHospital().getPacientes();
+        this.ventanaPrincipal = ventanaPrincipal;
+        this.tablaPacientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        this.tablaPacientes.setRowSelectionAllowed(true);
+        this.tablaPacientes.setColumnSelectionAllowed(false);
+        modeloTabla = new DefaultTableModel(new Object[]{"Nombre","Documento","Edad", "Correo", "Teléfono", "Estado"}, 0);
+        tablaPacientes.setModel(modeloTabla);
+        this.llenarTabla();
+        tablaPacientes.setSelectionBackground(new Color(198, 244, 214));
+        tablaPacientes.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()));
+        tablaPacientes.setDefaultRenderer(Object.class, new DefaultTableCellRenderer());
+        tablaPacientes.setDefaultEditor(Object.class, null);
     }
 
     /**
@@ -49,7 +74,7 @@ public class MostrarPacientes extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPacientes = new javax.swing.JTable();
         btnActualizar = new javax.swing.JToggleButton();
         btnEliminar = new javax.swing.JToggleButton();
 
@@ -116,7 +141,7 @@ public class MostrarPacientes extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -127,8 +152,24 @@ public class MostrarPacientes extends javax.swing.JDialog {
             new String [] {
                 "Nombre", "Documento", "Edad", "Correo", "Télefono", "Estado"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaPacientes);
+        if (tablaPacientes.getColumnModel().getColumnCount() > 0) {
+            tablaPacientes.getColumnModel().getColumn(0).setResizable(false);
+            tablaPacientes.getColumnModel().getColumn(1).setResizable(false);
+            tablaPacientes.getColumnModel().getColumn(2).setResizable(false);
+            tablaPacientes.getColumnModel().getColumn(3).setResizable(false);
+            tablaPacientes.getColumnModel().getColumn(4).setResizable(false);
+            tablaPacientes.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         btnActualizar.setBackground(new java.awt.Color(51, 153, 255));
         btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -215,7 +256,22 @@ public class MostrarPacientes extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_PacienteBuscarActionPerformed
 
+    public void llenarTabla() {
+        DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Nombre","Documento","Edad", "Correo", "Teléfono", "Estado"}, this.pacientes.size());
+        this.tablaPacientes.setModel (modelDefault);
     
+        TableModel dataModel = tablaPacientes.getModel();
+        for (int i=0; i< this.pacientes.size(); i++){
+            Paciente paciente = this.pacientes.get(i);
+        
+            dataModel.setValueAt(paciente.getNombre(), i, 0); 
+            dataModel.setValueAt(paciente.getDocumento(), i, 1); 
+            dataModel.setValueAt(paciente.getEdad(), i, 2);
+            dataModel.setValueAt(paciente.getCorreo(), i, 3);
+            dataModel.setValueAt(paciente.getTelefono(), i, 4);
+            dataModel.setValueAt(paciente.getEstadoPaciente(), i, 5);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField PacienteBuscar;
@@ -226,6 +282,6 @@ public class MostrarPacientes extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaPacientes;
     // End of variables declaration//GEN-END:variables
 }

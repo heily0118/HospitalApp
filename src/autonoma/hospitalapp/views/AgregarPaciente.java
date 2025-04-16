@@ -16,6 +16,7 @@ import autonoma.hospitalapp.models.Paciente;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Dialog;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -39,6 +40,20 @@ public class AgregarPaciente extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
         this.sistema.getHospital().getPacientes();
+        
+        cmbEstado = new JComboBox<>();
+        cmbEstado.addItem("Saludable");
+        cmbEstado.addItem("Crítico");
+
+        getContentPane().add(cmbEstado);
+        
+        try{ 
+           this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/Hospital.png")).getImage());
+        
+        }catch(NullPointerException e){
+            System.out.println("Imagen no encontrada");
+            
+        }
     }
 
     /**
@@ -232,10 +247,7 @@ public class AgregarPaciente extends javax.swing.JDialog {
         String edadStr = txtEdad.getText().trim();
         String correo = txtCorreo.getText().trim();
         String telefono = txtTelefono.getText().trim();
-        cmbEstado = new JComboBox<>();
-        cmbEstado.addItem("Saludable");
-        cmbEstado.addItem("Enfermo");
-        String estadoTexto = String.valueOf(cmbEstado.getSelectedItem()); 
+        String estadoTexto = (String) cmbEstado.getSelectedItem(); 
 
 
         try {
@@ -251,6 +263,7 @@ public class AgregarPaciente extends javax.swing.JDialog {
                 return;
             }
             
+        
             for (Paciente p : sistema.getHospital().getPacientes()) {
                 if (p.getDocumento().equalsIgnoreCase(documento)) {
                     JOptionPane.showMessageDialog(this, "El paciente ya se encuentra en la lista" , "Error", JOptionPane.ERROR_MESSAGE);
@@ -260,6 +273,18 @@ public class AgregarPaciente extends javax.swing.JDialog {
             
             if (!correo.contains("@")) {
                 JOptionPane.showMessageDialog(this, "El correo electrónico debe contener '@'." , "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            long docNum = Long.parseLong(documento);
+            if (docNum < 0) {
+                JOptionPane.showMessageDialog(this, "Los datos no pueden ser negativos" , "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            long telNum = Long.parseLong(telefono);
+            if (telNum < 0) {
+                JOptionPane.showMessageDialog(this, "Los datos no pueden ser negativos" , "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
@@ -306,12 +331,24 @@ public class AgregarPaciente extends javax.swing.JDialog {
                 }
             }
             
-            if (!estadoTexto.equalsIgnoreCase("Saludable") && !estadoTexto.equalsIgnoreCase("Critico")) {
-                JOptionPane.showMessageDialog(this, "El estado del paciente es inválido" , "Error", JOptionPane.ERROR_MESSAGE);
+            if (!estadoTexto.equalsIgnoreCase("Saludable") && !estadoTexto.equalsIgnoreCase("Crítico")) {
+                JOptionPane.showMessageDialog(this, "El estado del paciente debe ser 'Saludable' o 'Crítico'.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
-            boolean estadoPaciente = estadoTexto.equalsIgnoreCase("Saludable");
+            boolean estadoPaciente;
+            
+            switch (estadoTexto) {
+                case "Saludable":
+                    estadoPaciente = true;
+                    break;
+                case "Crítico":
+                    estadoPaciente = false;
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "El estado del paciente debe ser 'Saludable' o 'Crítico'.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;  
+}
             
 
             ArrayList<Enfermedad> enfermedades = new ArrayList<>();
@@ -328,7 +365,6 @@ public class AgregarPaciente extends javax.swing.JDialog {
                 | CaracteresEspecialesException | EstadoDePacienteInvalidoException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();  // Esto mostrará el error en consola
             JOptionPane.showMessageDialog(this, "Error al agregar paciente: " + e.getClass().getName() + " - " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed

@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 public class GestionarPacientes extends javax.swing.JDialog {
      private SistemaCentral sistema;
      private ArrayList<Paciente> pacientes;
+    private VentanaPrincipal ventanaPrincipal;
 
     /**
      * Creates new form GestionarPacientes
@@ -225,7 +226,7 @@ public class GestionarPacientes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarPacienteMouseExited
 
     private void btnMostrarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarPacientesMouseClicked
-        MostrarPacientes ventanaMostrarPacientes = new MostrarPacientes(null, true);
+        MostrarPacientes ventanaMostrarPacientes = new MostrarPacientes(null, true, sistema, ventanaPrincipal);
         ventanaMostrarPacientes.setVisible(true);
     }//GEN-LAST:event_btnMostrarPacientesMouseClicked
 
