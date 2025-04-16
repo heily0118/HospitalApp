@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class MostrarEmpleados extends javax.swing.JDialog {
     private Hospital hospital;
     private SistemaCentral sistema;
+    private Empleado empleado;
 
     /**
      * Creates new form MostrarEmpleados
@@ -39,6 +40,8 @@ public class MostrarEmpleados extends javax.swing.JDialog {
          this.sistema = sistema;
          this.hospital = sistema.getHospital();
          
+           actualizarTablaEmpleados();
+           
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
         
@@ -374,11 +377,77 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     }//GEN-LAST:event_btnMostrarEmpleadosActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+       int filaSeleccionada = ListaEmpleados.getSelectedRow();
+    
+        if (filaSeleccionada == -1) { 
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un empleado de la tabla.", 
+                                          "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        
+        String nombreEmpleado = (String) ListaEmpleados.getValueAt(filaSeleccionada, 0); 
+
+    
+        String tipoEmpleado = JOptionPane.showInputDialog(this, "Ingrese el tipo de empleado ('operativo' o 'salud'):");
+
+        if (tipoEmpleado == null || tipoEmpleado.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tipo de empleado no válido. Debes ingresar 'operativo' o 'salud'.", 
+                                          "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        tipoEmpleado = tipoEmpleado.trim().toLowerCase(); 
+
+       
+        Empleado empleado = sistema.buscarEmpleado(nombreEmpleado.trim());
+
+        if (empleado == null) {
+            JOptionPane.showMessageDialog(this, "Empleado no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+       
+        if (tipoEmpleado.equals("operativo")) {
+            
+            InformacionEmpleadoOperativo ventanaEmpleadoOperativo = 
+                new InformacionEmpleadoOperativo(this, true, sistema);
+            ventanaEmpleadoOperativo.setEmpleado(empleado);  
+            ventanaEmpleadoOperativo.setVisible(true);
+            actualizarTablaEmpleados();
+
+        } else if (tipoEmpleado.equals("salud")) {
+            
+            InformacionEmpleadoSalud ventanaEmpleadoSalud = 
+                new InformacionEmpleadoSalud(this, true, sistema);
+            ventanaEmpleadoSalud.setEmpleado(empleado); 
+            ventanaEmpleadoSalud.setVisible(true);
+            actualizarTablaEmpleados();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Tipo de empleado no válido. Usa 'operativo' o 'salud'.", 
+                                          "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
   
    
+    private void actualizarTablaEmpleados() {
+        DefaultTableModel modelo = (DefaultTableModel) ListaEmpleados.getModel();
+        modelo.setRowCount(0);  
 
+        for (Empleado emp : hospital.getEmpleados()) {
+            Object[] fila = {
+               
+                emp.getNombre(),
+                emp.getDocumento(),
+                emp.getEdad()
+            };
+            modelo.addRow(fila);  
+        }
+    }
+    
+    
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JTextField EmpleadoBuscar;

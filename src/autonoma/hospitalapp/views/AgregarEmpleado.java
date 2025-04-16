@@ -178,7 +178,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         } else if (tipo.equals("salud")) {
             InformacionEmpleadoSalud ventanaEmpleadoSalud = 
-                new InformacionEmpleadoSalud(this, true, sistema,this.ventana);
+                new InformacionEmpleadoSalud(this, true, sistema);
             ventanaEmpleadoSalud.setVisible(true);
 
         } else {
