@@ -5,8 +5,10 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.Paciente;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -18,6 +20,7 @@ import javax.swing.JPanel;
  */
 public class GestionarPacientes extends javax.swing.JDialog {
      private SistemaCentral sistema;
+     private ArrayList<Paciente> pacientes;
 
     /**
      * Creates new form GestionarPacientes

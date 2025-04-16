@@ -38,6 +38,7 @@ public class AgregarPaciente extends javax.swing.JDialog {
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
+        this.sistema.getHospital().getPacientes();
     }
 
     /**
@@ -250,14 +251,14 @@ public class AgregarPaciente extends javax.swing.JDialog {
                 return;
             }
             
-            for (Paciente p : pacientes) {
+            for (Paciente p : sistema.getHospital().getPacientes()) {
                 if (p.getDocumento().equalsIgnoreCase(documento)) {
                     JOptionPane.showMessageDialog(this, "El paciente ya se encuentra en la lista" , "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
             
-            if (correo.contains("@")) {
+            if (!correo.contains("@")) {
                 JOptionPane.showMessageDialog(this, "El correo electrónico debe contener '@'." , "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -327,7 +328,8 @@ public class AgregarPaciente extends javax.swing.JDialog {
                 | CaracteresEspecialesException | EstadoDePacienteInvalidoException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al agregar paciente");
+            e.printStackTrace();  // Esto mostrará el error en consola
+            JOptionPane.showMessageDialog(this, "Error al agregar paciente: " + e.getClass().getName() + " - " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
