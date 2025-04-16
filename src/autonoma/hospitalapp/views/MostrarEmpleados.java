@@ -322,7 +322,23 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void btnInformacionEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformacionEmpleadoMouseClicked
-        MostrarInformacionEmpleados mostrarInfo = new MostrarInformacionEmpleados (this,true,sistema);
+        int filaSeleccionada = ListaEmpleados.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un empleado en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String nombreEmpleado = ListaEmpleados.getValueAt(filaSeleccionada, 0).toString();
+        
+        Empleado empleado = sistema.buscarEmpleado(nombreEmpleado);
+
+        if (empleado == null) {
+            JOptionPane.showMessageDialog(this, "El empleado seleccionado no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        MostrarInformacionEmpleados mostrarInfo = new MostrarInformacionEmpleados (this,true,sistema,empleado);
         mostrarInfo.setVisible(true);
     }//GEN-LAST:event_btnInformacionEmpleadoMouseClicked
   

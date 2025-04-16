@@ -4,6 +4,7 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Dialog;
 import javax.swing.ImageIcon;
@@ -22,7 +23,7 @@ public class MostrarInformacionEmpleados extends javax.swing.JDialog {
     /**
      * Creates new form MostrarInformacionEmpleados
      */
-    public MostrarInformacionEmpleados(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
+    public MostrarInformacionEmpleados(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema,Empleado empleado) {
         super((Dialog) parent, modal);
         initComponents();
         setSize(620, 700);
@@ -31,6 +32,8 @@ public class MostrarInformacionEmpleados extends javax.swing.JDialog {
         
          this.sistema = sistema;
          
+         informacion.setText(empleado.toString());
+         informacion.setEditable(false);
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());

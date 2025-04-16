@@ -47,7 +47,9 @@ public class SistemaCentral {
     public void actualizarEmpleado(Empleado empleado) {
         hospital.actualizarEmpleado(empleado.getNombre(),empleado);
     }
-
+    public void mostrarEmpleados(String nombre){
+        hospital.mostrarEmpleado(nombre);
+    }
     
     public void agregarPacientes(Paciente paciente) {
        

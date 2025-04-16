@@ -51,7 +51,13 @@ public class EmpleadoSalud extends Empleado{
     public String getTipoEmpleado() {
      return "Salud";
     }
-
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+               "Especialidad: " + especialidad + "\n" +
+               "Horas de trabajo: " + horasTrabajadas;
+    }
     
     
 }
