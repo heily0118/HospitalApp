@@ -266,27 +266,32 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        try {
-        String nombre = nombreEmpleado.getText();
-        String documento = numDocumento.getText();
-        int edadEmpleado = Integer.parseInt(edad.getText());
-        double salario = Double.parseDouble(salarioBase.getText());
-        String especialidadEmpleado = especialidad.getText();
-        int horas = Integer.parseInt(horasTrabajo.getText());
+            try {
+            String nombre = nombreEmpleado.getText();
+            String documento = numDocumento.getText();
+            int edadEmpleado = Integer.parseInt(edad.getText());
+            double salario = Double.parseDouble(salarioBase.getText());
+            String especialidadEmpleado = especialidad.getText();
+            int horas = Integer.parseInt(horasTrabajo.getText());
 
-          
             if (empleado != null) {
                
-                empleado.setNombre(nombre);
-                empleado.setDocumento(documento);
-                empleado.setEdad(edadEmpleado);
-           
-
-                
-                sistema.actualizarEmpleado(empleado);
-                JOptionPane.showMessageDialog(this, "Empleado de Salud editado exitosamente.");
+                if (empleado instanceof EmpleadoSalud) {
+                    EmpleadoSalud empleadoSalud = (EmpleadoSalud) empleado;
+                    empleadoSalud.setNombre(nombre);
+                    empleadoSalud.setDocumento(documento);
+                    empleadoSalud.setEdad(edadEmpleado);
+                    empleadoSalud.setSalarioBase(salario);
+                    empleadoSalud.setEspecialidad(especialidadEmpleado);
+                    empleadoSalud.setHorasTrabajadas(horas);
+                    sistema.actualizarEmpleado(empleadoSalud);
+                    JOptionPane.showMessageDialog(this, "Empleado de Salud editado exitosamente.");
+                } else {
+                   
+                    JOptionPane.showMessageDialog(this, "El empleado no es del tipo adecuado para edición.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                
+               
                 EmpleadoSalud nuevoEmpleado = new EmpleadoSalud(especialidadEmpleado, horas, nombre, documento, edadEmpleado, salario);
                 sistema.agregarEmpleados(nuevoEmpleado);
                 JOptionPane.showMessageDialog(this, "Empleado de Salud creado exitosamente.");
@@ -294,7 +299,6 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
 
             this.dispose();
 
-          
             if (this.getOwner() instanceof javax.swing.JDialog) {
                 javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
                 ventanaAgregar.dispose();
@@ -309,13 +313,18 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
 
     
    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-        
-            if (empleado != null) {
-            nombreEmpleado.setText(empleado.getNombre());
-            numDocumento.setText(empleado.getDocumento());
-            edad.setText(String.valueOf(empleado.getEdad()));
-           
+       this.empleado = empleado;
+    
+        if (empleado != null) {
+            if (empleado instanceof EmpleadoSalud) {
+                EmpleadoSalud empleadoSalud = (EmpleadoSalud) empleado;
+                nombreEmpleado.setText(empleadoSalud.getNombre());
+                numDocumento.setText(empleadoSalud.getDocumento());
+                edad.setText(String.valueOf(empleadoSalud.getEdad()));
+                salarioBase.setText(String.valueOf(empleadoSalud.getSalarioBase())); 
+                especialidad.setText(empleadoSalud.getEspecialidad());
+                horasTrabajo.setText(String.valueOf(empleadoSalud.getHorasTrabajadas()));
+            }
         }
         
     }

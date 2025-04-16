@@ -251,45 +251,47 @@ public class InformacionEmpleadoOperativo extends javax.swing.JDialog {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-        try {
-        String nombre = nombreEmpleado.getText();
-        String documento = numDocumento.getText();
-        int edadEmpleado = Integer.parseInt(edad.getText());
-        double salario = Double.parseDouble(salarioBase.getText());
-        String areaEmpleado = areaTrabajo.getText();
+            try {
+           String nombre = nombreEmpleado.getText();
+           String documento = numDocumento.getText();
+           int edadEmpleado = Integer.parseInt(edad.getText());
+           double salario = Double.parseDouble(salarioBase.getText());
+           String areaEmpleado = areaTrabajo.getText();
 
-        if (this.empleado == null) {
-           
-            EmpleadoOperativo nuevoEmpleado = new EmpleadoOperativo(areaEmpleado, nombre, documento, edadEmpleado, salario);
-            sistema.agregarEmpleados(nuevoEmpleado);
-            JOptionPane.showMessageDialog(this, "Empleado operativo creado exitosamente.");
-        } else {
-          
-            empleado.setNombre(nombre);
-            empleado.setDocumento(documento);
-            empleado.setEdad(edadEmpleado);
-           
-            if (empleado instanceof EmpleadoOperativo) {
-                ((EmpleadoOperativo) empleado).setArea(areaEmpleado);
-            }
-            JOptionPane.showMessageDialog(this, "Empleado operativo actualizado exitosamente.");
-        }
+           if (this.empleado == null) {
+               EmpleadoOperativo nuevoEmpleado = new EmpleadoOperativo(areaEmpleado, nombre, documento, edadEmpleado, salario);
+               sistema.agregarEmpleados(nuevoEmpleado);
+               JOptionPane.showMessageDialog(this, "Empleado operativo creado exitosamente.");
+           } else {
+               empleado.setNombre(nombre);
+               empleado.setDocumento(documento);
+               empleado.setEdad(edadEmpleado);
+               empleado.setSalarioBase(salario);
 
-        this.dispose();
+               
+               if (empleado instanceof EmpleadoOperativo) {
+                   ((EmpleadoOperativo) empleado).setArea(areaEmpleado);
+               }
+               JOptionPane.showMessageDialog(this, "Empleado operativo actualizado exitosamente.");
+           }
 
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad y salario.", "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    }
+           this.dispose();
+
+       } catch (NumberFormatException e) {
+           JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos para edad y salario.", "Error", JOptionPane.ERROR_MESSAGE);
+       } catch (Exception e) {
+           JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+           e.printStackTrace();
+       }
     }//GEN-LAST:event_AceptarActionPerformed
    public void setEmpleado(Empleado empleado) {
-     this.empleado = empleado;
-        
-      nombreEmpleado.setText(empleado.getNombre());
-      numDocumento.setText(empleado.getDocumento());
-      edad.setText(String.valueOf(empleado.getEdad()));
+        this.empleado = empleado;
+
+        nombreEmpleado.setText(empleado.getNombre());
+        numDocumento.setText(empleado.getDocumento());
+        edad.setText(String.valueOf(empleado.getEdad()));
+      
+      
 
 
       if (empleado instanceof EmpleadoOperativo) {
