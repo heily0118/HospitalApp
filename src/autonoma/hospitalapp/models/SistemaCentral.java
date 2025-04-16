@@ -4,7 +4,13 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.CamposObligatoriosException;
+import autonoma.hospitalapp.exceptions.CaracteresEspecialesException;
+import autonoma.hospitalapp.exceptions.CorreoInvalidoException;
+import autonoma.hospitalapp.exceptions.DatoInvalidoException;
+import autonoma.hospitalapp.exceptions.EstadoDePacienteInvalidoException;
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
 import java.util.ArrayList;
 
 /**
@@ -49,7 +55,8 @@ public class SistemaCentral {
     }
 
     
-    public void agregarPacientes(Paciente paciente) {
+    public void agregarPacientes(Paciente paciente) throws DatoInvalidoException, CamposObligatoriosException, PacienteDuplicadoException, CorreoInvalidoException, 
+            CaracteresEspecialesException, EstadoDePacienteInvalidoException{
        
        
         hospital.agregarPaciente(paciente);

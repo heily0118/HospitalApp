@@ -209,7 +209,7 @@ public class GestionarPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPacienteMouseClicked
-        AgregarPaciente ventanaAgregarPaciente = new AgregarPaciente(null, true);
+        AgregarPaciente ventanaAgregarPaciente = new AgregarPaciente(this, true, sistema);
         ventanaAgregarPaciente.setVisible(true);
     }//GEN-LAST:event_btnAgregarPacienteMouseClicked
 
