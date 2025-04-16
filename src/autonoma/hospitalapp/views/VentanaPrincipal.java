@@ -4,7 +4,7 @@
  */
 package autonoma.hospitalapp.views;
 
-import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -18,17 +18,18 @@ import javax.swing.JPanel;
  * @version 1.0.0
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    private Hospital hospital;
+   private SistemaCentral sistema;
 
     /**
      * Creates new form VentanaPrincipal
+     * @param sistema
      */
-    public VentanaPrincipal(Hospital hospital) {
+    public VentanaPrincipal(SistemaCentral sistema) {
         initComponents();
         setSize(500, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
-         this.hospital = hospital;
+        this.sistema = sistema;
          
          try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -350,7 +351,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGestionarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarEmpleadosMouseClicked
-       GestionarEmpleados ventanaEmpleados = new GestionarEmpleados(this, true);
+       GestionarEmpleados ventanaEmpleados = new GestionarEmpleados(this, true,sistema);
        ventanaEmpleados.setVisible(true);
     }//GEN-LAST:event_btnGestionarEmpleadosMouseClicked
 
@@ -363,7 +364,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarEmpleadosMouseExited
 
     private void btnGestionarPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarPacientesMouseClicked
-       GestionarPacientes ventanaPacientes = new GestionarPacientes(this, true);
+       GestionarPacientes ventanaPacientes = new GestionarPacientes(this, true,sistema);
        ventanaPacientes.setVisible(true);
     }//GEN-LAST:event_btnGestionarPacientesMouseClicked
 
@@ -376,7 +377,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarPacientesMouseExited
 
     private void btnGestionarFarmaciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarFarmaciaMouseClicked
-       GestionarFarmacia ventanaFarmacia = new GestionarFarmacia(this, true);
+       GestionarFarmacia ventanaFarmacia = new GestionarFarmacia(this, true,sistema);
        ventanaFarmacia.setVisible(true);
     }//GEN-LAST:event_btnGestionarFarmaciaMouseClicked
 
@@ -389,7 +390,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarFarmaciaMouseExited
 
     private void btnGestionarReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarReportesMouseClicked
-       GestionarReportes ventanaReportes = new GestionarReportes(this, true);
+       GestionarReportes ventanaReportes = new GestionarReportes(this, true,sistema);
        ventanaReportes.setVisible(true);
     }//GEN-LAST:event_btnGestionarReportesMouseClicked
 
@@ -402,7 +403,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarReportesMouseExited
 
     private void informacionHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionHospitalMouseClicked
-       InformacionHospital ventanaHospital= new InformacionHospital(this, true);
+       InformacionHospital ventanaHospital= new InformacionHospital(this, true,sistema);
        ventanaHospital.setVisible(true);
     }//GEN-LAST:event_informacionHospitalMouseClicked
 

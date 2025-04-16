@@ -12,6 +12,7 @@ import autonoma.hospitalapp.models.Inventario;
 import autonoma.hospitalapp.models.Localizacion;
 import autonoma.hospitalapp.models.Nomina;
 import autonoma.hospitalapp.models.Paciente;
+import autonoma.hospitalapp.models.SistemaCentral;
 import autonoma.hospitalapp.views.VentanaPrincipal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -52,8 +53,10 @@ public class HospitalApp {
         );
 
        
-        VentanaPrincipal ventana = new VentanaPrincipal(hospital);
+        SistemaCentral sistema = new SistemaCentral(hospital); 
+
+        VentanaPrincipal ventana = new VentanaPrincipal(sistema); 
         ventana.setVisible(true);
-    }
+     }
     
 }
