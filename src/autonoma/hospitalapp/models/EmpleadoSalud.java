@@ -47,6 +47,11 @@ public class EmpleadoSalud extends Empleado{
          return getSalarioBase() + (getSalarioBase() * 0.012 * horasTrabajadas);
     }
 
+    @Override
+    public String getTipoEmpleado() {
+     return "Salud";
+    }
+
     
     
 }

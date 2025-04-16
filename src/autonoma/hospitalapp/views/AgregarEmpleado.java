@@ -5,8 +5,10 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Dialog;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,18 +18,18 @@ import javax.swing.ImageIcon;
  * @version 1.0.0
  */
 public class AgregarEmpleado extends javax.swing.JDialog {
-    private Hospital hospital;
+   private SistemaCentral sistema;
 
     /**
      * Creates new form AgregarEmpleado
      */
-    public AgregarEmpleado(javax.swing.JDialog parent, boolean modal) {
+    public AgregarEmpleado(javax.swing.JDialog parent, boolean modal,SistemaCentral sistema) {
         super((Dialog) parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
-        this.hospital = hospital;
+         this.sistema = sistema;
          
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
@@ -48,6 +50,10 @@ public class AgregarEmpleado extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        tipoEmpleado = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        Aceptar = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -55,22 +61,68 @@ public class AgregarEmpleado extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        tipoEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Ingresa el tipo de empleado:");
+
+        Aceptar.setBackground(new java.awt.Color(0, 102, 51));
+        Aceptar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Aceptar.setForeground(new java.awt.Color(255, 255, 255));
+        Aceptar.setText("Aceptar");
+        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarActionPerformed(evt);
+            }
+        });
+
+        Atras.setBackground(new java.awt.Color(204, 0, 0));
+        Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
+        Atras.setText("Atras");
+        Atras.setActionCommand("");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(Atras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Aceptar)
+                .addGap(104, 104, 104))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 467, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(111, 111, 111)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras)
+                    .addComponent(Aceptar))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(181, 181, 235));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Informacion empleado");
+        jLabel1.setText("Tipo empleado");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -79,7 +131,7 @@ public class AgregarEmpleado extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,10 +159,38 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_AtrasActionPerformed
+
+    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+      String tipo = tipoEmpleado.getText().trim().toLowerCase();
+
+        if (tipo.equals("operativo")) {
+            InformacionEmpleadoOperativo ventanaEmpleadoOperativo = 
+                new InformacionEmpleadoOperativo(this, true, sistema);
+            ventanaEmpleadoOperativo.setVisible(true);
+
+        } else if (tipo.equals("salud")) {
+            InformacionEmpleadoSalud ventanaEmpleadoSalud = 
+                new InformacionEmpleadoSalud(this, true, sistema);
+            ventanaEmpleadoSalud.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                "Tipo de empleado no válido. Usa 'operativo' o 'salud'", 
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_AceptarActionPerformed
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Atras;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField tipoEmpleado;
     // End of variables declaration//GEN-END:variables
 }

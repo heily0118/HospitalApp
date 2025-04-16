@@ -26,7 +26,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     public GestionarEmpleados(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
         super(parent, modal);
         initComponents();
-        setSize(500, 700);
+        setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
@@ -209,7 +209,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
-       AgregarEmpleado ventanaAgregarEmpleado= new AgregarEmpleado(this, true);
+       AgregarEmpleado ventanaAgregarEmpleado= new AgregarEmpleado(this, true,sistema);
        ventanaAgregarEmpleado.setVisible(true);
     }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
