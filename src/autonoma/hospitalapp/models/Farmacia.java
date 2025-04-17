@@ -23,7 +23,7 @@ public class Farmacia {
      * 
      * @param inventario El inventario de medicamentos.
      */
-    public Farmacia(Inventario inventario) {
+    public Farmacia(Inventario inventario,Hospital hospital) {
         this.inventario = inventario;
         this.hospital = hospital;
     }

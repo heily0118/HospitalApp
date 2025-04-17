@@ -28,13 +28,8 @@ public class HospitalApp {
 
         Gerente gerente = new Gerente("Laura Pérez", "123456789", 40, "Administración Hospitalaria");
         Inventario inventario = new Inventario("INV-001", 2024);
-        
-        Farmacia farmacia = new Farmacia(inventario);
 
-        ArrayList<Empleado> empleados = new ArrayList<>();
-        ArrayList<Paciente> pacientes = new ArrayList<>();
-        ArrayList<Nomina> nominas = new ArrayList<>();
-
+       
         Hospital hospital = new Hospital(
                 "Hospital San José St. Bonaventure",
                 "Calle 123",
@@ -46,17 +41,29 @@ public class HospitalApp {
                 true,
                 localizacion,
                 gerente,
-                empleados,
-                pacientes,
-                farmacia,
-                nominas
+                new ArrayList<>(),
+                new ArrayList<>(),
+                null,  
+                new ArrayList<>()
         );
 
        
+        Farmacia farmacia = new Farmacia(inventario, hospital);
+
+      
+        hospital.setFarmacia(farmacia);
+
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        ArrayList<Nomina> nominas = new ArrayList<>();
+
+       
+        hospital.setFarmacia(farmacia);
+
         SistemaCentral sistema = new SistemaCentral(hospital); 
 
         VentanaPrincipal ventana = new VentanaPrincipal(sistema); 
         ventana.setVisible(true);
-     }
+        }
     
 }
