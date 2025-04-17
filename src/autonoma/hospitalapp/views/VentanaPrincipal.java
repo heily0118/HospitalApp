@@ -292,13 +292,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnGestionarReportesLayout.setHorizontalGroup(
             btnGestionarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnGestionarReportesLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel9)
+                .addGroup(btnGestionarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(btnGestionarReportesLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel9))
+                    .addGroup(btnGestionarReportesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGestionarReportesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
         );
         btnGestionarReportesLayout.setVerticalGroup(
             btnGestionarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +307,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel5)
                 .addGap(14, 14, 14))
         );
 
