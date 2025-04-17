@@ -1,12 +1,2 @@
-===== REPORTE DE PACIENTES =====
-Nombre: Maria
-Documento: 290303
-Edad: 12
-Correo: maria@gmail.com
-Teléfono: 293030
-Estado: Saludable
-Enfermedades:
-  - No registra enfermedades.
-Medicamentos:
-  - No tiene medicamentos asignados.
-------------------------------------
+========================== REPORTE DE PACIENTES ======================
+No hay pacientes registrados.

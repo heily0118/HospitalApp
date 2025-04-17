@@ -308,7 +308,16 @@ public class GestionarReportes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGenerarReportePacientesMouseExited
 
     private void btnGenerarReporteFarmaciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteFarmaciaMouseClicked
-        GenerarReporteFarmacia ventanaGenerarReporteFarmacia = new GenerarReporteFarmacia(this, true, sistema);
+        Reporte reporte = new Reporte(sistema.getHospital().getEmpleados(),
+        sistema.getHospital().getPacientes(),
+        sistema.getHospital().getFarmacia());
+
+        GenerarReporteFarmacia ventanaGenerarReporteFarmacia = null;
+        try {
+            ventanaGenerarReporteFarmacia = new GenerarReporteFarmacia(this, true, sistema, reporte);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionarReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ventanaGenerarReporteFarmacia.setVisible(true);
     }//GEN-LAST:event_btnGenerarReporteFarmaciaMouseClicked
 

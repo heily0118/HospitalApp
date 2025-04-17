@@ -95,7 +95,7 @@ public class Reporte {
     public String generarReporteEmpleados() throws IOException{
         ArrayList<String> archivo3 = new ArrayList<>();
     
-        archivo3.add("=================== REPORTE DE EMPLEADOS =============================");
+        archivo3.add("===================== REPORTE DE EMPLEADOS =============================");
 
         if (empleados == null || empleados.isEmpty()) {
             archivo3.add("No hay empleados registrados.");
@@ -131,7 +131,7 @@ public class Reporte {
     public String generarReportePacientes() throws IOException{
         ArrayList<String> archivo = new ArrayList<>();
     
-        archivo.add("===== REPORTE DE PACIENTES =====");
+        archivo.add("========================== REPORTE DE PACIENTES ======================");
 
         if (pacientes == null || pacientes.isEmpty()) {
             archivo.add("No hay pacientes registrados.");
@@ -185,10 +185,10 @@ public class Reporte {
      * Muestra el nombre y dirección del hospital asociado, así como el inventario de medicamentos de la farmacia.
      * Si no hay información de la farmacia, muestra un mensaje indicando que no hay registros.
      */
-    public void generarReporteFarmacia() throws IOException{
+    public String generarReporteFarmacia() throws IOException{
         ArrayList<String> archivo2 = new ArrayList<>();
     
-        archivo2.add("===== REPORTE DE FARMACIA =====");
+        archivo2.add("======================== REPORTE DE FARMACIA ===========================");
 
         if (farmacia == null) {
             archivo2.add("No hay información de farmacia registrada.");
@@ -220,5 +220,12 @@ public class Reporte {
         
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("reporteFarmacia.txt");
+        
+        StringBuilder reporteTexto = new StringBuilder();
+        for (String linea : lineas) {
+            reporteTexto.append(linea).append("\n");
+        }
+
+        return reporteTexto.toString();
     }
 }
