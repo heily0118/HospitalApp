@@ -95,7 +95,7 @@ public class Reporte {
     public String generarReporteEmpleados() throws IOException{
         ArrayList<String> archivo3 = new ArrayList<>();
     
-        archivo3.add("===== REPORTE DE EMPLEADOS =====");
+        archivo3.add("=================== REPORTE DE EMPLEADOS =============================");
 
         if (empleados == null || empleados.isEmpty()) {
             archivo3.add("No hay empleados registrados.");
@@ -128,7 +128,7 @@ public class Reporte {
      * Muestra el nombre, documento, edad, correo, teléfono, estado y lista de enfermedades y medicamentos de cada paciente.
      * Si no hay pacientes, muestra un mensaje indicando que no hay registros.
      */
-    public void generarReportePacientes() throws IOException{
+    public String generarReportePacientes() throws IOException{
         ArrayList<String> archivo = new ArrayList<>();
     
         archivo.add("===== REPORTE DE PACIENTES =====");
@@ -171,6 +171,13 @@ public class Reporte {
         
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("reportePacientes.txt");
+        
+        StringBuilder reporteTexto = new StringBuilder();
+        for (String linea : lineas) {
+            reporteTexto.append(linea).append("\n");
+        }
+
+        return reporteTexto.toString();
     }
 
     /**

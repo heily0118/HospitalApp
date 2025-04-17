@@ -1,11 +1,2 @@
-===== REPORTE DE EMPLEADOS =====
-Nombre: Maria
-Documento: 123030
-Edad: 23
-Salario Base: $230404.0
-------------------------------------
-Nombre: Luisa
-Documento: 293030
-Edad: 12
-Salario Base: $38384.0
-------------------------------------
+=================== REPORTE DE EMPLEADOS =============================
+No hay empleados registrados.
