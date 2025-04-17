@@ -73,7 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titulo.setBackground(new java.awt.Color(153, 153, 255));
+        titulo.setBackground(new java.awt.Color(180, 205, 200));
 
         nombreHospital.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         nombreHospital.setForeground(new java.awt.Color(255, 255, 255));

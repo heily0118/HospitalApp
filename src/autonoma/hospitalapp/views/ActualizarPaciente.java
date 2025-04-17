@@ -89,7 +89,7 @@ public class ActualizarPaciente extends javax.swing.JDialog {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel12.setBackground(new java.awt.Color(188, 188, 255));
+        jPanel12.setBackground(new java.awt.Color(205, 205, 250));
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,7 +404,6 @@ public class ActualizarPaciente extends javax.swing.JDialog {
     private javax.swing.JToggleButton btnActualizar;
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -412,9 +411,7 @@ public class ActualizarPaciente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtEdad;

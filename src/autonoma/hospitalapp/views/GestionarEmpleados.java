@@ -187,7 +187,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
                 .addGap(33, 33, 33))
         );
 
-        jPanel2.setBackground(new java.awt.Color(181, 181, 243));
+        jPanel2.setBackground(new java.awt.Color(205, 205, 250));
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,9 +267,6 @@ public class GestionarEmpleados extends javax.swing.JDialog {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Atras;
-    private javax.swing.JButton Atras1;
-    private javax.swing.JButton Atras2;
     private javax.swing.JButton Atras3;
     private javax.swing.JPanel btnAgregarEmpleado;
     private javax.swing.JPanel btnMostrarEmpleados;
