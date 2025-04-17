@@ -35,7 +35,7 @@ public class MostrarPacientes extends javax.swing.JDialog {
     public MostrarPacientes(java.awt.Frame parent, boolean modal, SistemaCentral sistema, VentanaPrincipal ventanaPrincipa) {
         super(parent, modal);
         initComponents();
-        setSize(550, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         

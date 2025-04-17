@@ -21,7 +21,7 @@ public class GestionarReportes extends javax.swing.JDialog {
     public GestionarReportes(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
         super(parent, modal);
         initComponents();
-        setSize(500, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
          this.sistema = sistema;

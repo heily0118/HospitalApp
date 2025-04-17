@@ -10,7 +10,10 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author USUARIO
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.simuladorautomovil.models.Hospital
+ * @version 1.0.0
  */
 public class GestionarFarmacia extends javax.swing.JDialog {
      private SistemaCentral sistema;
@@ -21,7 +24,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
     public GestionarFarmacia(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
         super(parent, modal);
         initComponents();
-        setSize(500, 700);
+        setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
          this.sistema = sistema;
