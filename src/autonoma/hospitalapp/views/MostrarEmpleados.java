@@ -51,6 +51,9 @@ public class MostrarEmpleados extends javax.swing.JDialog {
         }
         EmpleadoBuscar.setText("Ingresa el nombre del empleado a buscar");
         EmpleadoBuscar.setForeground(Color.GRAY);
+        
+        ListaEmpleados.setSelectionBackground(new Color(198, 244, 214));
+        
     }
 
     /**
