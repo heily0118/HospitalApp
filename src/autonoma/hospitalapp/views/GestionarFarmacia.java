@@ -78,9 +78,9 @@ public class GestionarFarmacia extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Agregar medicamento");
+        jLabel2.setText("Comprar medicamento");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/AgregarEmpleado.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/Medicamentos.png"))); // NOI18N
 
         javax.swing.GroupLayout btnAgregarMedicamentoLayout = new javax.swing.GroupLayout(btnAgregarMedicamento);
         btnAgregarMedicamento.setLayout(btnAgregarMedicamentoLayout);
@@ -123,7 +123,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
         jLabel3.setText("Mostrar inventario");
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/MostrarEmpleados.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/Inventario.png"))); // NOI18N
 
         javax.swing.GroupLayout btnMostrarInventarioLayout = new javax.swing.GroupLayout(btnMostrarInventario);
         btnMostrarInventario.setLayout(btnMostrarInventarioLayout);
@@ -173,7 +173,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(btnMostrarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +184,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
                 .addComponent(btnMostrarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(Atras3)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));

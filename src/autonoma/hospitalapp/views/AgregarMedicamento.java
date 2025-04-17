@@ -165,18 +165,18 @@ public class AgregarMedicamento extends javax.swing.JDialog {
         String tipo = tipoMedicamento.getText().trim().toLowerCase();
 
         if (tipo.equals("generico")) {
-            InformacionEmpleadoOperativo ventanaEmpleadoOperativo =
-            new InformacionEmpleadoOperativo(this, true, sistema);
-            ventanaEmpleadoOperativo.setVisible(true);
+            InformacionMedicamentoGenerico ventanaMedicamentoGenerico =
+            new InformacionMedicamentoGenerico (this, true, sistema);
+            ventanaMedicamentoGenerico.setVisible(true);
 
         } else if (tipo.equals("marca")) {
-            InformacionEmpleadoSalud ventanaEmpleadoSalud =
-            new InformacionEmpleadoSalud(this, true, sistema);
-            ventanaEmpleadoSalud.setVisible(true);
+            InformacionMedicamentoMarca ventanaMedicamentoMarca=
+            new InformacionMedicamentoMarca(this, true, sistema);
+            ventanaMedicamentoMarca.setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(this,
-                "Tipo de empleado no válido. Usa 'operativo' o 'salud'",
+                "Tipo de medicamento no válido. Usa 'generico' o 'marca'",
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AceptarActionPerformed
