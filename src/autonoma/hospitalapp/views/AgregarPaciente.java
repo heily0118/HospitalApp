@@ -88,7 +88,7 @@ public class AgregarPaciente extends javax.swing.JDialog {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel10.setBackground(new java.awt.Color(188, 188, 255));
+        jPanel10.setBackground(new java.awt.Color(205, 205, 250));
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

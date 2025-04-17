@@ -109,7 +109,7 @@ public class GestionarPacientes extends javax.swing.JDialog {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(182, 182, 249));
+        jPanel3.setBackground(new java.awt.Color(205, 205, 250));
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

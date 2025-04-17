@@ -37,7 +37,7 @@ public class MostrarInventario extends javax.swing.JDialog {
         this.sistema = sistema;
         this.ventana= ventana;
          
-        actualizarTablaEmpleados();
+        
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
         
@@ -45,6 +45,10 @@ public class MostrarInventario extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
+         MedicamentoBuscar.setText("Ingresa el nombre del medicamento a buscar");
+         MedicamentoBuscar.setForeground(Color.GRAY);
+        
+        ListaMedicamentos.setSelectionBackground(new Color(198, 244, 214));
         
     }
 
@@ -59,6 +63,7 @@ public class MostrarInventario extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         MedicamentoBuscar = new javax.swing.JTextField();
+        btnBuscarMedicamento = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Atras = new javax.swing.JButton();
@@ -81,8 +86,38 @@ public class MostrarInventario extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        btnBuscarMedicamento.setBackground(new java.awt.Color(205, 205, 250));
+        btnBuscarMedicamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMedicamentoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarMedicamentoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarMedicamentoMouseExited(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(207, 207, 253));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/buscar.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnBuscarMedicamentoLayout = new javax.swing.GroupLayout(btnBuscarMedicamento);
+        btnBuscarMedicamento.setLayout(btnBuscarMedicamentoLayout);
+        btnBuscarMedicamentoLayout.setHorizontalGroup(
+            btnBuscarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarMedicamentoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+        btnBuscarMedicamentoLayout.setVerticalGroup(
+            btnBuscarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarMedicamentoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,18 +126,20 @@ public class MostrarInventario extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(MedicamentoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscarMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(MedicamentoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MedicamentoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(btnBuscarMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -118,9 +155,9 @@ public class MostrarInventario extends javax.swing.JDialog {
         });
 
         btnMostrarMedicamentos.setBackground(new java.awt.Color(0, 153, 51));
-        btnMostrarMedicamentos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnMostrarMedicamentos.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnMostrarMedicamentos.setForeground(new java.awt.Color(255, 255, 255));
-        btnMostrarMedicamentos.setText("Mostrar Empleados");
+        btnMostrarMedicamentos.setText("Mostrar medicamentos");
         btnMostrarMedicamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarMedicamentosActionPerformed(evt);
@@ -161,7 +198,7 @@ public class MostrarInventario extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jScrollPane1);
 
         btnEliminar.setBackground(new java.awt.Color(255, 153, 0));
-        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -205,9 +242,10 @@ public class MostrarInventario extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(Atras))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addComponent(Atras)
+                        .addGap(265, 265, 265))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -233,12 +271,13 @@ public class MostrarInventario extends javax.swing.JDialog {
                         .addComponent(btnInformacionMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
                         .addComponent(btnEliminar)
-                        .addGap(92, 92, 92)
-                        .addComponent(btnMostrarMedicamentos))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(87, 87, 87)
+                        .addComponent(btnMostrarMedicamentos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(40, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(Atras)
                 .addGap(36, 36, 36))
         );
@@ -353,6 +392,46 @@ public class MostrarInventario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_MedicamentoBuscarMouseClicked
 
+    private void btnBuscarMedicamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMedicamentoMouseClicked
+        DefaultTableModel modelo = (DefaultTableModel) ListaMedicamentos.getModel();
+        modelo.setRowCount(0); 
+
+        String textoNombre = MedicamentoBuscar.getText().trim();
+        if (textoNombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingresa un nombre válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            Medicamento medi = sistema.buscarMedicamento(textoNombre);
+
+            if (medi == null) {
+                JOptionPane.showMessageDialog(this, "El medicamento con nombre \"" + textoNombre + "\" no se encuentra en el hospital.", "Error", JOptionPane.ERROR_MESSAGE);
+                MedicamentoBuscar.setText(""); 
+                return;
+            }
+
+            modelo.addRow(new Object[]{
+                medi.getNombre(),
+                medi.getDescripcion(),
+                medi.getCosto(),
+                medi.getPrecioVenta(),
+                medi.getCantidad()
+            });
+        } catch (MedicamentoNoEncontradoException e) {
+            JOptionPane.showMessageDialog(this, "El medicamento \"" + textoNombre + "\" no fue encontrado en el sistema.", "Error", JOptionPane.ERROR_MESSAGE);
+            MedicamentoBuscar.setText(""); 
+        }
+    }//GEN-LAST:event_btnBuscarMedicamentoMouseClicked
+
+    private void btnBuscarMedicamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMedicamentoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMedicamentoMouseEntered
+
+    private void btnBuscarMedicamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMedicamentoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMedicamentoMouseExited
+
     
     private void actualizarTablaEmpleados() {
         DefaultTableModel modelo = (DefaultTableModel) ListaMedicamentos.getModel();
@@ -375,6 +454,7 @@ public class MostrarInventario extends javax.swing.JDialog {
     private javax.swing.JButton Atras;
     private javax.swing.JTable ListaMedicamentos;
     private javax.swing.JTextField MedicamentoBuscar;
+    private javax.swing.JPanel btnBuscarMedicamento;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel btnInformacionMedicamentos;
     private javax.swing.JButton btnMostrarMedicamentos;

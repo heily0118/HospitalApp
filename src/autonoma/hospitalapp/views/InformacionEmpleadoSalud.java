@@ -74,7 +74,7 @@ public class InformacionEmpleadoSalud extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(181, 181, 235));
+        jPanel2.setBackground(new java.awt.Color(205, 205, 250));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
