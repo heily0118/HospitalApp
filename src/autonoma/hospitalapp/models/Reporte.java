@@ -207,7 +207,11 @@ public class Reporte {
                     archivo2.add("No hay medicamentos en el inventario.");
                 } else {
                     for (Medicamento m : medicamentos) {
-                        archivo2.add(String.format("  - %s", m.getNombre()));
+                        archivo2.add(String.format("  - Nombre: %s", m.getNombre()));
+                        archivo2.add(String.format("  - Descripción: %s", m.getDescripcion()));
+                        archivo2.add(String.format("  - Cantidad: %s", m.getCantidad()));
+                        archivo2.add(String.format("  - Precio: %s", m.getPrecioVenta()));
+                        archivo2.add(String.format("  - Enfermedad que alivia: %s", m.getEnfermedadQueAlivia()));
                     }
                 }
 

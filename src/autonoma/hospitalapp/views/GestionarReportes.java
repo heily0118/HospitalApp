@@ -24,7 +24,7 @@ public class GestionarReportes extends javax.swing.JDialog {
     /**
      * Creates new form GestionarReportes
      */
-    public GestionarReportes(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
+    public GestionarReportes(java.awt.Frame parent, boolean modal, SistemaCentral sistema) {
         super(parent, modal);
         initComponents();
         setSize(620, 700);

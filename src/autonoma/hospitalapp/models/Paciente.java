@@ -4,6 +4,10 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.CamposObligatoriosException;
+import autonoma.hospitalapp.exceptions.CaracteresEspecialesException;
+import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
+import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
 import java.util.ArrayList;
 
 /**
@@ -206,7 +210,22 @@ public class Paciente {
     public void setMedicinas(ArrayList<Medicamento> medicinas) {
         this.medicinas = medicinas;
     }
-
+    
+    /**
+     * Agrega una enfermedad al paciente si aún no la tiene.
+     * @param enfermedad La enfermedad que se desea agregar.
+     * @return true si se agregó correctamente, false si ya existía.
+     */
+    public boolean agregarEnfermedad(Enfermedad enfermedad) throws CamposObligatoriosException, PacienteNoEncontradoException, CaracteresEspecialesException{
+        for (Enfermedad e : enfermedades) {
+            if (e.getNombre().equalsIgnoreCase(enfermedad.getNombre())) {
+                return false;
+            }
+        }
+        enfermedades.add(enfermedad);
+        return true;
+    }
+    
     /**
      * Cura una enfermedad del paciente utilizando un medicamento.
      * 

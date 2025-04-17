@@ -1,2 +1,12 @@
 ========================== REPORTE DE PACIENTES ======================
-No hay pacientes registrados.
+Nombre: Maria
+Documento: 393930
+Edad: 2
+Correo: mariapaz@gmail.com
+Teléfono: 49404
+Estado: Saludable
+Enfermedades:
+  - Gripa
+Medicamentos:
+  - No tiene medicamentos asignados.
+------------------------------------
