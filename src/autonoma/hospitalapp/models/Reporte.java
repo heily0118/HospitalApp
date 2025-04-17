@@ -92,7 +92,7 @@ public class Reporte {
      * Muestra el nombre, documento, edad y salario base de cada empleado.
      * Si no hay empleados, muestra un mensaje indicando que no hay registros.
      */
-    public void generarReporteEmpleados() throws IOException{
+    public String generarReporteEmpleados() throws IOException{
         ArrayList<String> archivo3 = new ArrayList<>();
     
         archivo3.add("===== REPORTE DE EMPLEADOS =====");
@@ -114,6 +114,13 @@ public class Reporte {
         
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("reporteEmpleados.txt");
+        
+        StringBuilder reporteTexto = new StringBuilder();
+        for (String linea : lineas) {
+            reporteTexto.append(linea).append("\n");
+        }
+
+        return reporteTexto.toString();
     }
 
     /**

@@ -5,8 +5,12 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.Reporte;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -258,8 +262,19 @@ public class GestionarReportes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarReporteEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteEmpleadosMouseClicked
-        GenerarReporteEmpleados ventanaGenerarReporteEmpleados = new GenerarReporteEmpleados(this, true, sistema);
+
+        Reporte reporte = new Reporte(sistema.getHospital().getEmpleados(),
+        sistema.getHospital().getPacientes(),
+        sistema.getHospital().getFarmacia());
+
+        GenerarReporteEmpleados ventanaGenerarReporteEmpleados = null;
+        try {
+            ventanaGenerarReporteEmpleados = new GenerarReporteEmpleados(this, true, sistema, reporte);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionarReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ventanaGenerarReporteEmpleados.setVisible(true);
+
     }//GEN-LAST:event_btnGenerarReporteEmpleadosMouseClicked
 
     private void btnGenerarReporteEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteEmpleadosMouseEntered
