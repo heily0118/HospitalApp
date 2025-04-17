@@ -77,7 +77,8 @@ public class SistemaCentral {
         return hospital.buscarPaciente(nombre);
     }
 
-    public void actualizarPaciente(Paciente paciente) {
+    public void actualizarPaciente(Paciente paciente) throws DatoInvalidoException, CamposObligatoriosException, PacienteDuplicadoException, CorreoInvalidoException, 
+            CaracteresEspecialesException, EstadoDePacienteInvalidoException{
         hospital.actualizarPaciente(paciente.getNombre(),paciente);
     }
 

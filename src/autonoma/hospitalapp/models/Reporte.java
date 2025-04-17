@@ -135,7 +135,7 @@ public class Reporte {
                 archivo.add("Edad: " + p.getEdad());
                 archivo.add("Correo: " + p.getCorreo());
                 archivo.add("Teléfono: " + p.getTelefono());
-                archivo.add("Estado: " + (p.getEstadoPaciente() ? "Activo" : "Inactivo"));
+                archivo.add("Estado: " + p.getEstadoPaciente());
             
                 archivo.add("Enfermedades:");
                 if (p.getEnfermedades().isEmpty()) {

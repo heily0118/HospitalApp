@@ -14,39 +14,39 @@ import autonoma.hospitalapp.models.Enfermedad;
 import autonoma.hospitalapp.models.Medicamento;
 import autonoma.hospitalapp.models.Paciente;
 import autonoma.hospitalapp.models.SistemaCentral;
-import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Maria Paz Puerta
  */
-public class AgregarPaciente extends javax.swing.JDialog {
+public class ActualizarPaciente extends javax.swing.JDialog {
     private ArrayList<Paciente> pacientes;
     private SistemaCentral sistema;
     private Object estadoTexto;
+    private javax.swing.JComboBox<String> cmbEstado;
+    private Paciente paciente;
     /**
-     * Creates new form AgregarPaciente
+     * Creates new form ActualizarPaciente
      */
-    public AgregarPaciente(javax.swing.JDialog parent, boolean modal, SistemaCentral sistema) {
-        super((Dialog)parent, modal);
+    public ActualizarPaciente(java.awt.Frame parent, boolean modal, SistemaCentral sistema, Paciente paciente) {
+        super(parent, modal);
         initComponents();
         setSize(550, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
         this.sistema.getHospital().getPacientes();
-        EstadoPaciente = new javax.swing.JComboBox<>();
-        this.EstadoPaciente.removeAllItems();
-        EstadoPaciente.addItem("Saludable");
-        EstadoPaciente.addItem("Crítico");
-        EstadoPaciente.setSelectedIndex(0);
+        this.paciente = paciente;
         
+        cmbEstado = new JComboBox<>();
+        cmbEstado.addItem("Saludable");
+        cmbEstado.addItem("Crítico");
+
+        getContentPane().add(cmbEstado);
         
         try{ 
            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/Hospital.png")).getImage());
@@ -55,6 +55,7 @@ public class AgregarPaciente extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
+        llenarCampos();
     }
 
     /**
@@ -66,8 +67,8 @@ public class AgregarPaciente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -78,44 +79,44 @@ public class AgregarPaciente extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        txtEstadoPaciente = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JToggleButton();
-        EstadoPaciente = new javax.swing.JComboBox<>();
+        btnActualizar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel10.setBackground(new java.awt.Color(188, 188, 255));
+        jPanel12.setBackground(new java.awt.Color(188, 188, 255));
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Agregar Paciente");
+        jLabel4.setText("Actualizar Paciente");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel4)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Ingrese el nombre del paciente:");
+        jLabel5.setText("Ingrese el nueno nombre del paciente:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Ingrese el documento del paciente:");
+        jLabel6.setText("Ingrese el nuevo documento del paciente:");
 
         txtDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,13 +125,13 @@ public class AgregarPaciente extends javax.swing.JDialog {
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Ingrese el correo del paciente:");
+        jLabel7.setText("Ingrese el nuevo correo del paciente:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Ingrese la edad del paciente:");
+        jLabel8.setText("Ingrese la nueva edad del paciente:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Seleccione el estado del paciente (Saludable o crítico):");
+        jLabel9.setText("Ingrese el nuevo estado del paciente (Saludable o crítico):");
 
         btnCancelar.setBackground(new java.awt.Color(204, 0, 0));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -144,132 +145,131 @@ public class AgregarPaciente extends javax.swing.JDialog {
         });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Ingrese el télefono del paciente:");
+        jLabel10.setText("Ingrese el nuevo télefono del paciente:");
 
-        btnAgregar.setBackground(new java.awt.Color(0, 102, 51));
-        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBackground(new java.awt.Color(0, 153, 204));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
-        EstadoPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saludable", "Crítico" }));
-        EstadoPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EstadoPacienteActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(EstadoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(153, Short.MAX_VALUE))
+                        .addComponent(txtEstadoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(24, 24, 24)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(51, 51, 51)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(EstadoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEstadoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocumentoActionPerformed
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         String nombre = txtNombre.getText().trim();
         String documento = txtDocumento.getText().trim();
         String edadStr = txtEdad.getText().trim();
         String correo = txtCorreo.getText().trim();
         String telefono = txtTelefono.getText().trim();
-        String estadoTexto = (String) EstadoPaciente.getSelectedItem(); 
+        String estadoTexto = (String) cmbEstado.getSelectedItem(); 
 
-  
 
         try {
-            if (nombre.isEmpty() || documento.isEmpty() || edadStr.isEmpty() || correo.isEmpty() || telefono.isEmpty() || estadoTexto == null || estadoTexto.isEmpty()) {
+            if (nombre.isEmpty() || documento.isEmpty() || edadStr.isEmpty() || correo.isEmpty() || telefono.isEmpty() || estadoTexto.equals("null")) {
                 JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -349,14 +349,14 @@ public class AgregarPaciente extends javax.swing.JDialog {
                 }
             }
             
-            
             String estadoFinal = estadoTexto.trim().toLowerCase();
             if (!estadoFinal.equals("saludable") && !estadoFinal.equals("crítico")) {
                 JOptionPane.showMessageDialog(this, "El estado del paciente debe ser 'Saludable' o 'Crítico'.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            estadoFinal = estadoFinal.substring(0, 1).toUpperCase() + estadoFinal.substring(1);
+    // Formatear para guardar en mayúscula inicial
+    estadoFinal = estadoFinal.substring(0, 1).toUpperCase() + estadoFinal.substring(1);
 
             
 
@@ -365,36 +365,46 @@ public class AgregarPaciente extends javax.swing.JDialog {
 
             Paciente nuevoPaciente = new Paciente(nombre, documento,edad, correo, telefono, estadoFinal, enfermedades, medicinas);
 
-            sistema.agregarPacientes(nuevoPaciente);
+            sistema.actualizarPaciente(nuevoPaciente);
+            
+            paciente.setNombre(nombre);
+            paciente.setDocumento(documento);
+            paciente.setCorreo(correo);
+            paciente.setEdad(edad);
+            paciente.setTelefono(telefono);
+            paciente.setEstadoPaciente(estadoTexto);
 
-            
-            
-            JOptionPane.showMessageDialog(this, "Paciente agregado exitosamente.");
+
+            JOptionPane.showMessageDialog(this, "Paciente actualizado exitosamente.");
             this.dispose(); 
 
         } catch (DatoInvalidoException | CamposObligatoriosException | PacienteDuplicadoException | CorreoInvalidoException 
                 | CaracteresEspecialesException | EstadoDePacienteInvalidoException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al agregar paciente: " + e.getClass().getName() + " - " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al actualizar paciente: " + e.getClass().getName() + " - " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void txtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocumentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDocumentoActionPerformed
-
-    private void EstadoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstadoPacienteActionPerformed
-        
-    }//GEN-LAST:event_EstadoPacienteActionPerformed
- 
+    }//GEN-LAST:event_btnActualizarActionPerformed
+    
+    private void llenarCampos() {
+        if (paciente != null) {
+            txtNombre.setText(paciente.getNombre());
+            txtDocumento.setText(paciente.getDocumento());
+            txtEdad.setText(String.valueOf(paciente.getEdad()));
+            txtCorreo.setText(paciente.getCorreo());
+            txtTelefono.setText(paciente.getTelefono());
+            cmbEstado.setSelectedItem(paciente.getEstadoPaciente());
+        } else {
+            JOptionPane.showMessageDialog(this, "El paciente no está disponible para actualizar.");
+        }
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> EstadoPaciente;
-    private javax.swing.JToggleButton btnAgregar;
+    private javax.swing.JToggleButton btnActualizar;
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -402,10 +412,13 @@ public class AgregarPaciente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEstadoPaciente;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables

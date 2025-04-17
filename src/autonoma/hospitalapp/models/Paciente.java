@@ -44,7 +44,7 @@ public class Paciente {
     /**
      * Estado del paciente (true si está activo, false si no lo está).
      */
-    private boolean estadoPaciente;
+    private String estadoPaciente;
 
     /**
      * Lista de enfermedades que tiene o ha tenido el paciente.
@@ -68,7 +68,7 @@ public class Paciente {
      * @param enfermedades Es la lista de enfermedades que tiene el paciente.
      * @param medicinas Es la lista de medicamentos que está tomando el paciente.
      */
-    public Paciente(String nombre, String documento, int edad, String correo, String telefono, boolean estadoPaciente, ArrayList<Enfermedad> enfermedades, ArrayList<Medicamento> medicinas) {
+    public Paciente(String nombre, String documento, int edad, String correo, String telefono, String estadoPaciente, ArrayList<Enfermedad> enfermedades, ArrayList<Medicamento> medicinas) {
         this.nombre = nombre;
         this.documento = documento;
         this.edad = edad;
@@ -163,7 +163,7 @@ public class Paciente {
      * Obtiene el estado del paciente (activo o inactivo).
      * @return Retorna el estado del paciente.
      */
-    public boolean getEstadoPaciente() {
+    public String getEstadoPaciente() {
         return estadoPaciente;
     }
 
@@ -171,7 +171,7 @@ public class Paciente {
      * Establece el estado del paciente (activo o inactivo).
      * @param estadoPaciente Es el estado del paciente.
      */
-    public void setEstadoPaciente(boolean estadoPaciente) {
+    public void setEstadoPaciente(String estadoPaciente) {
         this.estadoPaciente = estadoPaciente;
     }
 

@@ -9,11 +9,13 @@ import autonoma.hospitalapp.models.Hospital;
 import autonoma.hospitalapp.models.Paciente;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
+import java.awt.Frame;
 import java.util.ArrayList;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -46,9 +48,6 @@ public class MostrarPacientes extends javax.swing.JDialog {
         }
         this.sistema = sistema;
         this.sistema.getHospital().getPacientes();
-        PacienteBuscar.setText("Ingresa el nombre del paciente a buscar");
-        PacienteBuscar.setForeground(Color.GRAY);
-        
         this.sistema = sistema;
         this.pacientes = sistema.getHospital().getPacientes();
         this.ventanaPrincipal = ventanaPrincipal;
@@ -74,74 +73,37 @@ public class MostrarPacientes extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel10 = new javax.swing.JPanel();
-        PacienteBuscar = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPacientes = new javax.swing.JTable();
         btnActualizar = new javax.swing.JToggleButton();
         btnEliminar = new javax.swing.JToggleButton();
+        btnCancelar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel10.setBackground(new java.awt.Color(204, 204, 255));
 
-        PacienteBuscar.setText("Ingresa el nombre del paciente");
-        PacienteBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PacienteBuscarMouseClicked(evt);
-            }
-        });
-        PacienteBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PacienteBuscarActionPerformed(evt);
-            }
-        });
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/buscar.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Lista de Pacientes");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(PacienteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(PacienteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -196,6 +158,16 @@ public class MostrarPacientes extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(0, 153, 153));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -206,7 +178,8 @@ public class MostrarPacientes extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnActualizar)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,13 +187,15 @@ public class MostrarPacientes extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnActualizar)
-                .addGap(58, 58, 58)
+                .addGap(75, 75, 75)
                 .addComponent(btnEliminar)
-                .addGap(206, 206, 206))
+                .addGap(79, 79, 79)
+                .addComponent(btnCancelar)
+                .addGap(104, 104, 104))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -242,14 +217,23 @@ public class MostrarPacientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tablaPacientes.getSelectedRow();
+    
+        if (fila >= 0) {
+            Paciente paciente = this.pacientes.get(fila);
+            ActualizarPaciente ventanaActualizar = new ActualizarPaciente((Frame) SwingUtilities.getWindowAncestor(this), true, sistema, paciente);
+            ventanaActualizar.setVisible(true);
+            llenarTabla();
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione el amigo que desea actualizar");
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int filaSeleccionada = tablaPacientes.getSelectedRow();
     
         if (filaSeleccionada == -1) {  
-            JOptionPane.showMessageDialog(this, "Por favor, selecciona un amigo de la tabla.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un paciente de la tabla.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -267,30 +251,22 @@ public class MostrarPacientes extends javax.swing.JDialog {
         if (confirmacion == JOptionPane.YES_OPTION) {  
             try {
                 if (sistema.eliminarPaciente(nombre)) {
-                    JOptionPane.showMessageDialog(this, "Empleado eliminado exitosamente.");
+                    JOptionPane.showMessageDialog(this, "Paciente eliminado exitosamente.");
                      
                     actualizarTablaPacientes(); 
                     
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el empleado.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar el paciente.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (PacienteNoEncontradoException e) {
-                JOptionPane.showMessageDialog(this, "No se encontró el amigo en el directorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El paciente no fue encontrado en la lista", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void PacienteBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PacienteBuscarMouseClicked
-        if (PacienteBuscar.getText().equals("Ingresa el nombre del paciente a buscar")) {
-            PacienteBuscar.setText("");
-            PacienteBuscar.setForeground(Color.BLACK);
-        }
-
-    }//GEN-LAST:event_PacienteBuscarMouseClicked
-
-    private void PacienteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PacienteBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PacienteBuscarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     public void llenarTabla() {
         DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Nombre","Documento","Edad", "Correo", "Teléfono", "Estado"}, this.pacientes.size());
@@ -309,29 +285,31 @@ public class MostrarPacientes extends javax.swing.JDialog {
         }
     }
     
-    private void actualizarTablaPacientes() {
+    public void actualizarTablaPacientes() {
         DefaultTableModel modelo = (DefaultTableModel) tablaPacientes.getModel();
         modelo.setRowCount(0);  
 
-        for (Paciente emp : sistema.getHospital().getPacientes()) {
+        for (Paciente paciente : sistema.getHospital().getPacientes()) {
             Object[] fila = {
                
-                emp.getNombre(),
-                emp.getDocumento(),
-                emp.getEdad()
+                paciente.getNombre(),
+                paciente.getDocumento(),
+                paciente.getEdad(),
+                paciente.getCorreo(),
+                paciente.getTelefono(),
+                paciente.getEstadoPaciente()
             };
             modelo.addRow(fila);  
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField PacienteBuscar;
     private javax.swing.JToggleButton btnActualizar;
+    private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JToggleButton btnEliminar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaPacientes;
     // End of variables declaration//GEN-END:variables
