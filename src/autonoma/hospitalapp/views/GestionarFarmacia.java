@@ -6,7 +6,9 @@ package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.Hospital;
 import autonoma.hospitalapp.models.SistemaCentral;
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -48,6 +50,13 @@ public class GestionarFarmacia extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnAgregarMedicamento = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnMostrarInventario = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        Atras3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -55,15 +64,127 @@ public class GestionarFarmacia extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnAgregarMedicamento.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarMedicamento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnAgregarMedicamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMedicamentoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarMedicamentoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMedicamentoMouseExited(evt);
+            }
+        });
+
+        jLabel2.setText("Agregar medicamento");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/AgregarEmpleado.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnAgregarMedicamentoLayout = new javax.swing.GroupLayout(btnAgregarMedicamento);
+        btnAgregarMedicamento.setLayout(btnAgregarMedicamentoLayout);
+        btnAgregarMedicamentoLayout.setHorizontalGroup(
+            btnAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarMedicamentoLayout.createSequentialGroup()
+                .addGroup(btnAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(btnAgregarMedicamentoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(btnAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel6)))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        btnAgregarMedicamentoLayout.setVerticalGroup(
+            btnAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarMedicamentoLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addContainerGap())
+        );
+
+        btnMostrarInventario.setBackground(new java.awt.Color(255, 255, 255));
+        btnMostrarInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnMostrarInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMostrarInventarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMostrarInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMostrarInventarioMouseExited(evt);
+            }
+        });
+
+        jLabel3.setText("Mostrar inventario");
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/MostrarEmpleados.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnMostrarInventarioLayout = new javax.swing.GroupLayout(btnMostrarInventario);
+        btnMostrarInventario.setLayout(btnMostrarInventarioLayout);
+        btnMostrarInventarioLayout.setHorizontalGroup(
+            btnMostrarInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMostrarInventarioLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnMostrarInventarioLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
+        btnMostrarInventarioLayout.setVerticalGroup(
+            btnMostrarInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnMostrarInventarioLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
+
+        Atras3.setBackground(new java.awt.Color(204, 0, 51));
+        Atras3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras3.setForeground(new java.awt.Color(255, 255, 255));
+        Atras3.setText("Atras");
+        Atras3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Atras3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(btnAgregarMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(Atras3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(btnMostrarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(btnAgregarMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(btnMostrarInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(Atras3)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
@@ -79,7 +200,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +228,53 @@ public class GestionarFarmacia extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarMedicamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMedicamentoMouseClicked
+        
+       AgregarMedicamento ventanaMedicamento= new AgregarMedicamento (this, true, sistema);
+        ventanaMedicamento.setVisible(true);
+    }//GEN-LAST:event_btnAgregarMedicamentoMouseClicked
+
+    private void btnAgregarMedicamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMedicamentoMouseEntered
+        this.mouseEntered(btnAgregarMedicamento);
+    }//GEN-LAST:event_btnAgregarMedicamentoMouseEntered
+
+    private void btnAgregarMedicamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMedicamentoMouseExited
+        this.mouseExited(btnAgregarMedicamento);
+    }//GEN-LAST:event_btnAgregarMedicamentoMouseExited
+
+    private void btnMostrarInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarInventarioMouseClicked
+        MostrarInventario ventanaMostrarInventario= new MostrarInventario(this, true,sistema);
+        ventanaMostrarInventario.setVisible(true);
+    }//GEN-LAST:event_btnMostrarInventarioMouseClicked
+
+    private void btnMostrarInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarInventarioMouseEntered
+        this.mouseEntered(btnMostrarInventario);
+    }//GEN-LAST:event_btnMostrarInventarioMouseEntered
+
+    private void btnMostrarInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarInventarioMouseExited
+        this.mouseExited(btnMostrarInventario);
+    }//GEN-LAST:event_btnMostrarInventarioMouseExited
+
+    private void Atras3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Atras3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_Atras3ActionPerformed
+    private void mouseEntered(JPanel panel){
+        panel.setBackground(new Color(200,255,255));
+        
+    }
+    private void mouseExited(JPanel panel){
+        panel.setBackground(new Color(255,255,255));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras3;
+    private javax.swing.JPanel btnAgregarMedicamento;
+    private javax.swing.JPanel btnMostrarInventario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
