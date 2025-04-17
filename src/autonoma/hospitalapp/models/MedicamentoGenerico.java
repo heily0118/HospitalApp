@@ -34,5 +34,9 @@ public class MedicamentoGenerico extends Medicamento{
     public void calcularPrecioVenta() {
         setPrecioVenta(getCosto() + (getCosto() * 0.10));
     }
+    @Override
+    public String toString() {
+        return super.toString();
+    }
     
 }

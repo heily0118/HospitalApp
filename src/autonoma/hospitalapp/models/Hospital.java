@@ -327,4 +327,5 @@ public class Hospital {
         return farmacia.obtenerMedicamentos();
     }
     
+   
 }

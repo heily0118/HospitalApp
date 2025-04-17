@@ -163,5 +163,15 @@ public abstract class Medicamento {
      * a las características específicas del tipo de medicamento.
      */
     public abstract void calcularPrecioVenta();
+    
+     @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\n" +
+               "Descripcion: " + descripcion + "\n" +
+               "Costo: " + costo+ "\n" +
+               "Precio venta: " + precioVenta + "\n" +
+               "Enfermedad que alivia : "+ enfermedadQueAlivia + "\n" +
+                "Cantidad : " + cantidad;
+    }
 }
    

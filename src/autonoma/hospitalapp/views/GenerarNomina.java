@@ -57,6 +57,7 @@ public class GenerarNomina extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnRegistrarPatrocinio = new javax.swing.JButton();
         btnGenerarNomina = new javax.swing.JButton();
@@ -67,8 +68,23 @@ public class GenerarNomina extends javax.swing.JDialog {
         totalNomina = new javax.swing.JTextField();
         estadoHospital = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        presupuestoTotal = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        presupuestoRestante = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -132,6 +148,28 @@ public class GenerarNomina extends javax.swing.JDialog {
 
         jLabel3.setText("Estado hospial:");
 
+        presupuestoTotal.setEditable(false);
+        presupuestoTotal.setBackground(new java.awt.Color(255, 255, 255));
+        presupuestoTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        presupuestoTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                presupuestoTotalActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Presupuesto");
+
+        presupuestoRestante.setEditable(false);
+        presupuestoRestante.setBackground(new java.awt.Color(255, 255, 255));
+        presupuestoRestante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        presupuestoRestante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                presupuestoRestanteActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Presupuetso restante:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -147,22 +185,29 @@ public class GenerarNomina extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Atras)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(Atras)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(estadoHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnRegistrarPatrocinio, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(presupuestoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(presupuestoRestante, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGenerarNomina)
-                        .addGap(23, 23, 23)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegistrarPatrocinio)
+                            .addComponent(btnGenerarNomina))))
                 .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
@@ -174,14 +219,22 @@ public class GenerarNomina extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(estadoHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(55, 55, 55)
-                        .addComponent(btnRegistrarPatrocinio))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presupuestoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(presupuestoRestante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(totalNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95)
+                .addGap(38, 38, 38)
+                .addComponent(btnRegistrarPatrocinio)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerarNomina)
                     .addComponent(Atras))
@@ -255,42 +308,39 @@ public class GenerarNomina extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRegistrarPatrocinioActionPerformed
 
     private void btnGenerarNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarNominaActionPerformed
-       try {
-        
-        sistema.generarNomina();
-        
-       
-        JOptionPane.showMessageDialog(this, "¡Nómina generada exitosamente!");
+        try {
+         sistema.generarNomina(); 
+         JOptionPane.showMessageDialog(this, "¡Nómina generada exitosamente!");
 
-        
-        StringBuilder empleadosStr = new StringBuilder();
-        for (Empleado emp : sistema.getHospital().getEmpleados()) {
-            empleadosStr.append(emp.getNombre())
-                        .append(" - $")
-                        .append(emp.calcularSalario())
-                        .append("\n");
-        }
 
-        
-        ListaEmpleados.setText(empleadosStr.toString());
+         StringBuilder empleadosStr = new StringBuilder("Lista de empleados y sus salarios:\n\n");
+         double total = 0;
 
-       
-        ArrayList<Nomina> nominas = sistema.getHospital().getNominas();
-        if (!nominas.isEmpty()) {
-            Nomina ultimaNomina = nominas.get(nominas.size() - 1);
-            totalNomina.setText(String.valueOf(ultimaNomina.getTotalPagado()));
-        }
+         for (Empleado emp : sistema.getHospital().getEmpleados()) {
+             double salario = emp.calcularSalario();
+             empleadosStr.append(emp.getNombre())
+                         .append(" - $")
+                         .append(String.format("%.2f", salario))
+                         .append("\n");
+             total += salario;
+         }
 
-       
-        estadoHospital.setText(sistema.getHospital().visualizarEstado());
-        
-    } catch (HospitalEnQuiebraException e) {
-        
-        JOptionPane.showMessageDialog(this, "El hospital está en quiebra. No se puede generar la nómina.", "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-       
-        JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+         ListaEmpleados.setText(empleadosStr.toString());
+         totalNomina.setText(String.format("%.2f", total));
+
+
+
+         double presupuesto = sistema.getHospital().getPresupuesto();
+         double restante = presupuesto - total;
+         presupuestoRestante.setText("$" + String.format("%.2f", restante));
+         presupuestoTotal.setText("$" +String.format("%.2f", presupuesto));
+         estadoHospital.setText(String.format(sistema.getHospital().visualizarEstado()));
+
+     } catch (HospitalEnQuiebraException e) {
+         JOptionPane.showMessageDialog(this, "El hospital está en quiebra. No se puede generar la nómina.", "Error", JOptionPane.ERROR_MESSAGE);
+     } catch (Exception e) {
+         JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+     }
     }//GEN-LAST:event_btnGenerarNominaActionPerformed
 
     private void estadoHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoHospitalActionPerformed
@@ -301,6 +351,14 @@ public class GenerarNomina extends javax.swing.JDialog {
     private void totalNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalNominaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_totalNominaActionPerformed
+
+    private void presupuestoTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presupuestoTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_presupuestoTotalActionPerformed
+
+    private void presupuestoRestanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presupuestoRestanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_presupuestoRestanteActionPerformed
 
     
 
@@ -313,9 +371,14 @@ public class GenerarNomina extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField presupuestoRestante;
+    private javax.swing.JTextField presupuestoTotal;
     private javax.swing.JTextField totalNomina;
     // End of variables declaration//GEN-END:variables
 }
