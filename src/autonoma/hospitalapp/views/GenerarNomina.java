@@ -5,10 +5,14 @@
 package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.Nomina;
 import autonoma.hospitalapp.models.SistemaCentral;
+import java.awt.List;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -230,24 +234,63 @@ public class GenerarNomina extends javax.swing.JDialog {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void btnRegistrarPatrocinioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPatrocinioActionPerformed
-        // TODO add your handling code here:
+       String input = JOptionPane.showInputDialog(this, "¿Cuánto deseas registrar como patrocinio?");
+    
+               if (input != null) {
+                try {
+                    double monto = Double.parseDouble(input);
+
+                    if (monto <= 0) {
+                        JOptionPane.showMessageDialog(this, "El monto debe ser mayor que 0.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    sistema.getHospital().registrarPatrocinio(monto);
+                    JOptionPane.showMessageDialog(this, "Patrocinio registrado con éxito por $" + monto);
+                    estadoHospital.setText(sistema.getHospital().visualizarEstado());
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "Por favor ingresa un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
     }//GEN-LAST:event_btnRegistrarPatrocinioActionPerformed
 
     private void btnGenerarNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarNominaActionPerformed
-      try {
+       try {
+        
         sistema.generarNomina();
+        
+       
         JOptionPane.showMessageDialog(this, "¡Nómina generada exitosamente!");
+
         
-        double total = 0;
-        for (Nomina n : sistema.getHospital().getNominas()) {
-            total += n.getTotalPagado();
+        StringBuilder empleadosStr = new StringBuilder();
+        for (Empleado emp : sistema.getHospital().getEmpleados()) {
+            empleadosStr.append(emp.getNombre())
+                        .append(" - $")
+                        .append(emp.calcularSalario())
+                        .append("\n");
         }
+
         
-        totalNomina.setText(String.valueOf(total));
+        ListaEmpleados.setText(empleadosStr.toString());
+
+       
+        ArrayList<Nomina> nominas = sistema.getHospital().getNominas();
+        if (!nominas.isEmpty()) {
+            Nomina ultimaNomina = nominas.get(nominas.size() - 1);
+            totalNomina.setText(String.valueOf(ultimaNomina.getTotalPagado()));
+        }
+
+       
+        estadoHospital.setText(sistema.getHospital().visualizarEstado());
+        
     } catch (HospitalEnQuiebraException e) {
-
+        
+        JOptionPane.showMessageDialog(this, "El hospital está en quiebra. No se puede generar la nómina.", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+       
+        JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-
     }//GEN-LAST:event_btnGenerarNominaActionPerformed
 
     private void estadoHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoHospitalActionPerformed

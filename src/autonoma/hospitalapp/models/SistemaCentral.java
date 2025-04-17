@@ -107,7 +107,6 @@ public class SistemaCentral {
            
             hospital.generarNomina(); 
             hospital.descontarDelPresupuesto(totalNomina); 
-            System.out.println("Nómina generada exitosamente.");
         } else {
             throw new HospitalEnQuiebraException();
         }
