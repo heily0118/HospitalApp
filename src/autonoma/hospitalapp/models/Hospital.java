@@ -212,14 +212,15 @@ public class Hospital {
     }
 
     public boolean eliminarPaciente(String nombre) throws PacienteNoEncontradoException {
-        for (int i = 0; i < pacientes.size(); i++) {
-            if (pacientes.get(i).getNombre().equals(nombre)) {
-                pacientes.remove(i);
-                System.out.println("Paciente eliminado: " + nombre);
-                return true; 
-            }
+        Paciente pacienteAEliminar = buscarPaciente(nombre);
+
+        if (pacienteAEliminar != null) {
+            pacientes.remove(pacienteAEliminar);
+            System.out.println("Paciente eliminado: " + nombre);
+            return true;
+        } else {
+            throw new PacienteNoEncontradoException();
         }
-        throw new PacienteNoEncontradoException();
     }
     
 
@@ -327,4 +328,5 @@ public class Hospital {
         return farmacia.obtenerMedicamentos();
     }
     
+   
 }

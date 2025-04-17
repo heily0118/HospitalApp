@@ -62,4 +62,10 @@ public class MedicamentoMarca extends Medicamento{
         setPrecioVenta(getCosto() + (getCosto() * 0.25));
     }
     
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+               "Fabricante: " + fabricante;
+    }
+    
 }
