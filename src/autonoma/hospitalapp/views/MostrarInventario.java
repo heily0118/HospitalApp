@@ -4,8 +4,15 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
+import autonoma.hospitalapp.models.Empleado;
+import autonoma.hospitalapp.models.Medicamento;
 import autonoma.hospitalapp.models.SistemaCentral;
+import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +37,7 @@ public class MostrarInventario extends javax.swing.JDialog {
         this.sistema = sistema;
         this.ventana= ventana;
          
+        actualizarTablaEmpleados();
         try{ 
         this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
         
@@ -49,24 +57,332 @@ public class MostrarInventario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        MedicamentoBuscar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        Atras = new javax.swing.JButton();
+        btnMostrarMedicamentos = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ListaMedicamentos = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+        btnInformacionMedicamentos = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(205, 205, 250));
+
+        MedicamentoBuscar.setText("Ingresa el nombre del medicamento");
+        MedicamentoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MedicamentoBuscarMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/buscar.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(MedicamentoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(MedicamentoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        Atras.setBackground(new java.awt.Color(204, 0, 51));
+        Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
+        Atras.setText("Atras");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+
+        btnMostrarMedicamentos.setBackground(new java.awt.Color(0, 153, 51));
+        btnMostrarMedicamentos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnMostrarMedicamentos.setForeground(new java.awt.Color(255, 255, 255));
+        btnMostrarMedicamentos.setText("Mostrar Empleados");
+        btnMostrarMedicamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarMedicamentosActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        ListaMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Descripcion", "Precio", "Precio Venta", "Cantidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(ListaMedicamentos);
+        if (ListaMedicamentos.getColumnModel().getColumnCount() > 0) {
+            ListaMedicamentos.getColumnModel().getColumn(0).setResizable(false);
+            ListaMedicamentos.getColumnModel().getColumn(1).setResizable(false);
+            ListaMedicamentos.getColumnModel().getColumn(2).setResizable(false);
+            ListaMedicamentos.getColumnModel().getColumn(3).setResizable(false);
+            ListaMedicamentos.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jScrollPane2.setViewportView(jScrollPane1);
+
+        btnEliminar.setBackground(new java.awt.Color(255, 153, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnInformacionMedicamentos.setBackground(new java.awt.Color(255, 255, 255));
+        btnInformacionMedicamentos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnInformacionMedicamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInformacionMedicamentosMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/mostrarInformacionEmpleado.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnInformacionMedicamentosLayout = new javax.swing.GroupLayout(btnInformacionMedicamentos);
+        btnInformacionMedicamentos.setLayout(btnInformacionMedicamentosLayout);
+        btnInformacionMedicamentosLayout.setHorizontalGroup(
+            btnInformacionMedicamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnInformacionMedicamentosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(114, 114, 114))
+        );
+        btnInformacionMedicamentosLayout.setVerticalGroup(
+            btnInformacionMedicamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnInformacionMedicamentosLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(Atras))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMostrarMedicamentos)
+                        .addGap(30, 30, 30))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(btnEliminar))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnInformacionMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(btnInformacionMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(btnEliminar)
+                        .addGap(92, 92, 92)
+                        .addComponent(btnMostrarMedicamentos))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Atras)
+                .addGap(36, 36, 36))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_AtrasActionPerformed
+
+    private void btnMostrarMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarMedicamentosActionPerformed
+
+        DefaultTableModel modelo = (DefaultTableModel) ListaMedicamentos.getModel();
+        modelo.setRowCount(0);
+
+        ArrayList<Medicamento> medicamentos= sistema.obtenerMedicamentos();
+
+        for (Medicamento medi : medicamentos) {
+            Object[] fila = {
+                medi.getNombre(),
+                medi.getDescripcion(),
+                medi.getCosto(),
+                medi.getPrecioVenta(),
+                medi.getCantidad()
+
+            };
+            modelo.addRow(fila);
+        }
+    }//GEN-LAST:event_btnMostrarMedicamentosActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       int filaSeleccionada = ListaMedicamentos.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+
+            String nombreMedicamento = (String) ListaMedicamentos.getValueAt(filaSeleccionada, 0); 
+
+            int confirmacion = JOptionPane.showConfirmDialog(this,
+                "¿Está seguro de que desea eliminar el medicamento " + nombreMedicamento + "?",
+                "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                try {
+                   
+                    if (sistema.eliminarMedicamento(nombreMedicamento)) {
+                        JOptionPane.showMessageDialog(this, "Medicamento eliminado exitosamente.");
+                        actualizarTablaEmpleados();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No se pudo eliminar el medicamento.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (MedicamentoNoEncontradoException e) {
+                   
+                    JOptionPane.showMessageDialog(this, "El medicamento no se encuentra en el inventario.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un medicamento para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnInformacionMedicamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformacionMedicamentosMouseClicked
+        int filaSeleccionada = ListaMedicamentos.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un medicamento en la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String nombreMedicamento = ListaMedicamentos.getValueAt(filaSeleccionada, 0).toString();
+
+        try {
+            Medicamento medicamento = sistema.buscarMedicamento(nombreMedicamento);
+
+            
+            if (medicamento == null) {
+                JOptionPane.showMessageDialog(this, "El medicamento seleccionado no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+           
+           MostrarInformacionMedicamento mostrarInfo = new MostrarInformacionMedicamento(this, true,sistema, medicamento);
+        
+            mostrarInfo.setVisible(true);
+
+        } catch (MedicamentoNoEncontradoException e) {
+            JOptionPane.showMessageDialog(this, "El medicamento seleccionado no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnInformacionMedicamentosMouseClicked
+
+    private void MedicamentoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MedicamentoBuscarMouseClicked
+        if (MedicamentoBuscar.getText().equals("Ingresa el nombre del medicamento a buscar")) {
+            MedicamentoBuscar.setText("");
+            MedicamentoBuscar.setForeground(Color.BLACK);
+        }
+
+    }//GEN-LAST:event_MedicamentoBuscarMouseClicked
+
     
+    private void actualizarTablaEmpleados() {
+        DefaultTableModel modelo = (DefaultTableModel) ListaMedicamentos.getModel();
+        modelo.setRowCount(0);  
+
+        for (Medicamento medi : sistema.getHospital().getFarmacia().getInventario().getMedicamentos()) {
+            Object[] fila = {
+               
+                medi.getNombre(),
+                medi.getDescripcion(),
+                medi.getCosto(),
+                medi.getPrecioVenta(),
+                medi.getCantidad()
+            };
+            modelo.addRow(fila);  
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
+    private javax.swing.JTable ListaMedicamentos;
+    private javax.swing.JTextField MedicamentoBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JPanel btnInformacionMedicamentos;
+    private javax.swing.JButton btnMostrarMedicamentos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

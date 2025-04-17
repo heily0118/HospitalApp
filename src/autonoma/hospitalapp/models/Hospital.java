@@ -4,6 +4,8 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -277,18 +279,52 @@ public class Hospital {
     }
 
     public void comprarMedicamento(Medicamento medicamento, int cantidad) {
-        if (visualizarEstado().equals("El hospital está en quiebra.")) {
-            System.out.println("No se puede agregar medicamentos, el hospital está en quiebra.");
-            return;
-        }
+        try {
+           
+            if (visualizarEstado().equals("Quiebra")) {
+                throw new HospitalEnQuiebraException();
+            }
 
-        double costoTotal = medicamento.getCosto() * cantidad;
-        if (presupuesto >= costoTotal) {
-            farmacia.getInventario().agregarMedicamento(medicamento, cantidad);
-            presupuesto -= costoTotal;
-            System.out.println("Medicamento comprado exitosamente: " + medicamento.getNombre() + ", Cantidad: " + cantidad);
-        } else {
-            System.out.println("No hay suficiente presupuesto para comprar el medicamento.");
+           
+            double costoTotal = medicamento.getCosto() * cantidad;
+
+            
+            if (presupuesto >= costoTotal) {
+               
+                farmacia.agregarMedicamento(medicamento, cantidad);
+                presupuesto -= costoTotal;
+                System.out.println("Medicamento comprado exitosamente: " + medicamento.getNombre() + ", Cantidad: " + cantidad);
+            } else {
+               
+                System.out.println();
+            }
+        } catch (HospitalEnQuiebraException e) {
+            
+            System.out.println(e.getMessage());
         }
     }
+    
+    
+    public Medicamento buscarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
+       Medicamento medicamento = farmacia.buscarMedicamento(nombre);
+        if (medicamento != null) {
+            return medicamento;
+        } else {
+            throw new MedicamentoNoEncontradoException();
+        }
+    }
+    
+    public boolean eliminarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
+        boolean eliminado = farmacia.eliminarMedicamento(nombre);
+        if (eliminado) {
+            return true;
+        } else {
+            throw new MedicamentoNoEncontradoException();
+        }
+    }
+    
+    public ArrayList<Medicamento> obtenerMedicamentos() {
+        return farmacia.obtenerMedicamentos();
+    }
+    
 }

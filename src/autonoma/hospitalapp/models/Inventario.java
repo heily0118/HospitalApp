@@ -50,33 +50,26 @@ public class Inventario {
     
     
     public void agregarMedicamento(Medicamento medicamento, int cantidad) {
-        
-        boolean encontrado = false;
-        for (Medicamento medica : medicamentos) {
-            if (medica.getNombre().equals(medicamento.getNombre())) {
-              
-                medica.setCantidad(medica.getCantidad() + cantidad);
-                encontrado = true;
-                break;
-            }
-        }
-        
-      
-        if (!encontrado) {
+        Medicamento existente = buscarPorNombre(medicamento.getNombre());
+
+        if (existente != null) {
+            
+            existente.setCantidad(existente.getCantidad() + cantidad);
+        } else {
+            
             medicamento.setCantidad(cantidad);
             medicamentos.add(medicamento);
         }
     }
 
    
-    public void eliminarMedicamento(String nombre) {
-        for (int i = 0; i < medicamentos.size(); i++) {
-        Medicamento medicamento = medicamentos.get(i);
-        if (medicamento.getNombre().equals(nombre)) {
-            medicamentos.remove(i); 
-            break;  
+    public boolean eliminarMedicamento(String nombre) {
+        Medicamento medicamento = buscarPorNombre(nombre);
+        if (medicamento != null) {
+            medicamentos.remove(medicamento);
+            return true; 
         }
-    }
+        return false; 
     }
 
     
@@ -90,20 +83,7 @@ public class Inventario {
     }
 
   
-    public String mostrarMedicamentos() {
-        if (medicamentos.isEmpty()) {
-            return "No hay medicamentos registrados.";
-        }
-
-        String resultado = "Lista de medicamentos:\n";
-        for (Medicamento m : medicamentos) {
-            resultado += "Nombre: " + m.getNombre() + "\n";
-            resultado += "Costo: " + m.getCosto() + "\n";
-            resultado += "Precio venta: " + m.getPrecioVenta() + "\n";
-            resultado += "Descripción: " + m.getDescripcion() + "\n";
-            resultado += "---------------------------\n";
-        }
-        return resultado;
+    public ArrayList<Medicamento> obtenerListaMedicamentos() {
+        return medicamentos;
     }
-    
 }

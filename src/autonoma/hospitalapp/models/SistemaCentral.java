@@ -10,6 +10,7 @@ import autonoma.hospitalapp.exceptions.CorreoInvalidoException;
 import autonoma.hospitalapp.exceptions.DatoInvalidoException;
 import autonoma.hospitalapp.exceptions.EstadoDePacienteInvalidoException;
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class SistemaCentral {
     }
 
     public boolean eliminarPaciente(String nombre) throws PacienteNoEncontradoException {
-        boolean eliminadoPaciente = hospital.eliminarPaciente(nombre);
+          boolean eliminadoPaciente = hospital.eliminarPaciente(nombre);
         return eliminadoPaciente;
     }
 
@@ -83,10 +84,27 @@ public class SistemaCentral {
     }
 
    
-    public void gestionarFarmacia(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException {
-        hospital.getFarmacia().agregarMedicamento(medicamento, cantidad);
+    public void realizarCompra(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException {
+        hospital.comprarMedicamento(medicamento, cantidad);
     }
     
+    public boolean eliminarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
+        return hospital.eliminarMedicamento(nombre);
+    }
+    
+     public ArrayList<Medicamento> obtenerMedicamentos() {
+         return hospital.obtenerMedicamentos();
+    }
+     
+     
+     public Medicamento buscarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
+        Medicamento medicamento = hospital.buscarMedicamento(nombre);
+        if (medicamento != null) {
+            return medicamento;
+        } else {
+            throw new MedicamentoNoEncontradoException();
+        }
+    }
     /**
      * Genera la nómina de todos los empleados del hospital.
      * Si el presupuesto no es suficiente o si el hospital está en quiebra, lanza una excepción.

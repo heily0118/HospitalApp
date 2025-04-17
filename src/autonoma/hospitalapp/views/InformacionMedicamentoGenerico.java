@@ -217,40 +217,40 @@ public class InformacionMedicamentoGenerico extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
-       try {
-       
-        String nombre = nombreMedicamento.getText();
-        String descripcion = descripcionMedicamento.getText();
-        double costo = Double.parseDouble(costoMedicamento.getText());
-        String enfermedadAlivivia = enfermedadAlivia.getText();
-        int cantidad = Integer.parseInt(cantidadMedicamento.getText());
+        try {
 
-        MedicamentoGenerico medicamento = new MedicamentoGenerico(
-                nombre, descripcion, costo, enfermedadAlivivia, cantidad
-            );
+         String nombre = nombreMedicamento.getText();
+         String descripcion = descripcionMedicamento.getText();
+         double costo = Double.parseDouble(costoMedicamento.getText());
+         String enfermedadAlivivia = enfermedadAlivia.getText();
+         int cantidad = Integer.parseInt(cantidadMedicamento.getText());
 
-      
-        medicamento.calcularPrecioVenta();
+         MedicamentoGenerico medicamento = new MedicamentoGenerico(
+                 nombre, descripcion, costo, enfermedadAlivivia, cantidad
+             );
 
-        sistema.getHospital().getFarmacia().agregarMedicamento(medicamento, cantidad);
 
-       
-        JOptionPane.showMessageDialog(this, "Medicamento genérico creado exitosamente.\nPrecio de venta: $" + medicamento.getPrecioVenta());
+         medicamento.calcularPrecioVenta();
 
-        
-        this.dispose();
-        
-        if (this.getOwner() instanceof javax.swing.JDialog) {
-                javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
-                ventanaAgregar.dispose();
-            }
+         sistema.getHospital().getFarmacia().agregarMedicamento(medicamento, cantidad);
 
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores numéricos válidos en costo y cantidad.", "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();
-    }
+
+         JOptionPane.showMessageDialog(this, "Medicamento genérico creado exitosamente.\nPrecio de venta: $" + medicamento.getPrecioVenta());
+
+
+         this.dispose();
+
+         if (this.getOwner() instanceof javax.swing.JDialog) {
+                 javax.swing.JDialog ventanaAgregar = (javax.swing.JDialog) this.getOwner();
+                 ventanaAgregar.dispose();
+             }
+
+     } catch (NumberFormatException e) {
+         JOptionPane.showMessageDialog(this, "Por favor, ingrese valores numéricos válidos en costo y cantidad.", "Error", JOptionPane.ERROR_MESSAGE);
+     } catch (Exception e) {
+         JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+         e.printStackTrace();
+     }
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed

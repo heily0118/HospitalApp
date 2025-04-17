@@ -5,7 +5,9 @@
 package autonoma.hospitalapp.models;
 
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
+import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -52,16 +54,18 @@ public class Farmacia {
      * @throws HospitalEnQuiebraException Si el hospital está en quiebra.
      */
     public void agregarMedicamento(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException {
-      
-        if (hospital.visualizarEstado().equals("El hospital esta en quiebra.")) {
-            throw new HospitalEnQuiebraException(); 
+        if (hospital.visualizarEstado().equals("El hospital está en quiebra.")) {
+       
+            throw new HospitalEnQuiebraException();
         }
 
-        double costoTotal = medicamento.getCosto() * cantidad;  
-        medicamento.calcularPrecioVenta();  
-        
-        hospital.descontarDelPresupuesto(costoTotal); 
-        inventario.agregarMedicamento(medicamento, cantidad); 
+        double costoTotal = medicamento.getCosto() * cantidad;
+        medicamento.calcularPrecioVenta(); 
+
+       
+        hospital.descontarDelPresupuesto(costoTotal);
+        inventario.agregarMedicamento(medicamento, cantidad);
+        System.out.println("Medicamento " + medicamento.getNombre() + " agregado al inventario.");
     }
 
 
@@ -70,9 +74,9 @@ public class Farmacia {
      * 
      * @param nombre El nombre del medicamento a eliminar.
      */
-    public void eliminarMedicamento(String nombre) {
-        inventario.eliminarMedicamento(nombre); 
-    }
+        public boolean eliminarMedicamento(String nombre) {
+            return inventario.eliminarMedicamento(nombre);
+     }
 
     /**
      * Busca un medicamento en el inventario por su nombre.
@@ -80,8 +84,13 @@ public class Farmacia {
      * @param nombre El nombre del medicamento a buscar.
      * @return El medicamento encontrado, o null si no existe.
      */
-    public Medicamento buscarMedicamento(String nombre) {
-        return inventario.buscarPorNombre(nombre); 
+    public Medicamento buscarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
+        Medicamento medicamento = inventario.buscarPorNombre(nombre);
+        if (medicamento != null) {
+            return medicamento;
+        } else {
+            throw new MedicamentoNoEncontradoException();
+        }
     }
 
     /**
@@ -89,8 +98,8 @@ public class Farmacia {
      * 
      * @return Un string con la lista de todos los medicamentos.
      */
-    public String mostrarMedicamentos() {
-        return inventario.mostrarMedicamentos();
+    public ArrayList<Medicamento> obtenerMedicamentos(){
+        return inventario.obtenerListaMedicamentos();
     }
 
     
