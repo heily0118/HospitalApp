@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Escritor
+ * @see autonoma.hospitalapp.models.EscritorArchivoTextoPlano
  * @version 1.0.0
  */
 public class EscritorArchivoTextoPlano implements Escritor {

@@ -8,10 +8,10 @@ package autonoma.hospitalapp.exceptions;
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @see autonoma.hospitalapp.exceptions.HospitalEnQuiebraException
  * @version 1.0.0
  */
-public class HospitalEnQuiebraException  extends Exception{
+public class HospitalEnQuiebraException extends Exception{
 
     public HospitalEnQuiebraException() {
         super("El hospital se encunetra en quiebra");

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public interface Lector {
     /**
      * Lee el archivo
-     * @param localizacionArchivo
+     * @param localizacionArchivo Es el archivo en el que se va a leer.
      * @return Retorna un ArrayList de String que contiene cada línea del archivo como un elemento de la lista.
      * @throws IOException Si el archivo no existe
      */

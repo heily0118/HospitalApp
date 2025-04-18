@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.LectorArchivoTextoPlano
+ * @see autonoma.hospitalapp.models.LectorArchivoTextoPlano
  * @version 1.0.0
  * 
  */

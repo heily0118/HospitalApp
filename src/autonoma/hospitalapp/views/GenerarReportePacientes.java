@@ -10,8 +10,10 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Maria Paz Puerta
+ * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.hospitalapp.views.GenerarReportePacientes
+ * @version 1.0.0
  */
 public class GenerarReportePacientes extends javax.swing.JDialog {
     private SistemaCentral sistema;

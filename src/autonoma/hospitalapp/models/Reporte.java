@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.GeneradorReportePdf
+ * @see autonoma.hospitalapp.models.Reporte
  * @version 1.0.0
  */
 public class Reporte {
@@ -30,7 +30,7 @@ public class Reporte {
     private Farmacia farmacia; 
 
     /**
-     * Constructor vacío de la clase GeneradorReportePdf.
+     * Constructor vacío de la clase Reporte.
      * 
      */
     public Reporte(ArrayList<Empleado> empleados, ArrayList<Paciente> pacientes, Farmacia farmacia) {
@@ -91,6 +91,9 @@ public class Reporte {
      * Genera un reporte de los empleados registrados.
      * Muestra el nombre, documento, edad y salario base de cada empleado.
      * Si no hay empleados, muestra un mensaje indicando que no hay registros.
+     * @return El reporte de los empleados como una cadena de texto. Si no hay empleados registrados, 
+     * el reporte indicará que no hay registros.
+     * @throws IOException Si ocurre un error al escribir o leer el archivo de texto.
      */
     public String generarReporteEmpleados() throws IOException{
         ArrayList<String> archivo3 = new ArrayList<>();
@@ -127,6 +130,9 @@ public class Reporte {
      * Genera un reporte de los pacientes registrados.
      * Muestra el nombre, documento, edad, correo, teléfono, estado y lista de enfermedades y medicamentos de cada paciente.
      * Si no hay pacientes, muestra un mensaje indicando que no hay registros.
+     * @return El reporte de los pacientes como una cadena de texto. Si no hay pacientes registrados, 
+     * el reporte indicará que no hay registros.
+     * @throws IOException Si ocurre un error al escribir o leer el archivo de texto.
      */
     public String generarReportePacientes() throws IOException{
         ArrayList<String> archivo = new ArrayList<>();
@@ -184,6 +190,9 @@ public class Reporte {
      * Genera un reporte de la farmacia registrada.
      * Muestra el nombre y dirección del hospital asociado, así como el inventario de medicamentos de la farmacia.
      * Si no hay información de la farmacia, muestra un mensaje indicando que no hay registros.
+     * @return El reporte de la farmacia como una cadena de texto. Si no hay información de la farmacia registrada, 
+     * el reporte indicará que no hay registros.
+     * @throws IOException Si ocurre un error al escribir o leer el archivo de texto.
      */
     public String generarReporteFarmacia() throws IOException{
         ArrayList<String> archivo2 = new ArrayList<>();

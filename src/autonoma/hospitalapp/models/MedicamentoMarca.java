@@ -8,7 +8,7 @@ package autonoma.hospitalapp.models;
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.MedicamentoMarca
+ * @see autonoma.hospitalapp.models.MedicamentoMarca
  * @version 1.0.0
  */
 public class MedicamentoMarca extends Medicamento{
@@ -24,7 +24,7 @@ public class MedicamentoMarca extends Medicamento{
      * @param nombre Es el nombre del medicamento.
      * @param descripcion Es la descripción del medicamento.
      * @param costo Es el costo del medicamento.
-     * @param precioVenta Es el precio de venta del medicamento.
+     * @param cantidad Es la cantidad de medicamento.
      * @param enfermedadQueAlivia Es la enfermedad que el medicamento está diseñado para aliviar.
      * @param fabricante Es el fabricante del medicamento
      */

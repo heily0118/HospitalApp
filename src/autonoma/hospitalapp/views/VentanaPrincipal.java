@@ -6,15 +6,18 @@ package autonoma.hospitalapp.views;
 
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
- * @author Maria Paz Puerta Acevedo <maria>
+ * @author Maria Paz Puerta Acevedo <mariap.puertaaautonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Hospital
+ * @see autonoma.hospitalapp.models.VentanaPrincipal
  * @version 1.0.0
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
@@ -463,7 +466,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarReportesMouseExited
 
     private void informacionHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionHospitalMouseClicked
-       InformacionHospital ventanaHospital= new InformacionHospital(this, true,sistema);
+       InformacionHospital ventanaHospital = null;
+       try {
+           ventanaHospital = new InformacionHospital(this, true,sistema);
+       } catch (IOException ex) {
+           Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+       }
        ventanaHospital.setVisible(true);
     }//GEN-LAST:event_informacionHospitalMouseClicked
 

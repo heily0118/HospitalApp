@@ -9,7 +9,7 @@ package autonoma.hospitalapp.models;
 * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
  * @version 1.0.0
- * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @see autonoma.hospitalapp.models.Localizacion
  */
 public class Localizacion {
     
@@ -70,6 +70,11 @@ public class Localizacion {
         this.longitud = longitud;
     }
     
+    /**
+     *  Devuelve una representación en forma de texto de la información de la localización.
+     * 
+     * @return Rotorna la información de la localización como cadena de texto.
+     */
     @Override
     public String toString() {
         return "\n" + "Latitud: " + latitud + "\n" + "Longitud: " + longitud;

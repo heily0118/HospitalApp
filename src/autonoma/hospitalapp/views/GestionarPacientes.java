@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 /**
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.views.GestionarPacientes
+ * @see autonoma.hospitalapp.views.GestionarPacientes
  * @version 1.0.0
  */
 public class GestionarPacientes extends javax.swing.JDialog {

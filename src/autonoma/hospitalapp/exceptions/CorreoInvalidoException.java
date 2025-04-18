@@ -7,7 +7,7 @@ package autonoma.hospitalapp.exceptions;
 /**
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.exceptions.CorreoInvalidoException
+ * @see autonoma.hospitalapp.exceptions.CorreoInvalidoException
  * @version 1.0.0
  */
 public class CorreoInvalidoException extends Exception{ 

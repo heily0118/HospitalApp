@@ -8,7 +8,7 @@ package autonoma.hospitalapp.models;
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Medicamento
+ * @see autonoma.hospitalapp.models.Medicamento
  * @version 1.0.0
  */
 public abstract class Medicamento {
@@ -147,10 +147,18 @@ public abstract class Medicamento {
         this.enfermedadQueAlivia = enfermedadQueAlivia;
     }
 
+    /**
+     * Obtiene la cantidad del medicamento.
+     * @return Retorna la cantidad del medicamento.
+     */
     public int getCantidad() {
         return cantidad;
     }
 
+    /**
+     * Establece la cantidad del medicamento.
+     * @param cantidad Es la cantidad del medicamento.
+     */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
@@ -164,7 +172,12 @@ public abstract class Medicamento {
      */
     public abstract void calcularPrecioVenta();
     
-     @Override
+    /**
+     * Devuelve una representación en forma de texto de la información del medicamento.
+     * 
+     * @return Retorna la información del medicamento como cadena de texto. 
+     */
+    @Override
     public String toString() {
         return "Nombre: " + nombre + "\n" +
                "Descripcion: " + descripcion + "\n" +

@@ -24,7 +24,10 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Maria Paz Puerta
+ * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.hospitalapp.views.AgregarPaciente
+ * @version 1.0.0
  */
 public class AgregarPaciente extends javax.swing.JDialog {
     private ArrayList<Paciente> pacientes;

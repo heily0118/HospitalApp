@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Paciente
+ * @see autonoma.hospitalapp.models.Paciente
  * @version 1.0.0
  * 
  */
@@ -216,6 +216,9 @@ public class Paciente {
      * Agrega una enfermedad al paciente si aún no la tiene.
      * @param enfermedad La enfermedad que se desea agregar.
      * @return true si se agregó correctamente, false si ya existía.
+     * @throws CamposObligatoriosException Si algún campo obligatorio no está presente al agregar la enfermedad.
+     * @throws PacienteNoEncontradoException Si el paciente no se encuentra en el sistema.
+     * @throws CaracteresEspecialesException Si la enfermedad contiene caracteres especiales no permitidos.
      */
     public boolean agregarEnfermedad(Enfermedad enfermedad) throws CamposObligatoriosException, PacienteNoEncontradoException, CaracteresEspecialesException{
         for (Enfermedad e : enfermedades) {
@@ -236,6 +239,10 @@ public class Paciente {
      * @param enfermedad Es el nombre de la enfermedad que se desea curar.
      * @param medicamento Es el medicamento que se utilizará para curar la enfermedad.
      * @return Retorna un mensaje indicando si la enfermedad fue curada o no.
+     * @throws CamposObligatoriosException Si algún campo obligatorio no está presente.
+     * @throws PacienteNoEncontradoException Si el paciente no se encuentra en el sistema.
+     * @throws CaracteresEspecialesException Si alguno de los campos contiene caracteres especiales no permitidos.
+     * @throws MedicamentoNoEncontradoException Si el medicamento no se encuentra en el sistema.
      */
     public String curarEnfermedad(String enfermedad, Medicamento medicamento) throws CamposObligatoriosException, PacienteNoEncontradoException, CaracteresEspecialesException, MedicamentoNoEncontradoException{
         for (Enfermedad e : enfermedades) {

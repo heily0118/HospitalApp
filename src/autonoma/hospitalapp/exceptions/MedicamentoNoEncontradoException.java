@@ -9,7 +9,7 @@ package autonoma.hospitalapp.exceptions;
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @see autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException
  * @version 1.0.0
  */
 public class MedicamentoNoEncontradoException extends Exception{

@@ -20,8 +20,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
- *
- * @author USUARIO
+ * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.hospitalapp.views.InformacionHospital
+ * @version 1.0.0
  */
 public class InformacionHospital extends javax.swing.JDialog {
     private JTextArea txtInformacionHospital;

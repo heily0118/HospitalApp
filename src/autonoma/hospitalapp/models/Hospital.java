@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Vehiculo
+ * @see autonoma.hospitalapp.models.Hospital
  * @version 1.0.0
  * 
  */
@@ -420,7 +420,10 @@ public class Hospital {
         return farmacia.obtenerMedicamentos();
     }
 
-    
+    /**
+     * Guarda la información del hospital en un archivo de texto llamado "InformacionHospital.txt".
+     * @throws IOException Si ocurre un error al escribir en el archivo.
+     */
     public void guardarInformacion() throws IOException {
 
         ArrayList<String> contenido = new ArrayList<>();
@@ -442,6 +445,12 @@ public class Hospital {
         escritor.escribir(contenido);
     }
     
+    /**
+     * Lee la información del hospital desde el archivo de texto "InformacionHospital.txt" y 
+     * devuelve el contenido como una cadena de texto.
+     * @return Retorna el contenido del archivo "InformacionHospital.txt" como una cadena de texto.
+     * @throws IOException Si ocurre un error al leer el archivo.
+     */
     public String mostrarInformacion() throws IOException {
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("InformacionHospital.txt");

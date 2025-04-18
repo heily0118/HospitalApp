@@ -8,7 +8,7 @@ package autonoma.hospitalapp.models;
  *
  * @author Maria Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.models.Gerente
+ * @see autonoma.hospitalapp.models.Gerente
  * @version 1.0.0
  */
 public class Gerente {
@@ -118,11 +118,16 @@ public class Gerente {
         this.carrera = carrera;
     }
     
+    /**
+     * Devuelve una representación en forma de texto de la información del gerente.
+     * 
+     * @return información del gerente como cadena de texto.
+     */
     public String toString() {
     return "\n" + "Nombre: " + nombre + "\n" +
            "Documento: " + documento + "\n" +
            "Edad: " + edad + "\n" +
            "Carrera: " + carrera + "\n";
-}
+    }
     
 }

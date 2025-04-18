@@ -8,7 +8,7 @@ package autonoma.hospitalapp.exceptions;
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250414
- * @see autonoma.simuladorautomovil.exceptions.PacienteDuplicadoException
+ * @see autonoma.hospitalapp.exceptions.PacienteDuplicadoException
  * @version 1.0.0
  */
 public class PacienteDuplicadoException extends RuntimeException{

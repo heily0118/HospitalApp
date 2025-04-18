@@ -11,8 +11,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
 /**
- *
- * @author Maria Paz Puerta
+ * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ * @since 20250414
+ * @see autonoma.hospitalapp.views.GenerarReporteEmpleados
+ * @version 1.0.0
  */
 public class GenerarReporteEmpleados extends javax.swing.JDialog {
 
