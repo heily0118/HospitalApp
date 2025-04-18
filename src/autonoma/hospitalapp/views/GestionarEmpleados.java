@@ -80,6 +80,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Agregar empleado");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/AgregarEmpleado.png"))); // NOI18N
@@ -121,6 +122,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Mostrar empleados");
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,7 +154,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
         Atras3.setBackground(new java.awt.Color(204, 0, 51));
         Atras3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Atras3.setForeground(new java.awt.Color(255, 255, 255));
-        Atras3.setText("Atras");
+        Atras3.setText("Atrás");
         Atras3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Atras3ActionPerformed(evt);
@@ -191,7 +193,7 @@ public class GestionarEmpleados extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Modulo Empleados");
+        jLabel1.setText("Módulo Empleados");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

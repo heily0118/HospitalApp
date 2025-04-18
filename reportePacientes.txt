@@ -1,12 +1,12 @@
 ========================== REPORTE DE PACIENTES ======================
 Nombre: Maria
-Documento: 393930
-Edad: 2
-Correo: mariapaz@gmail.com
-Teléfono: 49404
+Documento: 3349402
+Edad: 45
+Correo: maria@gmail.com
+Teléfono: 39404
 Estado: Saludable
 Enfermedades:
-  - Gripa
+  - Apendicitis
 Medicamentos:
-  - No tiene medicamentos asignados.
+  - Dipirona
 ------------------------------------

@@ -1,2 +1,2 @@
-=================== REPORTE DE EMPLEADOS =============================
+===================== REPORTE DE EMPLEADOS =============================
 No hay empleados registrados.

@@ -78,7 +78,8 @@ public class GestionarFarmacia extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("agregar medicamento");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Agregar medicamento");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospitalapp/images/Medicamentos.png"))); // NOI18N
 
@@ -94,7 +95,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
                     .addGroup(btnAgregarMedicamentoLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel6)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnAgregarMedicamentoLayout.setVerticalGroup(
             btnAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,6 +121,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Mostrar inventario");
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -151,7 +153,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
         Atras3.setBackground(new java.awt.Color(204, 0, 51));
         Atras3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Atras3.setForeground(new java.awt.Color(255, 255, 255));
-        Atras3.setText("Atras");
+        Atras3.setText("Atrás");
         Atras3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Atras3ActionPerformed(evt);
@@ -190,7 +192,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Modulo Farmacia");
+        jLabel1.setText("Módulo Farmacia");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -199,7 +201,7 @@ public class GestionarFarmacia extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -146,7 +146,7 @@ public class GenerarNomina extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setText("Estado hospial:");
+        jLabel3.setText("Estado hospital:");
 
         presupuestoTotal.setEditable(false);
         presupuestoTotal.setBackground(new java.awt.Color(255, 255, 255));

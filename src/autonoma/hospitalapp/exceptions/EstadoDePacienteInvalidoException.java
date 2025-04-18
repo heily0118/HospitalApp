@@ -5,13 +5,14 @@
 package autonoma.hospitalapp.exceptions;
 
 /**
- * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
+ **@author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co
  * @since 20250414
- * @see autonoma.simuladorautomovil.exceptions.EstadoDePacienteInvalido
+ * @see autonoma.simuladorautomovil.exceptions.ErrorGeneracionDeReporteException
  * @version 1.0.0
  */
 public class EstadoDePacienteInvalidoException extends Exception{
+    
     public EstadoDePacienteInvalidoException() {
-        super("El estado del paciente debe ser 'Saludable' o 'Crítico'.");
+        super("El estado del paciente es inválido");
     }
 }

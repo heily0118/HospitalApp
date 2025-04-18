@@ -51,12 +51,13 @@ public class GestionarPacientes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Atras3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAgregarPaciente = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jlabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        nombreHospital = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         btnMostrarPacientes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -66,6 +67,17 @@ public class GestionarPacientes extends javax.swing.JDialog {
         btnCurar = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        Atras4 = new javax.swing.JButton();
+
+        Atras3.setBackground(new java.awt.Color(204, 0, 51));
+        Atras3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras3.setForeground(new java.awt.Color(255, 255, 255));
+        Atras3.setText("Atrás");
+        Atras3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Atras3ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,25 +128,25 @@ public class GestionarPacientes extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(195, 195, 243));
 
-        nombreHospital.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
-        nombreHospital.setForeground(new java.awt.Color(255, 255, 255));
-        nombreHospital.setText("Módulo de Pacientes ");
+        jLabel8.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Módulo de Pacientes");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(nombreHospital)
-                .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(104, 104, 104))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(nombreHospital)
-                .addGap(31, 31, 31))
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(33, 33, 33))
         );
 
         btnMostrarPacientes.setBackground(new java.awt.Color(255, 255, 255));
@@ -264,6 +276,16 @@ public class GestionarPacientes extends javax.swing.JDialog {
                 .addGap(17, 17, 17))
         );
 
+        Atras4.setBackground(new java.awt.Color(204, 0, 51));
+        Atras4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Atras4.setForeground(new java.awt.Color(255, 255, 255));
+        Atras4.setText("Atrás");
+        Atras4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Atras4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -274,12 +296,14 @@ public class GestionarPacientes extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAgregarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMostrarPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnDiagnosticar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Atras4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(btnCurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(118, 118, 118))))
         );
@@ -293,12 +317,18 @@ public class GestionarPacientes extends javax.swing.JDialog {
                     .addComponent(btnAgregarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(btnMostrarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(btnMostrarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(31, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Atras4)
+                        .addGap(22, 22, 22))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -367,8 +397,18 @@ public class GestionarPacientes extends javax.swing.JDialog {
         this.mouseExited(btnCurar);
     }//GEN-LAST:event_btnCurarMouseExited
 
+    private void Atras3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Atras3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_Atras3ActionPerformed
+
+    private void Atras4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Atras4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_Atras4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras3;
+    private javax.swing.JButton Atras4;
     private javax.swing.JPanel btnAgregarPaciente;
     private javax.swing.JPanel btnCurar;
     private javax.swing.JPanel btnDiagnosticar;
@@ -380,10 +420,10 @@ public class GestionarPacientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jlabel4;
-    private javax.swing.JLabel nombreHospital;
     // End of variables declaration//GEN-END:variables
 
     private void mouseEntered(JPanel panel) {

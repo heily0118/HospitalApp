@@ -219,8 +219,8 @@ public class DiagnosticarEnfermedad extends javax.swing.JDialog {
             String nombreEnfermedad = txtEnfermedad.getText().trim();
             String descripcion = txtDescripcion.getText().trim();
 
-            if (nombrePaciente.isEmpty() || nombreEnfermedad.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Error, complete todos los campos.");
+            if (nombrePaciente.isEmpty() || nombreEnfermedad.isEmpty() || descripcion.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos");
                 return;
             }
 
@@ -251,11 +251,18 @@ public class DiagnosticarEnfermedad extends javax.swing.JDialog {
                 }
             }
             
+            for (int i = 0; i < nombreEnfermedad.length(); i++) {
+                char c = nombreEnfermedad.charAt(i);
+                if (caracteresEspeciales.indexOf(c) != -1) {
+                    contieneEspeciales = true;
+                    JOptionPane.showMessageDialog(this, "No se puede registrar caracteres especiales" , "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
             
-            String caracteresEspeciales2 = "?¡¿,#$&*!";
             for (int i = 0; i < descripcion.length(); i++) {
                 char c = descripcion.charAt(i);
-                if (caracteresEspeciales2.indexOf(c) != -1) {
+                if (caracteresEspeciales.indexOf(c) != -1) {
                     contieneEspeciales = true;
                     JOptionPane.showMessageDialog(this, "No se puede registrar caracteres especiales" , "Error", JOptionPane.ERROR_MESSAGE);
                     return;

@@ -6,6 +6,7 @@ package autonoma.hospitalapp.models;
 
 import autonoma.hospitalapp.exceptions.CamposObligatoriosException;
 import autonoma.hospitalapp.exceptions.CaracteresEspecialesException;
+import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
 import java.util.ArrayList;
@@ -236,7 +237,7 @@ public class Paciente {
      * @param medicamento Es el medicamento que se utilizará para curar la enfermedad.
      * @return Retorna un mensaje indicando si la enfermedad fue curada o no.
      */
-    public String curarEnfermedad(String enfermedad, Medicamento medicamento) {
+    public String curarEnfermedad(String enfermedad, Medicamento medicamento) throws CamposObligatoriosException, PacienteNoEncontradoException, CaracteresEspecialesException, MedicamentoNoEncontradoException{
         for (Enfermedad e : enfermedades) {
             if (e.getNombre().equalsIgnoreCase(enfermedad)) {
                 if (medicamento.getEnfermedadQueAlivia().equalsIgnoreCase(enfermedad)) {

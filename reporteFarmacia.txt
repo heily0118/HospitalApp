@@ -2,5 +2,9 @@
 Hospital Asociado: Hospital San José St. Bonaventure
 Dirección del Hospital: Calle 123
 Inventario de Medicamentos:
-No hay medicamentos en el inventario.
+  - Nombre: Dipirona
+  - Descripción: Bueno
+  - Cantidad: 2
+  - Precio: 2500.0
+  - Enfermedad que alivia: Gripa
 ------------------------------------
