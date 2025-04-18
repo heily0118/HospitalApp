@@ -1,12 +1,2 @@
 ========================== REPORTE DE PACIENTES ======================
-Nombre: Maria
-Documento: 3349402
-Edad: 45
-Correo: maria@gmail.com
-Teléfono: 39404
-Estado: Saludable
-Enfermedades:
-  - Apendicitis
-Medicamentos:
-  - Dipirona
-------------------------------------
+No hay pacientes registrados.
