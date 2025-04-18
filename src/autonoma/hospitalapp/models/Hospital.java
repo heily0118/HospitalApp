@@ -167,12 +167,22 @@ public class Hospital {
         this.nominas = nominas;
     }
     
-    
+    /**
+    * Agrega un nuevo empleado al hospital.
+    *
+    * @param empleado El empleado a agregar.
+    */
     public void agregarEmpleado(Empleado empleado) {
         empleados.add(empleado);
         System.out.println("Empleado agregado: " + empleado.getNombre());
     }
 
+    /**
+    * Elimina un empleado por su nombre.
+    *
+    * @param nombre Nombre del empleado a eliminar.
+    * @return true si fue eliminado, false si no se encontró.
+    */
     public boolean eliminarEmpleado(String nombre) {
         Empleado empleadoAEliminar = buscarEmpleado(nombre);
 
@@ -185,6 +195,13 @@ public class Hospital {
             return false;  
         }
     }
+    
+    /**
+    * Actualiza los datos de un empleado existente.
+    *
+    * @param nombre Nombre del empleado a actualizar.
+    * @param empleadoActualizado Objeto con los datos nuevos del empleado.
+    */
 
     public void actualizarEmpleado(String nombre, Empleado empleadoActualizado) {
         for (int i = 0; i < empleados.size(); i++) {
@@ -197,6 +214,12 @@ public class Hospital {
         System.out.println("Empleado no encontrado.");
     }
 
+    /**
+    * Busca un empleado por nombre.
+    *
+    * @param nombre Nombre del empleado.
+    * @return El empleado encontrado o null si no existe.
+    */
     public Empleado buscarEmpleado(String nombre) {
          for (Empleado empleado : empleados) {
             if (empleado.getNombre().equals(nombre)) {
@@ -205,13 +228,26 @@ public class Hospital {
         }
         return null;
     }
-
+    
+    /**
+     * Agrega un paciente al hospital.
+     *
+     * @param paciente El paciente a agregar.
+     */
 
     public void agregarPaciente(Paciente paciente) {
         pacientes.add(paciente);
         System.out.println("Paciente agregado: " + paciente.getNombre());
     }
-
+    
+    /**
+     * Elimina un paciente del hospital.
+     *
+     * @param nombre Nombre del paciente a eliminar.
+     * @return true si fue eliminado.
+     * @throws PacienteNoEncontradoException Si no se encuentra al paciente.
+     */
+    
     public boolean eliminarPaciente(String nombre) throws PacienteNoEncontradoException {
         Paciente pacienteAEliminar = buscarPaciente(nombre);
 
@@ -225,7 +261,12 @@ public class Hospital {
     }
     
 
-
+    /**
+     * Actualiza los datos de un paciente.
+     *
+     * @param nombre Nombre del paciente a actualizar.
+     * @param pacienteActualizado El nuevo objeto del paciente.
+     */
 
     public void actualizarPaciente(String nombre, Paciente pacienteActualizado) {
         for (int i = 0; i < pacientes.size(); i++) {
@@ -238,6 +279,12 @@ public class Hospital {
         System.out.println("Paciente no encontrado.");
     }
 
+    /**
+    * Busca un paciente por nombre.
+    *
+    * @param nombre Nombre del paciente.
+    * @return El paciente encontrado o null si no existe.
+    */
     public Paciente buscarPaciente(String nombre) {
         for (Paciente paciente : pacientes) {
             if (paciente.getNombre().equals(nombre)) {
@@ -247,7 +294,11 @@ public class Hospital {
         System.out.println("Paciente no encontrado.");
         return null;
     }
-
+    
+    /**
+     * Genera la nómina de todos los empleados activos del hospital
+     * y la agrega a la lista de nóminas.
+     */
     
     public void generarNomina() {
         for (Empleado empleado : empleados) {
@@ -259,6 +310,11 @@ public class Hospital {
         }
     }
 
+    /**
+    * Aumenta el presupuesto del hospital con un patrocinio.
+    *
+    * @param monto El monto del patrocinio.
+    */
     public void registrarPatrocinio(double monto) {
         if (monto > 0) {
             presupuesto += monto;
@@ -268,6 +324,11 @@ public class Hospital {
         }
     }
 
+    /**
+    * Descuenta un valor del presupuesto del hospital.
+    *
+    * @param valor El valor a descontar.
+    */
     public void descontarDelPresupuesto(double valor) {
         if (presupuesto >= valor) {
             presupuesto -= valor;
@@ -276,10 +337,21 @@ public class Hospital {
         }
     }
 
+    /**
+    * Devuelve una representación textual del estado del hospital.
+    *
+    * @return "Activo" si está en funcionamiento, "Quiebra" si no.
+    */
     public String visualizarEstado() {
         return estadoHospital ? "Activo" : "Quiebra";
     }
 
+    /**
+    * Intenta comprar un medicamento si el hospital tiene presupuesto y no está en quiebra.
+    *
+    * @param medicamento El medicamento a comprar.
+    * @param cantidad La cantidad a comprar.
+    */
     public void comprarMedicamento(Medicamento medicamento, int cantidad) {
         try {
            
@@ -306,7 +378,13 @@ public class Hospital {
         }
     }
     
-    
+    /**
+    * Busca un medicamento en la farmacia.
+    *
+    * @param nombre Nombre del medicamento.
+    * @return El medicamento encontrado.
+    * @throws MedicamentoNoEncontradoException Si el medicamento no existe.
+    */
     public Medicamento buscarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
        Medicamento medicamento = farmacia.buscarMedicamento(nombre);
         if (medicamento != null) {
@@ -316,6 +394,14 @@ public class Hospital {
         }
     }
     
+    
+    /**
+    * Elimina un medicamento de la farmacia.
+    *
+    * @param nombre Nombre del medicamento.
+    * @return true si fue eliminado.
+    * @throws MedicamentoNoEncontradoException Si el medicamento no existe.
+    */
     public boolean eliminarMedicamento(String nombre) throws MedicamentoNoEncontradoException {
         boolean eliminado = farmacia.eliminarMedicamento(nombre);
         if (eliminado) {
@@ -325,11 +411,18 @@ public class Hospital {
         }
     }
     
+    /**
+    * Obtiene todos los medicamentos disponibles en la farmacia.
+    *
+    * @return Una lista con todos los medicamentos.
+    */
     public ArrayList<Medicamento> obtenerMedicamentos() {
         return farmacia.obtenerMedicamentos();
     }
+
     
     public void guardarInformacion() throws IOException {
+
         ArrayList<String> contenido = new ArrayList<>();
 
         contenido.add("============= INFORMACIÓN DEL HOSPITAL =====================");
