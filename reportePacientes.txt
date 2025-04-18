@@ -1,2 +1,12 @@
 ========================== REPORTE DE PACIENTES ======================
-No hay pacientes registrados.
+Nombre: Maria
+Documento: 929933
+Edad: 23
+Correo: maria@gmail.com
+Teléfono: 3129939459
+Estado: Saludable
+Enfermedades:
+  - No registra enfermedades.
+Medicamentos:
+  - No tiene medicamentos asignados.
+------------------------------------

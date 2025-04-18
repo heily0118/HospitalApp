@@ -1,2 +1,6 @@
 ===================== REPORTE DE EMPLEADOS =============================
-No hay empleados registrados.
+Nombre: Maria
+Documento: 293030
+Edad: 393
+Salario Base: $384987.0
+------------------------------------

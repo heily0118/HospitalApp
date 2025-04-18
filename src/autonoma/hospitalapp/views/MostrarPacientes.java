@@ -231,7 +231,7 @@ public class MostrarPacientes extends javax.swing.JDialog {
             ventanaActualizar.setVisible(true);
             llenarTabla();
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione el amigo que desea actualizar");
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione el paciente que desea actualizar");
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
