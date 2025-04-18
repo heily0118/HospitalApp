@@ -1,4 +1,4 @@
-===================== INFORMACIÓN DEL HOSPITAL ==========================
+================== INFORMACIÓN DEL HOSPITAL =======================
 Nombre: Hospital San José St. Bonaventure
 Dirección: Calle 123
 Teléfono: 3001234567
@@ -18,4 +18,4 @@ Estado: Activo
 Localización: 
 Latitud: 5.0703
 Longitud: -75.5138
-=========================================================================
+===================================================================

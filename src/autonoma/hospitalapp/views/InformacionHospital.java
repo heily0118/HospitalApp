@@ -9,10 +9,14 @@ import autonoma.hospitalapp.models.Hospital;
 import autonoma.hospitalapp.models.Inventario;
 import autonoma.hospitalapp.models.Localizacion;
 import autonoma.hospitalapp.models.SistemaCentral;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
@@ -34,7 +38,6 @@ public class InformacionHospital extends javax.swing.JDialog {
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.sistema = sistema;
-        this.sistema = sistema;
         this.hospital= this.sistema.getHospital();
          
         try{ 
@@ -45,29 +48,13 @@ public class InformacionHospital extends javax.swing.JDialog {
             
         }
         
-        Localizacion localizacion = new Localizacion(5.0703, -75.5138 );
-
-        Gerente gerente = new Gerente("Laura Pérez", "123456789", 40, "Administración Hospitalaria");
-        Inventario inventario = new Inventario("INV-001", 2024);
-
-        Hospital hospital = new Hospital("Hospital San José St. Bonaventure",
-                "Calle 123",
-                "3001234567",
-                "logo.png",
-                1000000,
-                500.000,
-                LocalDate.of(2020, 1, 1),
-                true,
-                localizacion,
-                gerente,
-                new ArrayList<>(),
-                new ArrayList<>(),
-                null,  
-                new ArrayList<>()); 
-        String info = hospital.mostrarInformacion();
-        System.out.println(info);
-        InformacionHospital.setText(hospital.mostrarInformacion());
+        InformacionHospital.setLineWrap(true);
+        InformacionHospital.setWrapStyleWord(true);
         InformacionHospital.setEditable(false);
+
+        String info = this.hospital.mostrarInformacion();
+        System.out.println(info); // Puedes dejarlo o quitarlo
+        InformacionHospital.setText(info);
         
     }
     
@@ -88,6 +75,7 @@ public class InformacionHospital extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         InformacionHospital = new javax.swing.JTextArea();
         btnCancelar3 = new javax.swing.JToggleButton();
+        btnActualizarInfo = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -131,6 +119,16 @@ public class InformacionHospital extends javax.swing.JDialog {
             }
         });
 
+        btnActualizarInfo.setBackground(new java.awt.Color(153, 0, 102));
+        btnActualizarInfo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnActualizarInfo.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarInfo.setText("Actualizar info");
+        btnActualizarInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -141,8 +139,10 @@ public class InformacionHospital extends javax.swing.JDialog {
                         .addGap(44, 44, 44)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(btnCancelar3)))
+                        .addGap(148, 148, 148)
+                        .addComponent(btnCancelar3)
+                        .addGap(80, 80, 80)
+                        .addComponent(btnActualizarInfo)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -151,8 +151,10 @@ public class InformacionHospital extends javax.swing.JDialog {
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(btnCancelar3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar3)
+                    .addComponent(btnActualizarInfo))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,26 +179,31 @@ public class InformacionHospital extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnCancelar3ActionPerformed
 
-
+    private void btnActualizarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarInfoActionPerformed
+        cargarInformacionHospital();
+    }//GEN-LAST:event_btnActualizarInfoActionPerformed
+    private void cargarInformacionHospital() {
+        try {
+            BufferedReader lector = new BufferedReader(new FileReader("InformacionHospital.txt"));
+            StringBuilder contenido = new StringBuilder();
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                contenido.append(linea).append("\n");
+            }
+            lector.close();
+            InformacionHospital.setText(contenido.toString());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea InformacionEmpleados;
-    private javax.swing.JTextArea InformacionEmpleados1;
-    private javax.swing.JTextArea InformacionEmpleados2;
     private javax.swing.JTextArea InformacionHospital;
-    private javax.swing.JToggleButton btnCancelar;
-    private javax.swing.JToggleButton btnCancelar1;
-    private javax.swing.JToggleButton btnCancelar2;
+    private javax.swing.JToggleButton btnActualizarInfo;
     private javax.swing.JToggleButton btnCancelar3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,9 +10,24 @@ package autonoma.hospitalapp.models;
  * @version 1.0.0
  */
 public abstract class Empleado {
+    /**
+     * Nombre completo del gerente.
+     */
     private String nombre;
+
+    /**
+     * Documento de identidad del gerente.
+     */
     private String documento;
+
+    /**
+     * Edad del gerente.
+     */
     private int edad;
+
+    /**
+     * Salario base mensual del gerente.
+     */
     private double salarioBase;
 
     /**

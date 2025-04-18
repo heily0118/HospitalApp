@@ -329,10 +329,10 @@ public class Hospital {
         return farmacia.obtenerMedicamentos();
     }
     
-    public String mostrarInformacion() throws IOException {
+    public void guardarInformacion() throws IOException {
         ArrayList<String> contenido = new ArrayList<>();
 
-        contenido.add("===================== INFORMACIÓN DEL HOSPITAL ==========================");
+        contenido.add("============= INFORMACIÓN DEL HOSPITAL =====================");
         contenido.add("Nombre: " + getNombre());
         contenido.add("Dirección: " + getDireccion());
         contenido.add("Teléfono: " + getTelefono() + "\n");
@@ -343,11 +343,13 @@ public class Hospital {
         contenido.add("Fecha de Fundación: " + getFechaFundacion());
         contenido.add("Estado: " + (isEstadoHospital() ? "Activo" : "Inactivo"));
         contenido.add("\n" + "Localización: " + getLocalizacion()); 
-        contenido.add("=========================================================================");
+        contenido.add("================================================");
 
         EscritorArchivoTextoPlano escritor = new EscritorArchivoTextoPlano("InformacionHospital.txt");
         escritor.escribir(contenido);
-
+    }
+    
+    public String mostrarInformacion() throws IOException {
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("InformacionHospital.txt");
 
