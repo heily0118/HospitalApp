@@ -7,6 +7,7 @@ package autonoma.hospitalapp.models;
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
 import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -328,5 +329,33 @@ public class Hospital {
         return farmacia.obtenerMedicamentos();
     }
     
+    public String mostrarInformacion() throws IOException {
+        ArrayList<String> contenido = new ArrayList<>();
+
+        contenido.add("===================== INFORMACIÓN DEL HOSPITAL ==========================");
+        contenido.add("Nombre: " + getNombre());
+        contenido.add("Dirección: " + getDireccion());
+        contenido.add("Teléfono: " + getTelefono() + "\n");
+        contenido.add("Gerente: " + getGerente().toString());
+        contenido.add("Logo: " + getLogo());
+        contenido.add(String.format("Presupuesto: $%.2f", getPresupuesto()));
+        contenido.add(String.format("Meta de Ventas Anual: $%.2f", getMetaVentasAnual()));
+        contenido.add("Fecha de Fundación: " + getFechaFundacion());
+        contenido.add("Estado: " + (isEstadoHospital() ? "Activo" : "Inactivo"));
+        contenido.add("\n" + "Localización: " + getLocalizacion()); 
+        contenido.add("=========================================================================");
+
+        EscritorArchivoTextoPlano escritor = new EscritorArchivoTextoPlano("InformacionHospital.txt");
+        escritor.escribir(contenido);
+
+        LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
+        ArrayList<String> lineas = lector.leer("InformacionHospital.txt");
+
+        StringBuilder resultado = new StringBuilder();
+        for (String linea : lineas) {
+            resultado.append(linea).append("\n");
+        }
+        return resultado.toString();
+    }
    
 }

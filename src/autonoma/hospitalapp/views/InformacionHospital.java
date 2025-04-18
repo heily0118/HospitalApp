@@ -4,37 +4,74 @@
  */
 package autonoma.hospitalapp.views;
 
+import autonoma.hospitalapp.models.Gerente;
 import autonoma.hospitalapp.models.Hospital;
+import autonoma.hospitalapp.models.Inventario;
+import autonoma.hospitalapp.models.Localizacion;
 import autonoma.hospitalapp.models.SistemaCentral;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
 
 /**
  *
  * @author USUARIO
  */
 public class InformacionHospital extends javax.swing.JDialog {
+    private JTextArea txtInformacionHospital;
     private SistemaCentral sistema;
-
+    private final Hospital hospital;
 
     /**
      * Creates new form InformacionHospital
      */
-    public InformacionHospital(java.awt.Frame parent, boolean modal,SistemaCentral sistema) {
+    public InformacionHospital(java.awt.Frame parent, boolean modal,SistemaCentral sistema) throws IOException {
         super(parent, modal);
         initComponents();
         setSize(620, 700);
         setResizable(false);
         this.setLocationRelativeTo(null);
-         this.sistema = sistema;
+        this.sistema = sistema;
+        this.sistema = sistema;
+        this.hospital= this.sistema.getHospital();
          
-         try{ 
-        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
+        try{ 
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/HospitalApp/images/hospital.png")).getImage());
         
         }catch(NullPointerException e){
             System.out.println("Imagen no encontrada");
             
         }
+        
+        Localizacion localizacion = new Localizacion(5.0703, -75.5138 );
+
+        Gerente gerente = new Gerente("Laura Pérez", "123456789", 40, "Administración Hospitalaria");
+        Inventario inventario = new Inventario("INV-001", 2024);
+
+        Hospital hospital = new Hospital("Hospital San José St. Bonaventure",
+                "Calle 123",
+                "3001234567",
+                "logo.png",
+                1000000,
+                500.000,
+                LocalDate.of(2020, 1, 1),
+                true,
+                localizacion,
+                gerente,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                null,  
+                new ArrayList<>()); 
+        String info = hospital.mostrarInformacion();
+        System.out.println(info);
+        InformacionHospital.setText(hospital.mostrarInformacion());
+        InformacionHospital.setEditable(false);
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,24 +82,121 @@ public class InformacionHospital extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        InformacionHospital = new javax.swing.JTextArea();
+        btnCancelar3 = new javax.swing.JToggleButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel4.setBackground(new java.awt.Color(205, 205, 250));
+
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Información del Hospital");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        InformacionHospital.setColumns(20);
+        InformacionHospital.setRows(5);
+        InformacionHospital.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane4.setViewportView(InformacionHospital);
+
+        btnCancelar3.setBackground(new java.awt.Color(204, 0, 0));
+        btnCancelar3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCancelar3.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar3.setText("Cancelar");
+        btnCancelar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(btnCancelar3)))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnCancelar3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void btnCancelar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelar3ActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea InformacionEmpleados;
+    private javax.swing.JTextArea InformacionEmpleados1;
+    private javax.swing.JTextArea InformacionEmpleados2;
+    private javax.swing.JTextArea InformacionHospital;
+    private javax.swing.JToggleButton btnCancelar;
+    private javax.swing.JToggleButton btnCancelar1;
+    private javax.swing.JToggleButton btnCancelar2;
+    private javax.swing.JToggleButton btnCancelar3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }

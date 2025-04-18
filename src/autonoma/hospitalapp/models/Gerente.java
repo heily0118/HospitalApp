@@ -118,5 +118,11 @@ public class Gerente {
         this.carrera = carrera;
     }
     
+    public String toString() {
+    return "\n" + "Nombre: " + nombre + "\n" +
+           "Documento: " + documento + "\n" +
+           "Edad: " + edad + "\n" +
+           "Carrera: " + carrera + "\n";
+}
     
 }

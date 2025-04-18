@@ -69,4 +69,9 @@ public class Localizacion {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
+    
+    @Override
+    public String toString() {
+        return "\n" + "Latitud: " + latitud + "\n" + "Longitud: " + longitud;
+    }
 }

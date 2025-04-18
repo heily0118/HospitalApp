@@ -113,7 +113,7 @@ public class GenerarNomina extends javax.swing.JDialog {
         Atras.setBackground(new java.awt.Color(204, 0, 51));
         Atras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Atras.setForeground(new java.awt.Color(255, 255, 255));
-        Atras.setText("Atras");
+        Atras.setText("Atrás");
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AtrasActionPerformed(evt);
